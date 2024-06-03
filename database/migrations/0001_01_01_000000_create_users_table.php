@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->bigInteger('suny_campus_id');
             $table->string('password');
             $table->rememberToken();
+            $table->foreign('suny_campus_id')->references('id')->on('suny_campuses');
             $table->timestamps();
         });
 

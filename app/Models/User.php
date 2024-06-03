@@ -44,4 +44,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function campuses(){
+        return $this->belongsTo(SUNYCampus::class, 'campus_id');
+    }
 }

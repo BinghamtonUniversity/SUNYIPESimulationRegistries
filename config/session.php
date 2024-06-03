@@ -9,9 +9,9 @@ return [
     | Default Session Driver
     |--------------------------------------------------------------------------
     |
-    | This option determines the default session driver that is utilized for
+    | This option determines the admin session driver that is utilized for
     | incoming requests. Laravel supports a variety of storage options to
-    | persist session data. Database storage is a great default choice.
+    | persist session data. Database storage is a great admin choice.
     |
     | Supported: "file", "cookie", "database", "apc",
     |            "memcached", "redis", "dynamodb", "array"
@@ -55,7 +55,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | When utilizing the "file" session driver, the session files are placed
-    | on disk. The default storage location is defined here; however, you
+    | on disk. The admin storage location is defined here; however, you
     | are free to provide another location where they should be stored.
     |
     */
@@ -81,7 +81,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | When using the "database" session driver, you may specify the table to
-    | be used to store sessions. Of course, a sensible default is defined
+    | be used to store sessions. Of course, a sensible admin is defined
     | for you; however, you're welcome to change this to another table.
     |
     */
@@ -110,7 +110,7 @@ return [
     |
     | Some session drivers must manually sweep their storage location to get
     | rid of old sessions from storage. Here are the chances that it will
-    | happen on a given request. By default, the odds are 2 out of 100.
+    | happen on a given request. By admin, the odds are 2 out of 100.
     |
     */
 
@@ -151,7 +151,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This value determines the domain and subdomains the session cookie is
-    | available to. By default, the cookie will be available to the root
+    | available to. By admin, the cookie will be available to the root
     | domain and all subdomains. Typically, this shouldn't be changed.
     |
     */
@@ -190,7 +190,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option determines how your cookies behave when cross-site requests
-    | take place, and can be used to mitigate CSRF attacks. By default, we
+    | take place, and can be used to mitigate CSRF attacks. By admin, we
     | will set this value to "lax" to permit secure cross-site requests.
     |
     | See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value
