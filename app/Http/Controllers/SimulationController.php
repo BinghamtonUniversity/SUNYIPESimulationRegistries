@@ -5,23 +5,27 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSimulationRequest;
 use App\Http\Requests\UpdateSimulationRequest;
 use App\Models\Simulation;
+use Illuminate\Http\Request;
 
 class SimulationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return Simulation::get();
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $simulation = new Simulation($request->all());
+        $simulation->save();
+
+        return $simulation;
     }
 
     /**
@@ -35,15 +39,15 @@ class SimulationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Simulation $simulation)
+    public function show(Request $request, Simulation $simulation)
     {
-        //
+        return $simulation;
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Simulation $simulation)
+    public function edit(Request $request, Simulation $simulation)
     {
         //
     }
@@ -51,16 +55,20 @@ class SimulationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSimulationRequest $request, Simulation $simulation)
+    public function update(Request $request, Simulation $simulation)
     {
-        //
+        $simulation->update($request->all());
+
+        return $simulation;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Simulation $simulation)
+    public function destroy(Request $request, Simulation $simulation)
     {
-        //
+        $simulation->delete();
+
+        return 1;
     }
 }

@@ -167,16 +167,16 @@ body{
     margin-left: -40px;
 }
 
-#footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #89949B;
-  color: #CCD6DF;
-  text-align: center;
-}
+/*#footer {*/
+/*  position: absolute;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  padding: 1rem;*/
+/*  background-color: #89949B;*/
+/*  color: #CCD6DF;*/
+/*  text-align: center;*/
+/*}*/
 
 #table > .well{margin-bottom:0 !important;}
 .nivo-controlNav {

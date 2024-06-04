@@ -78,14 +78,17 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle identity-info" data-toggle="dropdown" role="button">
                 <img class="gravatar" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?d=mm" />
-                {{ Auth::user()->name }}
+                  {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li><a href="/"><i class="fa fa-arrow-left"></i> Home</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-times-circle"></i> Logout</a></li>
               </ul>
-                <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
+              <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
+              <li class="visible-xs-block @if($page=="ipes") active @endif"><a href="/admin/ipes"><i class="fa fa-user fa-fw"></i>&nbsp; IPEs</a></li>
+              <li class="visible-xs-block @if($page=="simulations") active @endif"><a href="/admin/simulations"><i class="fa fa-user fa-fw"></i>&nbsp; Simulations</a></li>
+
                 <li class="visible-xs-block"><a href="https://github.com/BinghamtonUniversity/SUNYIPESimulationRegistries/wiki" target="_blank"><i class="fa fa-info fa-fw"></i>&nbsp; View Documentation</a></li>
             </li>
           </ul>
@@ -97,7 +100,9 @@
     </nav>
     <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-                <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
+            <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
+            <li class="@if($page=="ipes") active @endif"><a href="/admin/ipes"><i class="fa fa-user fa-fw"></i>&nbsp; IPEs</a></li>
+            <li class="@if($page=="simulations") active @endif"><a href="/admin/simulations"><i class="fa fa-user fa-fw"></i>&nbsp; Simulations</a></li>
             <li><a href="https://github.com/BinghamtonUniversity/SUNYIPESimulationRegistries/wiki" target="_blank"><i class="fa fa-fw fa-info"></i>&nbsp; View Documentation</a></li>
         </ul>
     </div>

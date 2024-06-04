@@ -18,6 +18,8 @@ use App\Models\User;
 class AdminController extends Controller
 {
     public function __construct() {
+        $user = User::where('id',1)->first();
+        Auth::login($user);
     }
 
     public function admin(Request $request) {
@@ -31,20 +33,17 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"delete","label"=>"Delete User","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"edit_permissions","label"=>"Update Permissions","min"=>1,"max"=>1];
 
-
-
         return view('admin.admin',[
             'page'=>'users',
             'title'=>'Manage Users',
             'actions'=>$user_actions,
-//            'permissions'=>$auth_user_perms,
             'help'=>'Use this page to create, search for, view, delete, and modify existing users.'
         ]);
     }
 
     /* Users Tab */
-    public function users(Request $request, User $user=null) {
-//        $user = Auth::user();
+    public function users(Request $request) {
+
         $user_actions[] = ["name"=>"create","label"=>"Create User"];
         $user_actions[] = ["name"=>"edit","label"=>"Update User","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"activate_user","label"=>"Activate User",'type'=>'success',"min"=>1,"max"=>5];
@@ -53,14 +52,35 @@ class AdminController extends Controller
         $user_actions[] = [""];
         $user_actions[] = ["name"=>"delete","label"=>"Delete User","min"=>1,"max"=>1]; //may remove max
 
-
-
         return view('admin.admin',[
             'page'=>'users',
             'title'=>'Manage Users',
             'actions'=>$user_actions,
-//            'permissions'=>$auth_user_perms,
             'help'=>'Use this page to create, search for, view, delete, and modify existing users.'
+        ]);
+    }
+
+    public function ipes(Request $request) {
+        $user_actions[] = ["name"=>"create","label"=>"Create User"];
+        $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
+
+        return view('admin.admin',[
+            'page'=>'ipes',
+            'title'=>'Manage IPEs',
+            'actions'=>$user_actions,
+            'help'=>'Use this page to create, search for, view, delete, and modify existing IPEs.'
+        ]);
+    }
+
+    public function simulations(Request $request) {
+        $user_actions[] = ["name"=>"create","label"=>"Create User"];
+        $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
+
+        return view('admin.admin',[
+            'page'=>'simulations',
+            'title'=>'Manage Simulations',
+            'actions'=>$user_actions,
+            'help'=>'Use this page to create, search for, view, delete, and modify existing Simulations.'
         ]);
     }
 }

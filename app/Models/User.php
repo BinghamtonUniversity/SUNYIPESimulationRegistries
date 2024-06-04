@@ -17,7 +17,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -45,6 +46,6 @@ class User extends Authenticatable
         ];
     }
     public function campuses(){
-        return $this->belongsTo(SUNYCampus::class, 'campus_id');
+        return $this->belongsTo(SUNYCampus::class, 'suny_campus_id');
     }
 }
