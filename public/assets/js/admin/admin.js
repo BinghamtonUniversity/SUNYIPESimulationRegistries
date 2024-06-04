@@ -25,6 +25,9 @@ window.ajax.post = function(url,data,callback_success,callback_error) {
         type: "POST",
         url: url,
         contentType: "application/json",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         data: JSON.stringify(data),
         success:function(data) {
             toastr.success("Created Successfully")
@@ -46,6 +49,9 @@ window.ajax.put = function(url,data,callback_success,callback_error) {
         type: "PUT",
         url: url,
         contentType: "application/json",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         data: JSON.stringify(data),
         success:function(data) {
             toastr.success("Updated Sucessfully")

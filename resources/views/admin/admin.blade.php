@@ -7,10 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon"  type="image/png" href="/assets/icons/fontawesome/gray/32/user-circle.png">
-    <title>BingSubjects | {{$title}}</title>
+    <title>SUNYIPESimulationRegistries | {{$title}}</title>
 
-    <!-- Custom Light / Dark Mode CSS -->
+
+      <!-- Custom Light / Dark Mode CSS -->
     <script>
       if (window.matchMedia('(prefers-color-scheme: dark)').media === 'not all') {
         document.documentElement.style.display = 'none';
