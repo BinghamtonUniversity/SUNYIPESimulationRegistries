@@ -21,9 +21,9 @@ body {
  * Top navigation
  * Hide admin border to remove 1px line.
  */
-.navbar-fixed-top {
-  border: 0;
-}
+/*.navbar-fixed-top {*/
+/*  border: 0;*/
+/*}*/
 
 /*
  * Sidebar
@@ -49,7 +49,7 @@ body {
   }
 }
 
-/* Sidebar navigation */
+ /*Sidebar navigation*/
 .nav-sidebar { /* 20px padding + 1px border */
   /* margin-right: -21px;
   margin-bottom: 20px;
@@ -114,9 +114,9 @@ body{
   padding: 20px;
 }
 
-.navbar-brand{
-  width: 200px;
-}
+/*.navbar-brand{*/
+/*  width: 200px;*/
+/*}*/
 
 
 .gravatar {

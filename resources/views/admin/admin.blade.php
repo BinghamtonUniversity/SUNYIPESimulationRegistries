@@ -90,6 +90,7 @@
               <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
               <li class="visible-xs-block @if($page=="ipes") active @endif"><a href="/admin/ipes"><i class="fa fa-user fa-fw"></i>&nbsp; IPEs</a></li>
               <li class="visible-xs-block @if($page=="simulations") active @endif"><a href="/admin/simulations"><i class="fa fa-user fa-fw"></i>&nbsp; Simulations</a></li>
+              <li class="visible-xs-block @if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
 
                 <li class="visible-xs-block"><a href="https://github.com/BinghamtonUniversity/SUNYIPESimulationRegistries/wiki" target="_blank"><i class="fa fa-info fa-fw"></i>&nbsp; View Documentation</a></li>
             </li>
@@ -105,6 +106,8 @@
             <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
             <li class="@if($page=="ipes") active @endif"><a href="/admin/ipes"><i class="fa fa-user fa-fw"></i>&nbsp; IPEs</a></li>
             <li class="@if($page=="simulations") active @endif"><a href="/admin/simulations"><i class="fa fa-user fa-fw"></i>&nbsp; Simulations</a></li>
+            <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
+
             <li><a href="https://github.com/BinghamtonUniversity/SUNYIPESimulationRegistries/wiki" target="_blank"><i class="fa fa-fw fa-info"></i>&nbsp; View Documentation</a></li>
         </ul>
     </div>

@@ -21,24 +21,11 @@ ajax.get('/api/ipes',function(data) {
                 grid_event.model.undo();
             });
         }).on('model:edited',function (grid_event) {
-            if(grid_event.model.attributes.active ===0){
-                if(confirm("You are about to deactivate the user: Deactivating a user will reset the user permissions. Would you like to continue?")){
-                    ajax.put('/api/ipes/'+grid_event.model.attributes.id,grid_event.model.attributes,function(data) {
-                        grid_event.model.attributes.update(data)
-                    },function(data) {
-                        grid_event.model.undo();
-                    });
-                }else{
-                    grid_event.model.undo();
-                }
-            }else{
-                ajax.put('/api/ipes/'+grid_event.model.attributes.id,grid_event.model.attributes,function(data) {
-                    grid_event.model.attributes.update(data)
-                },function(data) {
-                    grid_event.model.undo();
-                });
-            }
-
+            ajax.put('/api/ipes/'+grid_event.model.attributes.id,grid_event.model.attributes,function(data) {
+                grid_event.model.attributes.update(data)
+            },function(data) {
+                grid_event.model.undo();
+            });
         }).on("model:deleted",function(grid_event) {
             ajax.delete('/api/ipes/'+grid_event.model.attributes.id,{},function(data) {},function(data) {
                 grid_event.model.undo();

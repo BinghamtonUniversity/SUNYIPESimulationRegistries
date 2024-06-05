@@ -23,8 +23,6 @@ class AdminController extends Controller
     }
 
     public function admin(Request $request) {
-        $user = User::where('id',1)->first();
-        Auth::login($user);
         $user_actions[] = ["name"=>"create","label"=>"Create User"];
         $user_actions[] = ["name"=>"edit","label"=>"Update User","min"=>1,"max"=>1];
 
@@ -44,7 +42,7 @@ class AdminController extends Controller
     /* Users Tab */
     public function users(Request $request) {
 
-        $user_actions[] = ["name"=>"create","label"=>"Create User"];
+        $user_actions[] = ["name"=>"create","label"=>"Create"];
         $user_actions[] = ["name"=>"edit","label"=>"Update User","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"activate_user","label"=>"Activate User",'type'=>'success',"min"=>1,"max"=>5];
         $user_actions[] = ["name"=>"deactivate_user","label"=>"Deactivate User",'type'=>'danger',"min"=>1,"max"=>5];
@@ -61,7 +59,7 @@ class AdminController extends Controller
     }
 
     public function ipes(Request $request) {
-        $user_actions[] = ["name"=>"create","label"=>"Create User"];
+        $user_actions[] = ["name"=>"create","label"=>"Create IPE"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 
         return view('admin.admin',[
@@ -73,12 +71,23 @@ class AdminController extends Controller
     }
 
     public function simulations(Request $request) {
-        $user_actions[] = ["name"=>"create","label"=>"Create User"];
+        $user_actions[] = ["name"=>"create","label"=>"Create Simulation"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 
         return view('admin.admin',[
             'page'=>'simulations',
             'title'=>'Manage Simulations',
+            'actions'=>$user_actions,
+            'help'=>'Use this page to create, search for, view, delete, and modify existing Simulations.'
+        ]);
+    }
+    public function site_configurations(Request $request) {
+        $user_actions[] = ["name"=>"create","label"=>"Create Configuration"];
+        $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
+
+        return view('admin.admin',[
+            'page'=>'site_configurations',
+            'title'=>'Manage Site Configurations',
             'actions'=>$user_actions,
             'help'=>'Use this page to create, search for, view, delete, and modify existing Simulations.'
         ]);
