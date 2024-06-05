@@ -10,6 +10,15 @@ ajax.get('/api/users',function(data) {
             count:20,
             schema:[
                 {name:'id',type:'hidden'},
+                {
+                    name:'suny_campus_id',type:"combobox",label:'SUNY Campus',
+                    options:"/api/suny_campuses",
+                    format:{
+                        label:"{{name}}",
+                        value:"{{id}}",
+                        display:"{{name}}"
+                    }
+                },
                 {name:'first_name',type:'text',label:'First Name'},
                 {name:'last_name',type:'text',label:'Last Name'},
                 {name:'password',type:'password',label:'Password'},

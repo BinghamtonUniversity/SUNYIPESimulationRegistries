@@ -2,9 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\IPE;
+use App\Models\Simulation;
+use App\Models\SiteConfiguration;
+use App\Models\SUNYCampus;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,12 +18,45 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'first_name' => 'Test',
-            'last_name' => 'User',
-            'email' => 'test@example.com',
+        SUNYCampus::create([
+            "name" => "Binghamton University"
         ]);
+
+        User::create([
+            'first_name' => 'Ali Kemal',
+            'last_name' => 'Tanriverdi',
+            'email' => 'atanrive@binghamton.edu',
+            "suny_campus_id"=>1,
+            'password' => Hash::make('password'),
+        ]);
+        User::create([
+            'first_name' => 'Timothy',
+            'last_name' => 'Cortesi',
+            'email' => 'tcortesi@binghamton.edu',
+            "suny_campus_id"=>1,
+            'password' => Hash::make('password'),
+        ]);
+
+        IPE::create([
+            "name"=>"Test IPE",
+            "user_id"=>1
+        ]);
+
+        Simulation::create([
+            "name"=>"Test Simulation",
+            "user_id"=>1
+        ]);
+
+        SiteConfiguration::create([
+            "key"=>"page.home.body",
+            "value"=>"<div class='alert alert-info'>Welcome to the jungle!</div>"
+        ]);
+        SiteConfiguration::create([
+            "key"=>"footer",
+            "value"=>"
+                <span>SUNY IPE/Simulation Registry <br> &copy; 2024 Binghamton University
+                | <a href='https://www.binghamton.edu' target='_blank' style='color:white;'>Binghamton University</a></span>"
+        ]);
+
     }
 }

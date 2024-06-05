@@ -81,6 +81,18 @@ class AdminController extends Controller
             'help'=>'Use this page to create, search for, view, delete, and modify existing Simulations.'
         ]);
     }
+    public function suny_campuses(Request $request) {
+        $user_actions[] = ["name"=>"create","label"=>"Create Campuse"];
+        $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
+
+        return view('admin.admin',[
+            'page'=>'suny_campuses',
+            'title'=>'Manage SUNY Campuses',
+            'actions'=>$user_actions,
+            'help'=>'Use this page to create, search for, view, delete, and modify existing campuses.'
+        ]);
+    }
+
     public function site_configurations(Request $request) {
         $user_actions[] = ["name"=>"create","label"=>"Create Configuration"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
@@ -89,7 +101,7 @@ class AdminController extends Controller
             'page'=>'site_configurations',
             'title'=>'Manage Site Configurations',
             'actions'=>$user_actions,
-            'help'=>'Use this page to create, search for, view, delete, and modify existing Simulations.'
+            'help'=>'Use this page to create, search for, view, delete, and modify existing configurations.'
         ]);
     }
 }

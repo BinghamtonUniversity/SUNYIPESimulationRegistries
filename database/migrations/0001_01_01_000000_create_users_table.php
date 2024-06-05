@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->unsignedBigInteger('suny_campus_id')->nullable();
+            $table->unsignedBigInteger('suny_campus_id');
             $table->foreign('suny_campus_id')->references('id')->on('suny_campuses');
             $table->string('password');
             $table->rememberToken();
