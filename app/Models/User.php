@@ -32,6 +32,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    protected $with = ['permissions'];
 
     /**
      * Get the attributes that should be cast.
@@ -47,5 +48,8 @@ class User extends Authenticatable
     }
     public function campuses(){
         return $this->belongsTo(SUNYCampus::class, 'suny_campus_id');
+    }
+    public function permissions(){
+        return $this->hasMany(Permission::class);
     }
 }

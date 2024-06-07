@@ -14,6 +14,7 @@ Route::get('/users/search/{search_string?}',[UserController::class,'search']);
 Route::get('/users',[UserController::class,'index']);
 Route::get('/users/{user}',[UserController::class, 'show']);
 Route::post('/users',[UserController::class,'create']);
+Route::put('/users/{user}/permissions',[UserController::class,'update_permissions']);
 Route::put('/users/{user}',[UserController::class,'update']);
 
 /* IPE Routes */

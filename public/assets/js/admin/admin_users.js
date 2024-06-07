@@ -55,18 +55,10 @@ ajax.get('/api/users',function(data) {
                 grid_event.model.undo();
             });
         }).on('model:user_permissions',function(grid_event) {
-            if(auth_user_perms.includes('manage_permissions')) {
-                manage_actions = [{"type": "save", "label": "Save", "action": "save"}];
-                edit = true;
-            } else {
-                manage_actions = [];
-                edit = false;
-            }
             gdg = new gform(
                 {
                     name:'permissions_form',
                     title:'User Permissions',
-                    actions:manage_actions,
                     fields:[
                         {
                             type: "radio",
@@ -92,31 +84,6 @@ ajax.get('/api/users',function(data) {
                                             value:"manage_permissions",
                                         },
                                         {
-                                            label:"View Studies",
-                                            value:"view_studies"
-                                        },
-
-                                        {
-                                            label:"Manage Studies",
-                                            value:"manage_studies"
-                                        },
-                                        {
-                                            label:"Manage Data Types",
-                                            value:"manage_data_types"
-                                        },
-                                        {
-                                            label:"View Participants",
-                                            value:"view_participants",
-                                        },
-                                        {
-                                            label:"Manage Participants",
-                                            value:"manage_participants",
-                                        },
-                                        {
-                                            label:"View Reports",
-                                            value:"view_reports",
-                                        },
-                                        {
                                             label:"Manage Reports",
                                             value:"manage_reports",
                                         },
@@ -128,33 +95,16 @@ ajax.get('/api/users',function(data) {
                                 }
                             ]
                         }
-                    ].map(d=>{
-                        d.edit = edit
-                        return d;
-                    }),
+                    ],
                 }).modal().on('save',function (perm_event){
                     ajax.put('/api/users/'+grid_event.model.attributes.id+'/permissions',perm_event.form.get(),function(perm_data) {
                         grid_event.model.attributes.permissions = perm_data
                         perm_event.form.trigger('close')
                     });
-                }).set({permissions:grid_event.model.attributes.permissions})
-        }).on("model:activate_user",function(grid_event){
-            grid_event.model.attributes.active = 1
-            console.log(grid_event);
-            // debugger
-            ajax.put('/api/users/'+grid_event.model.attributes.id,grid_event.model.attributes,function(res) {
-                grid_event.model.update(res)
-            },function (err){
-                grid_event.model.undo();
-            });
-        }).on('model:deactivate_user',function(grid_event){
-            if(confirm("Deactivating a user will reset the user permissions. Would you like to continue?")){
-                grid_event.model.attributes.active = 0
-                ajax.put('/api/users/'+grid_event.model.attributes.id,grid_event.model.attributes,function(res) {
-                    grid_event.model.update(res)
-                }, function (err){
-                    grid_event.model.undo();
-                });
-            }
-    })
+                }).set({permissions:grid_event.model.attributes.permissions.map(e=> e.permission)})
+                .on('cancel',function(perm_event){
+                    perm_event.form.trigger('close')
+                })
+
+        })
 });

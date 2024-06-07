@@ -21,7 +21,7 @@ class AdminController extends Controller
         $user_actions[] = [""];
         $user_actions[] = [""];
         $user_actions[] = ["name"=>"delete","label"=>"Delete User","min"=>1,"max"=>1];
-        $user_actions[] = ["name"=>"edit_permissions","label"=>"Update Permissions","min"=>1,"max"=>1];
+        $user_actions[] = ["name"=>"user_permissions","label"=>"Update Permissions","min"=>1,"max"=>1];
 
         return view('admin.admin',[
             'page'=>'users',

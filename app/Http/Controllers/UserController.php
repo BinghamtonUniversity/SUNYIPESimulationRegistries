@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -103,5 +104,19 @@ class UserController extends Controller
             $users[$index] = array_intersect_key($user, array_flip(['id','first_name','last_name','email']));
         }
         return $users;
+    }
+
+    public function update_permissions(Request $request, User $user) {
+        $request = $request->all();
+
+        Permission::where('user_id',$user->id)->delete();
+        foreach($request['permissions'] as $permission) {
+            $permission = new Permission([
+                'user_id'=>$user->id,
+                'permission'=>$permission
+            ]);
+            $permission->save();
+        }
+        return Permission::where('user_id',$user->id)->get();
     }
 }

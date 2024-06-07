@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\IPE;
+use App\Models\Permission;
 use App\Models\Simulation;
 use App\Models\SiteConfiguration;
 use App\Models\SUNYCampus;
@@ -35,6 +36,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'tcortesi@binghamton.edu',
             "suny_campus_id"=>1,
             'password' => Hash::make('password'),
+        ]);
+
+        Permission::create([
+           'user_id' => 1,
+           'permission'=>'manage_permissions'
+        ]);
+        Permission::create([
+            'user_id' => 2,
+            'permission'=>'manage_permissions'
         ]);
 
         IPE::create([
