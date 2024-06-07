@@ -1,4 +1,4 @@
-@extends('end_user.default')
+@extends('pages.default')
 
 @section('title',"Not Found")
 

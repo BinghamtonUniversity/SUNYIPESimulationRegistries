@@ -22,7 +22,6 @@
             <a class="navbar-brand pull-left" href="/" style="color: white; background: #004c93;">
                 IPE/Simulation Registries
             </a>
-
           <div class="hidden-xs pull-right center-block">
                 <a class="btn btn-xs btn-primary" href="{{route('admin')}}">Admin</a>
           </div>
@@ -53,12 +52,12 @@
     </nav>
 
     <div class="container-fluid" style="background-color:white">
-        <div class="row" style="text-align:center;">
-            @yield('title')
-        </div>
+{{--        <div class="row" style="text-align:center;">--}}
+{{--            <strong>@yield('title')</strong>--}}
+{{--        </div>--}}
         <div class="row">
             <div class="col-sm-12">
-                <p style="margin-left: 0px; font-size: 108%;">@yield('description')</p>
+                <strong>@yield('description')</strong>
             </div>
         </div>
         <div>
@@ -66,9 +65,6 @@
         </div>
         <nav class="footer navbar-fixed-bottom"  style="background-color: #89949B; color: #CCD6DF;text-align: center;">
             {!! config('templates.footer') !!}
-{{--            <span>SUNY IPE/Simulation Registry <br> &copy; 2024 Binghamton University |--}}
-{{--                <a href="https://www.binghamton.edu" target="_blank" style="color:white;">Binghamton University</a>--}}
-{{--            </span>--}}
         </nav>
     </div>
 

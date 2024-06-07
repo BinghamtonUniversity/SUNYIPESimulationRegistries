@@ -5,14 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-use App\Models\DataType;
-use App\Models\Participant;
-use App\Models\Permission;
-use App\Models\Report;
-use App\Models\Study;
-use App\Models\StudyDataType;
-use App\Models\StudyParticipant;
-use App\Models\StudyUser;
 use App\Models\User;
 
 class AdminController extends Controller

@@ -39,12 +39,24 @@ class DatabaseSeeder extends Seeder
 
         IPE::create([
             "name"=>"Test IPE",
-            "user_id"=>1
+            "user_id"=>1,
+            "description"=>"A very nice first IPE"
+        ]);
+        IPE::create([
+            "name"=>"Test IPE 2",
+            "user_id"=>1,
+            "description"=>"A very nice second IPE"
         ]);
 
         Simulation::create([
             "name"=>"Test Simulation",
-            "user_id"=>1
+            "user_id"=>1,
+            "description"=>"A very nice first Simulation"
+        ]);
+        Simulation::create([
+            "name"=>"Test Simulation 2",
+            "user_id"=>1,
+            "description"=>"A very nice second Simulation"
         ]);
 
         SiteConfiguration::create([
