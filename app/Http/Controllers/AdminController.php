@@ -10,8 +10,6 @@ use App\Models\User;
 class AdminController extends Controller
 {
     public function __construct() {
-        $user = User::where('id',1)->first();
-        Auth::login($user);
     }
 
     public function admin(Request $request) {

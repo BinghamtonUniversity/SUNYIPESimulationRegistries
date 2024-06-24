@@ -26,16 +26,16 @@ class DatabaseSeeder extends Seeder
         User::create([
             'first_name' => 'Ali Kemal',
             'last_name' => 'Tanriverdi',
+            'unique_id' => 'atanrive@binghamton.edu',
             'email' => 'atanrive@binghamton.edu',
             "suny_campus_id"=>1,
-            'password' => Hash::make('password'),
         ]);
         User::create([
             'first_name' => 'Timothy',
             'last_name' => 'Cortesi',
+            'unique_id' => 'tcortesi@binghamton.edu',
             'email' => 'tcortesi@binghamton.edu',
             "suny_campus_id"=>1,
-            'password' => Hash::make('password'),
         ]);
 
         Permission::create([

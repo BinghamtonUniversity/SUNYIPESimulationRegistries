@@ -14,6 +14,12 @@ return [
     |
     */
 
+    'bingwayf' => [
+        'base_uri' => 'https://bingwayf.binghamton.edu',
+        'client_id' => env('BINGWAYF_CLIENT_ID'),
+        'client_secret' => env('BINGWAYF_CLIENT_SECRET'),
+        'redirect' => env('BINGWAYF_CLIENT_CALLBACK_URL','http://127.0.0.1:8000/auth/callback'),    
+    ],
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

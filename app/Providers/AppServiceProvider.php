@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Socialite\Contracts\Factory as Socialite;
+use App\Providers\SocialiteBingWAYFProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $socialite = $this->app->make(Socialite::class);
+ 
+        $socialite->extend('bingwayf', function () use ($socialite) {
+            $config = config('services.bingwayf');
+            return $socialite->buildProvider(SocialiteBingWAYFProvider::class, $config);
+        });
     }
 }

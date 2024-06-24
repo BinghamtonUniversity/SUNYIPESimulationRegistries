@@ -13,8 +13,6 @@ use App\Models\User;
 class PagesController extends Controller
 {
     public function __construct() {
-        $user = User::where('id',1)->first();
-        Auth::login($user);
     }
 
     public function home(){
