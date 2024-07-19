@@ -30,7 +30,8 @@ ajax.get('/api/activities',function(data) {
                         "Public Health",
                         "Social Work",
                         "Speech and Language Pathology",
-                    ]},
+                    ]
+                },
                 {name:'ksa_requirements',type:'text',label:'KSA Requirements'},
                 {name:'focus_areas',type:'text',label:'Focus Areas'},
                 {name:'learning_objectives',type:'text',label:'Learning Objectives'},
@@ -43,29 +44,34 @@ ajax.get('/api/activities',function(data) {
                             "label": "True",
                             "value": 1
                         }
-                    ]},
+                    ]
+                },
                 {name:'number_of_learners',type:'text',label:'Number of Learners'},
                 {name:'status',type:'select',label:'Status', options:[
                         {label:"Submitted",value:"submitted"},
                         {label:"Under Review",value:"review"},
                         {label:"Approved",value:"approved"}
-                    ]},
+                    ]
+                },
+                {name:'approved_by',type:'user',label:'Approved By', show:false,
+                    template:"{{user.first_name}}"
+                },
             ],
             data:data
         }).on("model:created",function(grid_event) {
-            ajax.post('/api/ipes', grid_event.model.attributes,function(data) {
+            ajax.post('/api/activities', grid_event.model.attributes,function(data) {
                 grid_event.model.update(data)
             },function(data) {
                 grid_event.model.undo();
             });
         }).on('model:edited',function (grid_event) {
-            ajax.put('/api/ipes/'+grid_event.model.attributes.id,grid_event.model.attributes,function(data) {
-                grid_event.model.attributes.update(data)
+            ajax.put('/api/activities/'+grid_event.model.attributes.id,grid_event.model.attributes,function(data) {
+                grid_event.model.update(data)
             },function(data) {
                 grid_event.model.undo();
             });
         }).on("model:deleted",function(grid_event) {
-            ajax.delete('/api/ipes/'+grid_event.model.attributes.id,{},function(data) {},function(data) {
+            ajax.delete('/api/activities/'+grid_event.model.attributes.id,{},function(data) {},function(data) {
                 grid_event.model.undo();
             });
         })
