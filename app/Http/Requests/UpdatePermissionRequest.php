@@ -22,7 +22,7 @@ class UpdatePermissionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "permission" => "required|string",
         ];
     }
 }

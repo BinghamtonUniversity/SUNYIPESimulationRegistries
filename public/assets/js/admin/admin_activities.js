@@ -10,6 +10,7 @@ ajax.get('/api/activities',function(data) {
             count:20,
             schema:[
                 {name:'id',type:'hidden'},
+                {name:'submitter_id',label:"Submitter",type:'user'},
                 {name:'type',type:'select',label:'Type',options:[
                         {label:"IPE",value:"ipe"},
                         {label:"Simulation",value:"simulation"},
@@ -32,7 +33,7 @@ ajax.get('/api/activities',function(data) {
                         "Speech and Language Pathology",
                     ]
                 },
-                {name:'ksa_requirements',type:'text',label:'KSA Requirements'},
+                {name:'ksa_requirement',type:'text',label:'KSA Requirements'},
                 {name:'focus_areas',type:'text',label:'Focus Areas'},
                 {name:'learning_objectives',type:'text',label:'Learning Objectives'},
                 {name:'is_new',type:'switch',label:'Is New?', options: [
@@ -49,7 +50,7 @@ ajax.get('/api/activities',function(data) {
                 {name:'number_of_learners',type:'text',label:'Number of Learners'},
                 {name:'status',type:'select',label:'Status', options:[
                         {label:"Submitted",value:"submitted"},
-                        {label:"Under Review",value:"review"},
+                        {label:"Under Review",value:"reviewss"},
                         {label:"Approved",value:"approved"}
                     ]
                 },
