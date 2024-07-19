@@ -3,14 +3,8 @@
 
 @foreach($ipes as $ipe)
     <url>
-        <loc>{{url('/ipes/'.$ipe->id)}}</loc>
+        <loc>{{url('/activities/'.$ipe->id)}}</loc>
         <lastmod><?php echo date('Y-m-d', strtotime($ipe->timestamp)); ?></lastmod>
-    </url>
-@endforeach
-@foreach($simulations as $simulation)
-    <url>
-        <loc>{{url('/simulations/'.$simulation->id)}}</loc>
-        <lastmod><?php echo date('Y-m-d', strtotime($simulation->timestamp)); ?></lastmod>
     </url>
 @endforeach
 </urlset>

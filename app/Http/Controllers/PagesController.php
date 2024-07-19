@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\IPE;
-use App\Models\Simulation;
+use App\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -21,33 +20,17 @@ class PagesController extends Controller
         ]);
     }
 
-    public function ipes(){
-        $ipes = IPE::get();
-        return view('pages.ipes',[
-            'title'=>'IPEs',
-            'ipes'=> $ipes
+    public function activities(){
+        $activities = Activity::get();
+        return view('pages.activities',[
+            'title'=>'Activities',
+            'activities'=> $activities
         ]);
     }
 
-    public function ipe(Request $request, IPE $ipe){
-        return view('pages.ipe',[
-            'ipe'=>$ipe
-        ]);
-    }
-    public function simulations(){
-        $simulations = Simulation::get();
-
-        return view('pages.simulations',[
-            'title'=>'Simulations',
-            'simulations'=> $simulations
-        ]);
-    }
-
-    public function simulation(Request $request, Simulation $simulation){
-
-        return view('pages.simulation',[
-//            'title'=> $simulation->name,
-            'simulation'=> $simulation
+    public function activity(Request $request, Activity $activity){
+        return view('pages.activity',[
+            'activity'=>$activity
         ]);
     }
 }

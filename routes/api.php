@@ -1,7 +1,8 @@
 <?php
+
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\IPEController;
-use App\Http\Controllers\SimulationController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\SiteConfigurationController;
 use App\Http\Controllers\SUNYCampusController;
 use App\Http\Controllers\UserController;
@@ -17,17 +18,12 @@ Route::post('/users',[UserController::class,'create']);
 Route::put('/users/{user}/permissions',[UserController::class,'update_permissions']);
 Route::put('/users/{user}',[UserController::class,'update']);
 
-/* IPE Routes */
-Route::get('/ipes',[IPEController::class,'index']);
-Route::get('/ipes/{ipe}',[IPEController::class, 'show']);
-Route::post('/ipes',[IPEController::class,'create']);
-Route::put('/ipes/{ipe}',[IPEController::class,'update']);
-
-/* Simulation Routes */
-Route::get('/simulations',[SimulationController::class,'index']);
-Route::get('/simulations/{simulation}',[SimulationController::class, 'show']);
-Route::post('/simulations',[SimulationController::class,'create']);
-Route::put('/simulations/{simulation}',[SimulationController::class,'update']);
+/* Activity Routes */
+Route::get('/activities',[ActivityController::class,'index']);
+Route::get('/activities/{activity}',[ActivityController::class, 'show']);
+Route::post('/activities',[ActivityController::class,'create']);
+Route::put('/activities/{activity}',[ActivityController::class,'update']);
+Route::delete('/activities/{activity}',[ActivityController::class,'delete']);
 
 /* SUNY Campuses */
 Route::get('/suny_campuses',[SUNYCampusController::class,'index']);
@@ -40,4 +36,11 @@ Route::get('/site_configurations',[SiteConfigurationController::class,'index']);
 Route::get('/site_configurations/{site_configuration}',[SiteConfigurationController::class, 'show']);
 Route::post('/site_configurations',[SiteConfigurationController::class,'create']);
 Route::put('/site_configurations/{site_configuration}',[SiteConfigurationController::class,'update']);
+
+/*    File routes    */
+Route::get('/files',[FileController::class,'index']);
+Route::get('/files/{file}',[FileController::class, 'show']);
+Route::post('/files',[FileController::class,'create']);
+Route::put('/files/{file}',[FileController::class,'update']);
+Route::delete('/files/{file}',[FileController::class,'delete']);
 

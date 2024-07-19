@@ -44,8 +44,7 @@
           <ul class="nav navbar-nav" >
               <li><a href="/" style="color: white">Home</a></li>
               <li><a href="/search" style="color: white">Search</a></li>
-              <li><a href="/ipes" style="color: white">IPEs</a></li>
-              <li><a href="/simulations" style="color: white">Simulations</a></li>
+              <li><a href="/activities" style="color: white">Activities</a></li>
           </ul>
         </div>
       </div>

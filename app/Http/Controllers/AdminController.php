@@ -48,29 +48,29 @@ class AdminController extends Controller
         ]);
     }
 
-    public function ipes(Request $request) {
-        $user_actions[] = ["name"=>"create","label"=>"Create IPE"];
+    public function activities(Request $request) {
+        $user_actions[] = ["name"=>"create","label"=>"Create Activity"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 
         return view('admin.admin',[
-            'page'=>'ipes',
-            'title'=>'Manage IPEs',
+            'page'=>'activities',
+            'title'=>'Manage Activities',
             'actions'=>$user_actions,
-            'help'=>'Use this page to create, search for, view, delete, and modify existing IPEs.'
+            'help'=>'Use this page to create, search for, view, delete, and modify existing Activities.'
         ]);
     }
 
-    public function simulations(Request $request) {
-        $user_actions[] = ["name"=>"create","label"=>"Create Simulation"];
-        $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
-
-        return view('admin.admin',[
-            'page'=>'simulations',
-            'title'=>'Manage Simulations',
-            'actions'=>$user_actions,
-            'help'=>'Use this page to create, search for, view, delete, and modify existing Simulations.'
-        ]);
-    }
+//    public function simulations(Request $request) {
+//        $user_actions[] = ["name"=>"create","label"=>"Create Simulation"];
+//        $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
+//
+//        return view('admin.admin',[
+//            'page'=>'simulations',
+//            'title'=>'Manage Simulations',
+//            'actions'=>$user_actions,
+//            'help'=>'Use this page to create, search for, view, delete, and modify existing Simulations.'
+//        ]);
+//    }
     public function suny_campuses(Request $request) {
         $user_actions[] = ["name"=>"create","label"=>"Create Campuse"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];

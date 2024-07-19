@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Activity;
 use App\Models\IPE;
 use App\Models\Permission;
 use App\Models\Simulation;
@@ -47,26 +48,32 @@ class DatabaseSeeder extends Seeder
             'permission'=>'manage_permissions'
         ]);
 
-        IPE::create([
-            "name"=>"Test IPE",
-            "user_id"=>1,
-            "description"=>"A very nice first IPE"
+        Activity::create([
+            "title"=>"Test Activity",
+            "submitter_id"=>1,
+            "description"=>"A very nice first IPE Activity",
+            "type"=>"ipe",
+            "status"=>"approved",
+            "approved_by"=>1,
+            'approved_at'=>now()
         ]);
-        IPE::create([
-            "name"=>"Test IPE 2",
-            "user_id"=>1,
-            "description"=>"A very nice second IPE"
+        Activity::create([
+            "title"=>"Test Simulation",
+            "submitter_id"=>1,
+            "description"=>"A very nice second Simulation Activity",
+            "type"=>"simulation",
+            "status"=>"approved",
+            "approved_by"=>1,
+            'approved_at'=>now()
         ]);
-
-        Simulation::create([
-            "name"=>"Test Simulation",
-            "user_id"=>1,
-            "description"=>"A very nice first Simulation"
-        ]);
-        Simulation::create([
-            "name"=>"Test Simulation 2",
-            "user_id"=>1,
-            "description"=>"A very nice second Simulation"
+        Activity::create([
+            "title"=>"Test IPE/Simulation",
+            "submitter_id"=>1,
+            "description"=>"A very nice second IPE/Simulation Activity",
+            "type"=>"ipe_simulation",
+            "status"=>"approved",
+            "approved_by"=>1,
+            'approved_at'=>now()
         ]);
 
         SiteConfiguration::create([

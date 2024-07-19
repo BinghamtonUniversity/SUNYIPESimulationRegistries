@@ -89,8 +89,7 @@
               </ul>
 
               <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
-              <li class="visible-xs-block @if($page=="ipes") active @endif"><a href="/admin/ipes"><i class="fa fa-user fa-fw"></i>&nbsp; IPEs</a></li>
-              <li class="visible-xs-block @if($page=="simulations") active @endif"><a href="/admin/simulations"><i class="fa fa-user fa-fw"></i>&nbsp; Simulations</a></li>
+              <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
               <li class="visible-xs-block @if($page=="suny_campuses") active @endif"><a href="/admin/suny_campuses"><i class="fa fa-user fa-fw"></i>&nbsp; SUNY Campuses</a></li>
               <li class="visible-xs-block @if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
 
@@ -106,8 +105,7 @@
     <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
             <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
-            <li class="@if($page=="ipes") active @endif"><a href="/admin/ipes"><i class="fa fa-user fa-fw"></i>&nbsp; IPEs</a></li>
-            <li class="@if($page=="simulations") active @endif"><a href="/admin/simulations"><i class="fa fa-user fa-fw"></i>&nbsp; Simulations</a></li>
+            <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
             <li class="@if($page=="suny_campuses") active @endif"><a href="/admin/suny_campuses"><i class="fa fa-user fa-fw"></i>&nbsp; SUNY Campuses</a></li>
             <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
 
