@@ -11,7 +11,7 @@ class UpdateSUNYCampusRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateSUNYCampusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "id"=>["required","integer","exists:suny_campuses,id"],
+            "name" => ["required", "string", "max:255"]
         ];
     }
 }

@@ -14,5 +14,7 @@ class Activity extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-
+    static public function get_fields(){
+        return config('form_fields.activities');
+    }
 }

@@ -33,4 +33,14 @@ class PagesController extends Controller
             'activity'=>$activity
         ]);
     }
+    public function manage(Request $request){
+        if (Auth::check()) {
+
+            return view('admin.manage',[
+                'activities_form_fields'=>Activity::get_fields(),
+            ]);
+        } else {
+            return redirect(url('/manage/login'));
+        }
+    }
 }

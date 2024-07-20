@@ -22,13 +22,13 @@ class UpdateActivityRequest extends FormRequest
     public function rules(): array
     {
         return [
+            "id"=>["required","integer","exists:activities,id"],
             "title" => ["required", "string", "max:255"],
             "description" => ["required", "string", "max:500"],
             "type"=>["required", "string", "in:ipe,simulation,ipe_simulation"],
             "submitter_id"=>["required","integer"],
             "contact_name" => ["required", "string", "max:255"],
             "contact_email" => ["required", "email"],
-//            "contact_phone" => ["required", "phone:NL"],
             "participating_programs" => ["required", "string", "max:255"],
             "ksa_requirement" => ["required", "string", "max:255"],
             "focus_areas" => ["required", "string", "max:255"],

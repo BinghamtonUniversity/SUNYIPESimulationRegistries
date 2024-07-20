@@ -10,6 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body style="margin-top:119px;">
@@ -24,6 +25,7 @@
             </a>
           <div class="hidden-xs pull-right center-block">
                 <a class="btn btn-xs btn-primary" href="{{route('admin')}}">Admin</a>
+                <a class="btn btn-xs btn-primary" href="{{route('manage_page')}}">Manage Account</a>
           </div>
         </div>
       </div>

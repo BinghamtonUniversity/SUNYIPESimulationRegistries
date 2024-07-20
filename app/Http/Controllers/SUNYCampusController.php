@@ -22,10 +22,7 @@ class SUNYCampusController extends Controller
      */
     public function create(Request $request)
     {
-        $suny_campus = new SUNYCampus($request->all());
-        $suny_campus->save();
 
-        return $suny_campus;
     }
 
     /**
@@ -33,7 +30,10 @@ class SUNYCampusController extends Controller
      */
     public function store(StoreSUNYCampusRequest $request)
     {
-        //
+        $suny_campus = new SUNYCampus($request->all());
+        $suny_campus->save();
+
+        return $suny_campus;
     }
 
     /**
@@ -55,7 +55,7 @@ class SUNYCampusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SUNYCampus $suny_campus)
+    public function update(UpdateSUNYCampusRequest $request, SUNYCampus $suny_campus)
     {
         $suny_campus->update($request->all());
 

@@ -43,8 +43,5 @@ Route::middleware(['web','auth','auth.session'])->group(function () {
     // Activities
     Route::get('/activities/{activity}',[PagesController::class,'activity']);
     Route::get('/activities',[PagesController::class,'activities']);
-
-//    // Simulations
-//    Route::get('/simulations/{simulation}',[PagesController::class,'simulation']);
-//    Route::get('/simulations',[PagesController::class,'simulations']);
+    Route::get('/manage', [PagesController::class,'manage'])->name('manage_page');
 });

@@ -20,12 +20,9 @@ class ActivityController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create(StoreActivityRequest $request)
     {
-        $activity = new Activity($request->all());
-        $activity->save();
-        return $activity;
-
+        //
     }
 
     /**
@@ -33,7 +30,9 @@ class ActivityController extends Controller
      */
     public function store(StoreActivityRequest $request)
     {
-        //
+        $activity = new Activity($request->all());
+        $activity->save();
+        return $activity;
     }
 
     /**
@@ -65,7 +64,7 @@ class ActivityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(Request $request, Activity $activity)
+    public function destroy(Request $request, Activity $activity)
     {
         $activity->delete();
 

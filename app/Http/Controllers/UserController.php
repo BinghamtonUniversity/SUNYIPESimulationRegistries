@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreActivityRequest;
+use App\Models\Activity;
 use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,10 +24,6 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        $user = new User($request->all());
-        $user->save();
-
-        return $user;
 
     }
 
@@ -34,7 +32,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User($request->all());
+        $user->save();
+
+        return $user;
     }
 
     /**
@@ -118,5 +119,14 @@ class UserController extends Controller
             $permission->save();
         }
         return Permission::where('user_id',$user->id)->get();
+    }
+
+    public function get_user_activites(Request $request, User $user) {
+        return Activity::where('submitter_id',$user->id)->get();
+    }
+    public function add_user_activity(StoreActivityRequest $request, User $user) {
+        $activity = new Activity($request->all());
+        $activity->save();
+        return $activity;
     }
 }
