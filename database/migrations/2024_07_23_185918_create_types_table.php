@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->nullable()->index();
+            $table->boolean('is_ipe')->default(false)->index();
+            $table->boolean('is_simulation')->default(false)->index();
+            $table->boolean('searchable')->default(true)->index();
             $table->timestamps();
         });
     }

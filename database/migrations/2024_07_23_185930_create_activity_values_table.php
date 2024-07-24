@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('activity_values', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('activity_id');
+            $table->unsignedBigInteger('value_id');
+            $table->foreign('activity_id')->references('id')->on('activities');
+            $table->foreign('value_id')->references('id')->on('values');
             $table->timestamps();
         });
     }

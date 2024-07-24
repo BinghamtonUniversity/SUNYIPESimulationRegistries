@@ -4,7 +4,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.darkly.min.css" media="(prefers-color-scheme: dark)" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" media="(prefers-color-scheme: light)" />
-    <link href="/assets/css/SUNYIPESimulationRegistries.css" rel="stylesheet">
+    <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
     <link href="/assets/css/toastr.min.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>

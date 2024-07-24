@@ -5,7 +5,7 @@ use App\Http\Controllers\IPEController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SimulationController;
 use App\Http\Controllers\SiteConfigurationController;
-use App\Http\Controllers\SUNYCampusController;
+use App\Http\Controllers\CampusController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;

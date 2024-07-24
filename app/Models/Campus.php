@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SUNYCampus extends Model
+class Campus extends Model
 {
     use HasFactory;
-    protected $table = 'suny_campuses';
+    protected $table = 'campuses';
     protected $fillable = [
         'name'
     ];
@@ -16,4 +16,9 @@ class SUNYCampus extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+
+    public function activities(){
+        return $this->hasMany(Activty::class);
+    }
+
 }

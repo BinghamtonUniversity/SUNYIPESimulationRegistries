@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class ActivityValue extends Model
 {
     use HasFactory;
+
+    protected $table = 'activity_values';
+    protected $fillable = [];
+    protected $casts = [];
+
+    public function activity() {
+        return $this->belongsTo(Activity::class);
+    }
+
+    public function value() {
+        return $this->belongsTo(Value::class);
+    }
 }

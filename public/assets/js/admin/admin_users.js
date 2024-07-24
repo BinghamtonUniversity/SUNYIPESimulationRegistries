@@ -11,8 +11,8 @@ ajax.get('/api/users',function(data) {
             schema:[
                 {name:'id',type:'hidden'},
                 {
-                    name:'suny_campus_id',type:"combobox",label:'SUNY Campus',
-                    options:"/api/suny_campuses",
+                    name:'campus_id',type:"combobox",label:'Campus',
+                    options:"/api/campuses",
                     format:{
                         label:"{{name}}",
                         value:"{{id}}",

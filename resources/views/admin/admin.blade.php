@@ -29,7 +29,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
     <!-- Custom styles for this template -->
-    <link href="/assets/css/SUNYIPESimulationRegistries.css" rel="stylesheet">
+    <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
     <link href="/assets/css/toastr.min.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
@@ -64,7 +64,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/admin" style="background: #004c93;padding: 12px 0px 0px 18px;">
-            <h4 style="color:#fff;margin:0px;"><i class="fa fa-user-circle fa-fw"></i>SUNYRegistries</h4>
+            <h4 style="color:#fff;margin:0px;"><i class="fa fa-user-circle fa-fw"></i>Registries</h4>
           </a>
             <ul class="nav navbar-nav  hidden-xs">
                 <li><a href="#"><h4 style="margin:0">{{$title}}</h4></a></li>
@@ -90,10 +90,10 @@
 
               <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
               <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
-              <li class="visible-xs-block @if($page=="suny_campuses") active @endif"><a href="/admin/suny_campuses"><i class="fa fa-user fa-fw"></i>&nbsp; SUNY Campuses</a></li>
+              <li class="visible-xs-block @if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
               <li class="visible-xs-block @if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
 
-                <li class="visible-xs-block"><a href="https://github.com/BinghamtonUniversity/SUNYIPESimulationRegistries/wiki" target="_blank"><i class="fa fa-info fa-fw"></i>&nbsp; View Documentation</a></li>
+                <li class="visible-xs-block"><a href="https://github.com/BinghamtonUniversity/IPESimulationRegistries/wiki" target="_blank"><i class="fa fa-info fa-fw"></i>&nbsp; View Documentation</a></li>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right visible-xs-block">
@@ -106,10 +106,10 @@
         <ul class="nav nav-sidebar">
             <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
             <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
-            <li class="@if($page=="suny_campuses") active @endif"><a href="/admin/suny_campuses"><i class="fa fa-user fa-fw"></i>&nbsp; SUNY Campuses</a></li>
+            <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
             <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
 
-            <li><a href="https://github.com/BinghamtonUniversity/SUNYIPESimulationRegistries/wiki" target="_blank"><i class="fa fa-fw fa-info"></i>&nbsp; View Documentation</a></li>
+            <li><a href="https://github.com/BinghamtonUniversity/IPESimulationRegistries/wiki" target="_blank"><i class="fa fa-fw fa-info"></i>&nbsp; View Documentation</a></li>
         </ul>
     </div>
     <div class="container-fluid" id="main-container">

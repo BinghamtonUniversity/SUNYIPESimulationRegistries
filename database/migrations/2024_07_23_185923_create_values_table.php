@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('values', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('type_id');
+            $table->string('value')->nullable()->index();
+            $table->boolean('is_ipe')->default(false)->index();
+            $table->boolean('is_simulation')->default(false)->index();
+            $table->foreign('type_id')->references('id')->on('types');
             $table->timestamps();
         });
     }

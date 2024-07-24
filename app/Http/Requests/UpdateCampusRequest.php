@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSUNYCampusRequest extends FormRequest
+class UpdateCampusRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,6 +22,7 @@ class StoreSUNYCampusRequest extends FormRequest
     public function rules(): array
     {
         return [
+            "id"=>["required","integer","exists:campuses,id"],
             "name" => ["required", "string", "max:255"]
         ];
     }

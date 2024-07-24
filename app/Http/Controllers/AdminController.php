@@ -71,13 +71,13 @@ class AdminController extends Controller
 //            'help'=>'Use this page to create, search for, view, delete, and modify existing Simulations.'
 //        ]);
 //    }
-    public function suny_campuses(Request $request) {
+    public function campuses(Request $request) {
         $user_actions[] = ["name"=>"create","label"=>"Create Campuse"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 
         return view('admin.admin',[
-            'page'=>'suny_campuses',
-            'title'=>'Manage SUNY Campuses',
+            'page'=>'campuses',
+            'title'=>'ManageCampuses',
             'actions'=>$user_actions,
             'help'=>'Use this page to create, search for, view, delete, and modify existing campuses.'
         ]);

@@ -41,9 +41,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
         ];
     }
+
     public function campuses(){
-        return $this->belongsTo(SUNYCampus::class, 'suny_campus_id');
+        return $this->belongsTo(Campus::class, 'campus_id');
     }
+
+    public function activities(){
+        return $this->hasMany(Activty::class);
+    }
+
     public function permissions(){
         return $this->hasMany(Permission::class);
     }

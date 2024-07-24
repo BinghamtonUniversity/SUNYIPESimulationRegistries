@@ -14,20 +14,14 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('submitter_id');
-            $table->enum("type",[
-                "simulation",
-                "ipe",
-                "ipe_simulation"
-            ])->default("ipe")->index();
+            $table->boolean('is_ipe')->default(false)->index();
+            $table->boolean('is_simulation')->default(false)->index();
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('contact_name')->nullable();
             $table->string('contact_email')->nullable();
-            $table->string('participating_programs')->default("Advanced Practice Nursing")->index();
             $table->string('ksa_requirement')->nullable();
-            $table->string('focus_areas')->default("Neuro")->index();
             $table->string('learning_objectives')->nullable();
-            $table->boolean('is_new')->nullable();
             $table->unsignedInteger('number_of_learners')->nullable();
             $table->enum('status',['submitted','review','approved'])->default('submitted')->index();
             $table->unsignedBigInteger('approved_by')->nullable();

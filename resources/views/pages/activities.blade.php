@@ -15,11 +15,11 @@
         </h4>
         <div>
             <strong>Type:</strong>
-            @if($activity->type ==='ipe')
+            @if($activity->is_ipe === true && $activity->is_simulation === false)
                 IPE
-            @elseif(($activity->type ==='simulation'))
+            @elseif($activity->is_ipe === false && $activity->is_simulation === true)
                 Simulation
-            @elseif(($activity->type ==='ipe_simulation'))
+            @elseif($activity->is_ipe === true && $activity->is_simulation === true)
                 IPE/Simulation
             @endif
             <strong>Description:</strong>
