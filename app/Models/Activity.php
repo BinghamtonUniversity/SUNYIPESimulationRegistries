@@ -8,15 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     use HasFactory;
-    protected $fillable = ["type","title","submitter_id","description", "contact_name", "contact_email", "contact_phone",
-        "participating_programs","ksa_requirement","focus_areas",
-        "learning_objectives","is_new","number_of_learners","status"];
+    protected $fillable = ["is_ipe","is_simulation","title","submitter_id","description", "contact_name", "contact_email", "contact_phone",
+        "ksa_requirement","number_of_learners","status",'learning_objectives'];
+
+    protected $casts = [
+        'is_simulation' => 'boolean','is_ipe' => 'boolean'
+    ];
+    
     public function user(){
         return $this->belongsTo(User::class);
     }
+    
     static public function get_fields(){
         return config('form_fields.activities');
     }
+
     public function values() {
         return $this->belongsToMany(Value::class,'activity_values','activity_id','value_id');
     }
