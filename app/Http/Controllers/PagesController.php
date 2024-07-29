@@ -43,4 +43,13 @@ class PagesController extends Controller
             return redirect(url('/manage/login'));
         }
     }
+
+//    public function log_out(Request $request){
+//        if (Auth::check()) {
+//            Auth::logout();
+//            return redirect(url('/'));
+//        } else {
+//            return redirect(url('/manage/login'));
+//        }
+//    }
 }

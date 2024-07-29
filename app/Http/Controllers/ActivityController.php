@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use App\Models\Activity;
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -69,5 +70,9 @@ class ActivityController extends Controller
         $activity->delete();
 
         return 1;
+    }
+
+    public function index_logs(Request $request, Activity $activity){
+        return ActivityLog::where('activity_id',$activity->id)->get();
     }
 }

@@ -11,7 +11,7 @@ class StoreValueRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreValueRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "value" => ["required","string"],
+            "is_ipe"=> ["required","boolean"],
+            "is_simulation"=> ["required","boolean"]
         ];
     }
 }

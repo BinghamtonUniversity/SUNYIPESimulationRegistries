@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use App\Http\Requests\StoreValueRequest;
 use App\Models\Type;
 use App\Models\Value;
 

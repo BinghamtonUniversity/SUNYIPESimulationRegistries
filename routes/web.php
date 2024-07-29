@@ -33,8 +33,9 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware(['web','auth','auth.session'])->group(function () {
     Route::get('/logout', function () {
-        Auth::logout();
-        return ("You are logged out!");
+        $user = Auth::user();
+//        Auth::logout();
+        return redirect('/auth/redirect');
     });
 
     Route::get('/', [PagesController::class,'home']);

@@ -51,5 +51,7 @@ ajax.get('/api/activities',function(data) {
             ajax.delete('/api/activities/'+grid_event.model.attributes.id,{},function(data) {},function(data) {
                 grid_event.model.undo();
             });
+        }).on('model:view_logs',function (grid_event){
+            window.location = '/admin/activities/'+grid_event.model.attributes.id+'/logs';
         })
 });

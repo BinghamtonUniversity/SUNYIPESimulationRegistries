@@ -14,7 +14,7 @@
 
 @section('content')
 <div>
-    <a href="{{url('/manage/logout')}}" class="btn btn-danger pull-right">Logout</a>
+    <a href="{{url('/logout')}}" class="btn btn-danger pull-right">Logout</a>
 </div>
 
 

@@ -22,6 +22,7 @@ Route::put('/users/{user}',[UserController::class,'update']);
 
 /* Activity Routes */
 Route::get('/activities',[ActivityController::class,'index']);
+Route::get('/activities/{activity}/logs',[ActivityController::class, 'index_logs']);
 Route::get('/activities/{activity}',[ActivityController::class, 'show']);
 Route::post('/activities',[ActivityController::class,'store']);
 Route::put('/activities/{activity}',[ActivityController::class,'update']);

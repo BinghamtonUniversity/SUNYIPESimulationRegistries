@@ -90,9 +90,10 @@
 
               <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
               <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
+              <li class="visible-xs-block @if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-user fa-fw"></i>&nbsp; Types</a></li>
+
               <li class="visible-xs-block @if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
               <li class="visible-xs-block @if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
-
                 <li class="visible-xs-block"><a href="https://github.com/BinghamtonUniversity/IPESimulationRegistries/wiki" target="_blank"><i class="fa fa-info fa-fw"></i>&nbsp; View Documentation</a></li>
             </li>
           </ul>
@@ -107,8 +108,8 @@
             <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
             <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
             <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
+            <li class="@if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-user fa-fw"></i>&nbsp;Types</a></li>
             <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
-
             <li><a href="https://github.com/BinghamtonUniversity/IPESimulationRegistries/wiki" target="_blank"><i class="fa fa-fw fa-info"></i>&nbsp; View Documentation</a></li>
         </ul>
     </div>
@@ -194,6 +195,7 @@
     <script src="/assets/js/admin/admin.js"></script>
     <script>
         @if(isset($id)) window.id={!!json_encode($id)!!}; @endif
+        @if(isset($type_id)) window.type_id={!!json_encode($type_id)!!}; @endif
         @if(isset($actions)) window.actions={!!json_encode($actions)!!}; @endif
         @if(isset($permissions))
             window.auth_user_perms = {!! json_encode($permissions) !!};
