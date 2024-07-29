@@ -10,7 +10,7 @@ use App\Models\Value;
 class TypeController extends Controller
 {
     public function index() {
-        return Type::with('vaues')->get();
+        return Type::with('values')->get();
     }
 
     public function store(StoreTypeRequest $request) {
