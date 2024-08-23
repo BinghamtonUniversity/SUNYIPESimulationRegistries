@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeController;
 
 /* User Routes */
-Route::get('/users/search/{search_string?}',[UserController::class,'search']);
-Route::get('/users',[UserController::class,'index']);
+Route::get('/users/search/{search_string?}',[UserController::class,'search'])->middleware('can:viewAny,App\Models\User');
+Route::get('/users',[UserController::class,'index'])->middleware('can:view,App\Models\User');
 Route::get('/users/{user}/activities',[UserController::class,'get_user_activites']);
-Route::get('/users/{user}',[UserController::class, 'show']);
+Route::get('/users/{user}',[UserController::class, 'show'])->middleware('can:view,App\Models\User');
 Route::post('/users/{user}/activities',[UserController::class,'add_user_activity']);
-Route::post('/users',[UserController::class,'store']);
-Route::put('/users/{user}/permissions',[UserController::class,'update_permissions']);
-Route::put('/users/{user}',[UserController::class,'update']);
+Route::post('/users',[UserController::class,'store'])->middleware('can:create,App\Models\User');
+Route::put('/users/{user}/permissions',[UserController::class,'update_permissions'])->middleware('can:manage_user_permissions,App\Models\User');
+Route::put('/users/{user}',[UserController::class,'update'])->middleware('can:update,App\Models\User');
 
 /* Activity Routes */
 Route::get('/activities',[ActivityController::class,'index']);
