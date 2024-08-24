@@ -37,7 +37,7 @@ ajax.get('/api/types',function(data) {
             });
         }).on('model:edited',function (grid_event) {
             ajax.put('/api/types/'+grid_event.model.attributes.id,grid_event.model.attributes,function(data) {
-                grid_event.model.attributes.update(data)
+                grid_event.model.update(data)
             },function(data) {
                 grid_event.model.undo();
             });

@@ -66,10 +66,33 @@ ajax.get('/api/users',function(data) {
                                             label:"Manage Users",
                                             value:"manage_users",
                                         },
-
+                                        {
+                                            label:"View Activitis",
+                                            value:"view_activities",
+                                        },
+                                        {
+                                            label:"Manage Activities",
+                                            value:"manage_activities",
+                                        },
+                                        {
+                                            label:"Manage Site Configurations",
+                                            value:"manage_site_configurations",
+                                        },
+                                        {
+                                            label:"View Types",
+                                            value:"view_types",
+                                        },
+                                        {
+                                            label:"Manage Types",
+                                            value:"manage_types",
+                                        },
                                         {
                                             label:"Manage Permissions",
                                             value:"manage_permissions",
+                                        },
+                                        {
+                                            label:"Manage Campuses",
+                                            value:"manage_campuses",
                                         },
                                         {
                                             label:"Manage Reports",

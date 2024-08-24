@@ -14,11 +14,11 @@ class Activity extends Model
     protected $casts = [
         'is_simulation' => 'boolean','is_ipe' => 'boolean'
     ];
-    
+
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'submitter_id');
     }
-    
+
     static public function get_fields(){
         return config('form_fields.activities');
     }
@@ -28,15 +28,15 @@ class Activity extends Model
     }
 
     public function activity_values(){
-        return $this->hasMany(ActivityValue::class);
+        return $this->hasMany(ActivityValue::class, 'activity_id');
     }
 
     public function campus() {
-        return $this->belongsTo(Campus::class);
+        return $this->belongsTo(Campus::class, 'campus_id');
     }
 
     public function files(){
-        return $this->hasMany(File::class);
+        return $this->hasMany(File::class, 'activity_id');
     }
 
 }

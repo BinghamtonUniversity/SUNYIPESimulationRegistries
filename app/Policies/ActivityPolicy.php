@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Activity;
+use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
@@ -13,7 +14,10 @@ class ActivityPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return Permission::where('user_id',$user->id)
+            ->where('permission','view_activities')
+            ->orWhere('permission','manage_activities')
+            ->exists();
     }
 
     /**
@@ -21,7 +25,13 @@ class ActivityPolicy
      */
     public function view(User $user, Activity $activity): bool
     {
-        //
+        return Permission::where('user_id',$user->id)
+                ->where(function($query) use ($activity) {
+                    $query->where('permission','manage_activities')
+                        ->orWhere('permission','view_activities');
+                })->exists()
+            ||
+            $activity->user == $user->id;
     }
 
     /**
@@ -29,7 +39,9 @@ class ActivityPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return Permission::where('user_id',$user->id)
+            ->where('permission','manage_activities')
+            ->exists();
     }
 
     /**
@@ -38,6 +50,13 @@ class ActivityPolicy
     public function update(User $user, Activity $activity): bool
     {
         //
+        return Permission::where('user_id',$user->id)
+            ->where(function($query) use ($activity) {
+                $query->where('permission','manage_activities')
+                    ->orWhere('permission','view_activities');
+            })->exists()
+            ||
+            $activity->user == $user->id;
     }
 
     /**
@@ -45,7 +64,9 @@ class ActivityPolicy
      */
     public function delete(User $user, Activity $activity): bool
     {
-        //
+        return Permission::where('user_id',$user->id)
+            ->where('permission','manage_activities')
+            ->exists();
     }
 
     /**
@@ -53,7 +74,9 @@ class ActivityPolicy
      */
     public function restore(User $user, Activity $activity): bool
     {
-        //
+        return Permission::where('user_id',$user->id)
+            ->where('permission','manage_activities')
+            ->exists();
     }
 
     /**
@@ -61,6 +84,19 @@ class ActivityPolicy
      */
     public function forceDelete(User $user, Activity $activity): bool
     {
-        //
+        return Permission::where('user_id',$user->id)
+            ->where('permission','manage_activities')
+            ->exists();
     }
+
+    public function viewLogs(User $user, Activity $activity): bool
+    {
+        return Permission::where('user_id',$user->id)
+            ->where(function($query) use ($activity) {
+                $query->where('permission','manage_activities')
+                    ->orWhere('permission','view_activities');
+            })
+            ->exists();
+    }
+
 }

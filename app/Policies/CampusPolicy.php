@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
+use App\Models\Campus;
 use App\Models\Permission;
-use App\Models\SiteConfiguration;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class SiteConfigurationPolicy
+class CampusPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -15,6 +15,6 @@ class SiteConfigurationPolicy
     public function manage(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission','manage_site_configurations')->exists();
+            ->where('permission','manage_campuses')->exists();
     }
 }
