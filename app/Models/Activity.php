@@ -124,6 +124,21 @@ class Activity extends Model
             } else {
                 $field['type'] = 'select';
             }
+            $field['show'] = [['op' => 'or','conditions'=> []]];
+            if ($type->is_ipe === true) {
+                $field['show'][0]['conditions'][] = [
+                    'type'=> 'matches',
+                    'name'=> 'is_ipe',
+                    'value'=> [true]
+                ];
+            }
+            if ($type->is_simulation === true) {
+                $field['show'][0]['conditions'][] = [
+                    'type'=> 'matches',
+                    'name'=> 'is_simulation',
+                    'value'=> [true]
+                ];
+            }
             $ipe_only_options = [
                 'label' => '', // IPE Only 
                 'type' => 'optgroup',
