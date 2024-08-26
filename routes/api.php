@@ -27,6 +27,8 @@ Route::get('/activities/{activity}',[ActivityController::class, 'show'])->middle
 Route::post('/activities',[ActivityController::class,'store'])->middleware('can:create,App\Models\Activity');
 Route::put('/activities/{activity}',[ActivityController::class,'update'])->middleware('can:update,activity');
 Route::delete('/activities/{activity}',[ActivityController::class,'destroy'])->middleware('can:delete,activity');
+Route::get('/activities/form_fields/default',[ActivityController::class,'get_form_fields']);
+Route::get('/activities/form_fields/search',[ActivityController::class,'get_search_form_fields']);
 
 /* Campuses */
 Route::get('/campuses',[CampusController::class,'index'])->middleware('can:manage,App\Models\Campus');

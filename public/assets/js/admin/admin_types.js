@@ -21,12 +21,16 @@ ajax.get('/api/types',function(data) {
                         {value:true,label:"Yes"}
                     ]
                 },
-
                 {name:'searchable',type:'switch',label:'Is searchable', options: [
                         {value:false,label:"No"},
                         {value:true,label:"Yes"}
                     ]
-                }
+                },
+                {name:'multi_select',type:'switch',label:'Allow Multiple', options: [
+                    {value:false,label:"No"},
+                    {value:true,label:"Yes"}
+                ]
+            }
             ],
             data:data
         }).on("model:created",function(grid_event) {

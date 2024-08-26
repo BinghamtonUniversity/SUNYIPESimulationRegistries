@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('is_ipe')->default(false)->index();
             $table->boolean('is_simulation')->default(false)->index();
             $table->boolean('searchable')->default(true)->index();
+            $table->boolean('multi_select')->default(false)->index();
             $table->timestamps();
         });
     }

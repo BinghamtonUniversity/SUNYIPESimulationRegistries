@@ -39,4 +39,150 @@ class Activity extends Model
         return $this->hasMany(File::class, 'activity_id');
     }
 
+    static public function get_form_fields() {
+        $form_fields = [
+            [
+                "name" => "id",
+                "type" => "hidden"
+            ],
+            [
+                "name" => "is_ipe",
+                "type" => "switch",
+                "label" => "IPE Related",
+                "options" => [
+                    [
+                        "label" => "No",
+                        "value" => false
+                    ],
+                    [
+                        "label" => "Yes",
+                        "value" => true
+                    ]
+                ]
+            ],
+            [
+                "name" => "is_simulation",
+                "type" => "switch",
+                "label" => "Simulation",
+                "options" => [
+                    [
+                        "label" => "No",
+                        "value" => false
+                    ],
+                    [
+                        "label" => "Yes",
+                        "value" => true
+                    ]
+                ]
+            ],
+            [
+                "name" => "title",
+                "type" => "text",
+                "label" => "Title"
+            ],
+            [
+                "name" => "description",
+                "type" => "textarea",
+                "label" => "Description"
+            ],
+            [
+                "name" => "contact_name",
+                "type" => "text",
+                "label" => "Contact Name"
+            ],
+            [
+                "name" => "contact_email",
+                "type" => "email",
+                "label" => "Contact Email"
+            ],
+            [
+                "name" => "ksa_requirement",
+                "type" => "text",
+                "label" => "KSA Requirements"
+            ],
+            [
+                "name" => "learning_objectives",
+                "type" => "text",
+                "label" => "Learning Objectives"
+            ],
+            [
+                "name" => "number_of_learners",
+                "type" => "text",
+                "label" => "Number of Learners"
+            ]
+        ];
+        
+        $all_types = Type::with('values')->get();
+        $all_types->each(function($type,$type_index) use (&$form_fields) {
+            $field = [
+                'label' => $type->type,
+                'name' => 'type_'.$type->id,
+            ];
+            if ($type->multi_select === true) {
+                $field['type'] = 'radio';
+                $field['multiple'] = true;
+            } else {
+                $field['type'] = 'select';
+            }
+            $ipe_only_options = [
+                'label' => '', // IPE Only 
+                'type' => 'optgroup',
+                'show' => [['op' => 'or',
+					'conditions'=> [[
+                        'type'=> 'matches',
+                        'name'=> 'is_ipe',
+                        'value'=> [true]
+                    ]]
+                ]],
+                'options' => $type->values
+                    ->where('is_ipe',true)->where('is_simulation',false)
+                    ->map(function($value) {
+                        return ['label' => $value->value,'value' => 'value_'.$value->id];
+                    })->values()->toArray(),
+            ];
+            $simulation_only_options = [
+                'label' => '', // Simulation Only
+                'type' => 'optgroup',
+                'show' => [['op' => 'or',
+					'conditions'=> [[
+                        'type'=> 'matches',
+                        'name'=> 'is_simulation',
+                        'value'=> [true]
+                    ]]
+                ]],
+                'options' => $type->values
+                    ->where('is_ipe',false)->where('is_simulation',true)
+                    ->map(function($value) {
+                        return ['label' => $value->value,'value' => 'value_'.$value->id];
+                    })->values()->toArray(),
+            ];
+            $all_options = [
+                'label' => '', // Both IPE AND Simulation
+                'type' => 'optgroup',
+                'show' => [['op' => 'or',
+                    'conditions'=> [[
+                        'type'=> 'matches',
+                        'name'=> 'is_ipe',
+                        'value'=> [true]
+                    ],[
+                        'type'=> 'matches',
+                        'name'=> 'is_simulation',
+                        'value'=> [true]
+                    ]]
+                ]],
+                'options' => $type->values
+                    ->where('is_ipe',true)->where('is_simulation',true)
+                    ->map(function($value) {
+                        return ['label' => $value->value,'value' => 'value_'.$value->id];
+                    })->values()->toArray(),
+            ];            
+            $field['options'] = [$all_options,$ipe_only_options,$simulation_only_options];
+            $form_fields[] = $field;
+        });
+        return $form_fields;
+    }
+
+    static public function get_search_form_fields() {
+    }
+
 }

@@ -75,4 +75,12 @@ class ActivityController extends Controller
     public function index_logs(Request $request, Activity $activity){
         return ActivityLog::where('activity_id',$activity->id)->get();
     }
+
+    public function get_form_fields(Request $request) {
+        return Activity::get_form_fields();
+    }
+
+    public function get_search_form_fields(Request $request) {
+        return Activity::get_search_form_fields();
+    }
 }
