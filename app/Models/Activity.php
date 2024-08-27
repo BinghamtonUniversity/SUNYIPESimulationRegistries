@@ -207,6 +207,80 @@ class Activity extends Model
     }
 
     static public function get_search_form_fields() {
+        $form_fields = [
+            [
+                "name" => "is_ipe",
+                "type" => "switch",
+                "label" => "IPE Related",
+                'columns' => 6,
+                "options" => [
+                    [
+                        "label" => "No",
+                        "value" => false
+                    ],
+                    [
+                        "label" => "Yes",
+                        "value" => true
+                    ]
+                ]
+            ],
+            [
+                "name" => "is_simulation",
+                "type" => "switch",
+                "label" => "Simulation",
+                'columns' => 6,
+                "options" => [
+                    [
+                        "label" => "No",
+                        "value" => false
+                    ],
+                    [
+                        "label" => "Yes",
+                        "value" => true
+                    ]
+                ]
+            ]
+        ];
+        
+        $type_fields = [];
+        $all_types = Type::with('values')->get();
+        $all_types
+            ->where('searchable',true)
+            ->each(function($type,$type_index) use (&$type_fields) {
+            $field = [
+                'label' => $type->type,
+                'name' => 'type_'.$type->id,
+                'type' => 'radio',
+                'columns' => 2,
+                'multiple' => true
+            ];
+            $field['show'] = [['op' => 'or','conditions'=> []]];
+            if ($type->is_ipe === true) {
+                $field['show'][0]['conditions'][] = [
+                    'type'=> 'matches',
+                    'name'=> 'is_ipe',
+                    'value'=> [true]
+                ];
+            }
+            if ($type->is_simulation === true) {
+                $field['show'][0]['conditions'][] = [
+                    'type'=> 'matches',
+                    'name'=> 'is_simulation',
+                    'value'=> [true]
+                ];
+            }
+            $field['options'] = $type->values->map(function($value) {
+                return ['label' => $value->value,'value' => 'value_'.$value->id];
+            })->values()->toArray();
+            $type_fields[] = $field;
+        });
+        $form_fields[] = [
+            "type" => "fieldset",
+            "label" => "",
+            "name" => "types",
+            "fields" => $type_fields
+        ];
+        return $form_fields;
     }
 
 }

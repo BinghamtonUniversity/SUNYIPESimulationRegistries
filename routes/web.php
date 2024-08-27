@@ -40,9 +40,10 @@ Route::middleware(['web','auth','auth.session'])->group(function () {
 
     Route::get('/', [PagesController::class,'home']);
     Route::get('/home',[PagesController::class,'home'])->name('home');
+    Route::get('/search',[PagesController::class,'search'])->name('search');
+    Route::get('/search/results',[PagesController::class,'search_results'])->name('search_results');
 
     // Activities
     Route::get('/activities/{activity}',[PagesController::class,'activity']);
-    Route::get('/activities',[PagesController::class,'activities']);
     Route::get('/manage', [PagesController::class,'manage'])->name('manage_page');
 });

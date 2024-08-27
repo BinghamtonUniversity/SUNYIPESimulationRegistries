@@ -3,7 +3,7 @@
 @section('title',$activity->title)
 
 @section('description')
-    <div class="alert alert-info">Welcome to {{$activity->title}}</div>
+    <h1>{{$activity->title}}</h1>
 @endsection
 
 @section('content')
@@ -24,6 +24,5 @@
         <div class="col-lg-6"><strong>Contact Email: </strong> {{$activity->contact_email}}</div>
         <div class="col-lg-6"><strong>KSA Requirements: </strong> {{$activity->ksa_requirements}}</div>
         <div class="col-lg-6"><strong>Number of Learners: </strong> {{$activity->number_of_learners}}</div>
-
     </div>
 @endsection

@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
 
         SiteConfiguration::create([
             "key"=>"page.home.body",
-            "value"=>"<div class='alert alert-info'>Welcome to the jungle!</div>"
+            "value"=>"<h1 class='alert alert-info'>Welcome to the jungle!</div>"
         ]);
         SiteConfiguration::create([
             "key"=>"footer",

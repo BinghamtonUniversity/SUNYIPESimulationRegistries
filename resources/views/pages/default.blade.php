@@ -46,7 +46,6 @@
           <ul class="nav navbar-nav" >
               <li><a href="/" style="color: white">Home</a></li>
               <li><a href="/search" style="color: white">Search</a></li>
-              <li><a href="/activities" style="color: white">Activities</a></li>
           </ul>
         </div>
       </div>
@@ -82,9 +81,11 @@
     <script type="text/javascript">
     var root_url = "{{url('/')}}";
     </script>
-    <script type="text/javascript" src="{{url('/assets/js/admin.js')}}"></script>
     <script>
-    @yield('scripts')
+      @if (isset($data))
+      window.data = <?php echo json_encode($data); ?>;
+      @endif
+      @yield('scripts')
     </script>
 
     <!-- Begin Google Analytics -->

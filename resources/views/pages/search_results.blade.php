@@ -1,12 +1,19 @@
 @extends('pages.default')
 
-@section('title', 'Activities')
+@section('title','Search Results')
 
 @section('description')
-    <div class="alert alert-info">Under development</div>
+    <h1>Search Results</h1>
 @endsection
 
 @section('content')
+    @if (isset($error))  
+        <div class="alert alert-danger">{{$error}}</div>
+    @endif
+
+    @if (count($activities) === 0)
+        <div class="alert alert-warning">No exact matches were found. Please try to refine your search criteria</div>
+    @endif
     @foreach($activities as $activity)
         <h4 style="margin-top:20px;margin-bottom:0px;text-decoration:underline;">
             <a href="{{url('/activities/'.$activity->id)}}">
@@ -24,6 +31,11 @@
             @endif
             <strong>Description:</strong>
             {{substr($activity->description,0,250)}}
+        </div>
+        <div>
+            @foreach($activity->matches as $match)
+                <div class="label label-success">{{$match}}</div>&nbsp;
+            @endforeach
         </div>
     @endforeach
 
