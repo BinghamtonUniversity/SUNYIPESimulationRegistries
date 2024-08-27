@@ -61,7 +61,7 @@ class PagesController extends Controller
                 }
             })->with('value')->get();
         // return $activity_values;
-        
+
         $ranked_activity_ids = [];
         foreach($activity_values as $activity_value) {
             if (!isset($ranked_activity_ids[$activity_value->activity_id])) {
@@ -85,7 +85,7 @@ class PagesController extends Controller
             'activities' => $activities,
         ]);
     }
-    
+
     public function activity(Request $request, Activity $activity){
         return view('pages.activity',[
             'activity'=>$activity
@@ -95,7 +95,7 @@ class PagesController extends Controller
         if (Auth::check()) {
 
             return view('admin.manage',[
-                'activities_form_fields'=>Activity::get_fields(),
+                'activities_form_fields'=>Activity::get_form_fields(),
             ]);
         } else {
             return redirect(url('/manage/login'));

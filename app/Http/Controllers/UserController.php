@@ -122,7 +122,11 @@ class UserController extends Controller
     }
 
     public function get_user_activites(Request $request, User $user) {
-        return Activity::where('submitter_id',$user->id)->get();
+        $activities =  Activity::where('submitter_id',$user->id)->get();
+        foreach ($activities as $activity) {
+            $activity->withValuesModified();
+        }
+        return $activities;
     }
     public function add_user_activity(StoreActivityRequest $request, User $user) {
         $activity = new Activity($request->all());

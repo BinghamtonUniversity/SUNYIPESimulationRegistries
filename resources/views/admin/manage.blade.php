@@ -49,10 +49,9 @@ $.ajax({
             form_fields = grid_event.model.attributes
             form_fields.submitter_id = {{Auth::user()->id}}
             form_fields.status = "submitted"
+            form_fields.is_ipe = form_fields.is_ipe == true ? 1 : 0
+            form_fields.is_simulation = form_fields.is_simulation == true? 1:0
             $.ajax({
-                headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
                 type:"POST",
                 url:root_url+"/api/users/{{Auth::user()->id}}/activities",
                 data:form_fields,
@@ -64,27 +63,23 @@ $.ajax({
             })
         }).on("model:edited",function(grid_event){
             console.log(grid_event.model.attributes);
-            form_fields = grid_event.model.attributes
-            form_fields.submitter_id = {{Auth::user()->id}}
-            form_fields.status = "submitted"
+            edit_form_fields = grid_event.model.attributes
+            edit_form_fields.submitter_id = {{Auth::user()->id}}
+            edit_form_fields.status = "submitted"
+            edit_form_fields.is_ipe = edit_form_fields.is_ipe == true ? 1 : 0
+            edit_form_fields.is_simulation = edit_form_fields.is_simulation == true? 1:0
             $.ajax({
-                headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
                 type:"PUT",
                 url:root_url+"/api/activities/"+ grid_event.model.attributes.id,
-                data:form_fields,
+                data:edit_form_fields,
                 success:function(result){
                 grid_event.model.update(result)
                 toastr.success(result.title +' successfully updated!');
                 console.log(result)}
-        })
+            })
         })
         .on("model:deleted",function(grid_event) {
             $.ajax({
-                headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
                 type:"DELETE",
                 url:root_url+'/api/activities/'+grid_event.model.attributes.id,
                 data:grid_event.model.attributes,
