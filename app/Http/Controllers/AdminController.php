@@ -56,11 +56,12 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"create","label"=>"Create Activity"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"view_logs","label"=>"View Logs","min"=>1,"max"=>1];
-
+        $form_fields = Activity::get_form_fields();
         return view('admin.admin',[
             'page'=>'activities',
             'title'=>'Manage Activities',
             'actions'=>$user_actions,
+            "form_fields"=> $form_fields,
             'help'=>'Use this page to create, search for, view, delete, and modify existing Activities.'
         ]);
     }

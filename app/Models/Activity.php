@@ -39,6 +39,13 @@ class Activity extends Model
         return $this->hasMany(File::class, 'activity_id');
     }
 
+    public function withValuesModified(){
+        foreach ($this->values as $value) {
+            $this['type_'.$value->type_id] = "value_".$value->id;
+        }
+        return $this;
+    }
+
     static public function get_form_fields() {
         $form_fields = [
             [
@@ -111,10 +118,11 @@ class Activity extends Model
                 "label" => "Number of Learners"
             ]
         ];
-        
+
         $all_types = Type::with('values')->get();
         $all_types->each(function($type,$type_index) use (&$form_fields) {
             $field = [
+                "showColumn"=>false,
                 'label' => $type->type,
                 'name' => 'type_'.$type->id,
             ];
@@ -140,7 +148,7 @@ class Activity extends Model
                 ];
             }
             $ipe_only_options = [
-                'label' => '', // IPE Only 
+                'label' => '', // IPE Only
                 'type' => 'optgroup',
                 'show' => [['op' => 'or',
 					'conditions'=> [[
@@ -158,6 +166,7 @@ class Activity extends Model
             $simulation_only_options = [
                 'label' => '', // Simulation Only
                 'type' => 'optgroup',
+
                 'show' => [['op' => 'or',
 					'conditions'=> [[
                         'type'=> 'matches',
@@ -190,7 +199,7 @@ class Activity extends Model
                     ->map(function($value) {
                         return ['label' => $value->value,'value' => 'value_'.$value->id];
                     })->values()->toArray(),
-            ];            
+            ];
             $field['options'] = [$all_options,$ipe_only_options,$simulation_only_options];
             $form_fields[] = $field;
         });

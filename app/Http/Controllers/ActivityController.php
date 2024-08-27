@@ -6,6 +6,7 @@ use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use App\Models\Activity;
 use App\Models\ActivityLog;
+use App\Models\ActivityValue;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -15,7 +16,12 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return Activity::all();
+        $activities = Activity::get();
+        foreach ($activities as $activity) {
+            $activity->withValuesModified();
+        }
+
+        return $activities;
     }
 
     /**
@@ -32,8 +38,19 @@ class ActivityController extends Controller
     public function store(StoreActivityRequest $request)
     {
         $activity = new Activity($request->all());
+
         $activity->save();
-        return $activity;
+
+        foreach($request->all() as $type => $value) {
+            if(str_contains( $value, "value_")){
+                $value = explode("value_", $value)[1];
+                ActivityValue::updateOrCreate([
+                    'activity_id'=>$activity->id, 'value_id'=>$value
+                ]);
+            }
+        }
+
+        return $activity->withValuesModified();
     }
 
     /**
@@ -41,7 +58,7 @@ class ActivityController extends Controller
      */
     public function show(Request $request, Activity $activity)
     {
-        return $activity;
+        return $activity->withValuesModified();
     }
 
     /**
@@ -57,9 +74,19 @@ class ActivityController extends Controller
      */
     public function update(UpdateActivityRequest $request, Activity $activity)
     {
-        $activity->update($request->all());
 
-        return $activity;
+        $request = $request->all();
+        foreach($request as $type => $value) {
+            if(str_contains( $value, "value_")){
+                $value = explode("value_", $value)[1];
+                ActivityValue::updateOrCreate([
+                    'activity_id'=>$activity->id, 'value_id'=>$value
+                ]);
+            }
+        }
+
+        $activity->update($request);
+        return $activity->withValuesModified();
     }
 
     /**

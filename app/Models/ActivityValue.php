@@ -10,7 +10,7 @@ class ActivityValue extends Model
     use HasFactory;
 
     protected $table = 'activity_values';
-    protected $fillable = [];
+    protected $fillable = ['activity_id','value_id'];
     protected $casts = [];
 
     public function activity() {

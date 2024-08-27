@@ -197,6 +197,7 @@
         @if(isset($id)) window.id={!!json_encode($id)!!}; @endif
         @if(isset($type_id)) window.type_id={!!json_encode($type_id)!!}; @endif
         @if(isset($actions)) window.actions={!!json_encode($actions)!!}; @endif
+        @if(isset($form_fields)) window.form_fields={!!json_encode($form_fields)!!}; @endif
         @if(isset($permissions))
             window.auth_user_perms = {!! json_encode($permissions) !!};
         @endif
