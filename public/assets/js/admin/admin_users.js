@@ -67,7 +67,7 @@ ajax.get('/api/users',function(data) {
                                             value:"manage_users",
                                         },
                                         {
-                                            label:"View Activitis",
+                                            label:"View Activities",
                                             value:"view_activities",
                                         },
                                         {
