@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.min.css" media="(prefers-color-scheme: light)" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
     <link href="/assets/css/toastr.min.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">

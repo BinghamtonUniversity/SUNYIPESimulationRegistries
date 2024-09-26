@@ -770,16 +770,6 @@ a.list-group-action {
   display:none;
 }
 
-@media (prefers-color-scheme: dark) {
-  output {
-      color: #eaeaea;
-  }
-}
-
-input[name=iamid] {
-  font-family: 'Roboto Mono';
-}
-
 [name=ids] input {
   font-family: 'Roboto Mono';
 }
