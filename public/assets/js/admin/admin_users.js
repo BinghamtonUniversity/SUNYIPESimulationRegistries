@@ -11,7 +11,7 @@ ajax.get('/api/users',function(data) {
             schema:[
                 {name:'id',type:'hidden'},
                 {
-                    name:'campus_id',type:"combobox",label:'Campus',
+                    name:'campus_id',type:"combobox",label:'Institution',
                     options:"/api/campuses",
                     format:{
                         label:"{{name}}",

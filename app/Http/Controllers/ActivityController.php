@@ -38,18 +38,25 @@ class ActivityController extends Controller
     public function store(StoreActivityRequest $request)
     {
         $activity = new Activity($request->all());
-
         $activity->save();
-
         foreach($request->all() as $type => $value) {
-            if(str_contains( $value, "value_")){
-                $value = explode("value_", $value)[1];
-                ActivityValue::updateOrCreate([
-                    'activity_id'=>$activity->id, 'value_id'=>$value
-                ]);
+            if(str_starts_with( $type, "type_")) {
+                // Handle Multi-Select Types
+                if (is_array($value)) {
+                    foreach($value as $value_item) {
+                        $value_item = explode("value_", $value_item)[1];
+                        ActivityValue::updateOrCreate([
+                            'activity_id'=>$activity->id, 'value_id'=>$value_item
+                        ]);        
+                    }
+                } else {
+                    $value = explode("value_", $value)[1];
+                    ActivityValue::updateOrCreate([
+                        'activity_id'=>$activity->id, 'value_id'=>$value
+                    ]);
+                }
             }
         }
-
         return $activity->withValuesModified();
     }
 
@@ -72,20 +79,34 @@ class ActivityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateActivityRequest $request, Activity $activity)
-    {
-
-        $request = $request->all();
-        foreach($request as $type => $value) {
-            if(str_contains( $value, "value_")){
-                $value = explode("value_", $value)[1];
-                ActivityValue::updateOrCreate([
-                    'activity_id'=>$activity->id, 'value_id'=>$value
-                ]);
+    public function update(UpdateActivityRequest $request, Activity $activity) {
+        $activity->update($request->all());
+        $updated_value_ids = collect();
+        foreach($request->all() as $type => $value) {
+            if(str_starts_with( $type, "type_")) {
+                // Handle Multi-Select Types
+                if (is_array($value)) {
+                    foreach($value as $value_item) {
+                        $value_item = explode("value_", $value_item)[1];
+                        ActivityValue::updateOrCreate([
+                            'activity_id'=>$activity->id, 'value_id'=>$value_item
+                        ]);   
+                        $updated_value_ids[] = $value_item;     
+                    }
+                } else {
+                    $value = explode("value_", $value)[1];
+                    ActivityValue::updateOrCreate([
+                        'activity_id'=>$activity->id, 'value_id'=>$value
+                    ]);
+                    $updated_value_ids[] = $value;
+                }
             }
         }
+        // Delete Any Removed Values
+        $current_value_ids = ActivityValue::where('activity_id',$activity->id)->get()->pluck('value_id');
+        $delete_value_ids = $current_value_ids->diff($updated_value_ids);
+        ActivityValue::where('activity_id',$activity->id)->whereIn('value_id',$delete_value_ids)->delete();
 
-        $activity->update($request);
         return $activity->withValuesModified();
     }
 

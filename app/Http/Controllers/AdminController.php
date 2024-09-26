@@ -92,14 +92,14 @@ class AdminController extends Controller
         ]);
     }
     public function campuses(Request $request) {
-        $user_actions[] = ["name"=>"create","label"=>"Create Campuse"];
+        $user_actions[] = ["name"=>"create","label"=>"Create Institution"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 
         return view('pages.admin',[
             'page'=>'campuses',
-            'title'=>'ManageCampuses',
+            'title'=>'Manage Institutions',
             'actions'=>$user_actions,
-            'help'=>'Use this page to create, search for, view, delete, and modify existing campuses.'
+            'help'=>'Use this page to create, search for, view, delete, and modify existing institutions.'
         ]);
     }
 

@@ -3,10 +3,25 @@
 @section('title','Search')
 
 @section('content')
-<h1 style="text-align:center;">Search</h1>
+<div class="panel panel-default" style="margin-top:20px;">
+    <div class="panel-body">
+        <h1 style="text-align:center;margin:0px;">Search</h1>
+    </div>
+</div>
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
-        <div id="search-form"></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="alert alert-info">
+                    Use the switches and checkboxes below to search for activities that meet your criteria
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="search-form"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

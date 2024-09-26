@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon"  type="image/png" href="/assets/icons/fontawesome/gray/32/user-circle.png">
+    <link rel="icon"  type="image/png" href="/assets/icons/fontawesome/gray/32/medkit.png">
     <title>OpenSim | {{$title}}</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
@@ -55,11 +55,11 @@
                 <li><a href="/"><i class="fa fa-arrow-left"></i> Home</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
               </ul>
-              <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
-              <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
-              <li class="visible-xs-block @if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-user fa-fw"></i>&nbsp; Types</a></li>
-              <li class="visible-xs-block @if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
-              <li class="visible-xs-block @if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
+              <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-users fa-fw"></i>&nbsp; Users</a></li>
+              <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-stethoscope fa-fw"></i>&nbsp; Activities</a></li>
+              <li class="visible-xs-block @if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-table fa-fw"></i>&nbsp; Types</a></li>
+              <li class="visible-xs-block @if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-university fa-fw"></i>&nbsp;Institutions</a></li>
+              <li class="visible-xs-block @if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-cogs fa-fw"></i>&nbsp; Site Configuration</a></li>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right visible-xs-block">
@@ -70,11 +70,11 @@
     </nav>
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
-        <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
-        <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
-        <li class="@if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-user fa-fw"></i>&nbsp;Types</a></li>
-        <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
+        <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-users fa-fw"></i>&nbsp; Users</a></li>
+        <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-stethoscope fa-fw"></i>&nbsp; Activities</a></li>
+        <li class="@if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-table fa-fw"></i>&nbsp;Types</a></li>
+        <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-university fa-fw"></i>&nbsp;Institutions</a></li>
+        <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-cogs fa-fw"></i>&nbsp; Site Configuration</a></li>
       </ul>
     </div>
     <div class="container-fluid" id="main-container">

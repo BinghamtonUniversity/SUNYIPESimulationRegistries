@@ -40,9 +40,41 @@ class Activity extends Model
     }
 
     public function withValuesModified(){
+        $types = Type::select('id','multi_select')->get();
+        $temp = (Object)[];
         foreach ($this->values as $value) {
-            $this['type_'.$value->type_id] = "value_".$value->id;
+            $current_type = $types->firstWhere('id',$value->type_id);
+            if ($current_type->multi_select === true) {
+                if (!isset($temp->{'type_'.$value->type_id})) {
+                    $temp->{'type_'.$value->type_id} = [];
+                }
+                $temp->{'type_'.$value->type_id}[] = "value_".$value->id;
+            } else {
+                $temp->{'type_'.$value->type_id} = "value_".$value->id;
+            }
         }
+        foreach($temp as $key => $value) {
+            $this->$key = $value;
+        }
+        return $this;
+    }
+
+    public function withPlainTextValues() {
+        $type_ids = $this->values->pluck('type_id')->unique();
+        $value_ids = $this->values->pluck('id')->unique();
+        $types = Type::select('id','type','multi_select')->whereIn('id',$type_ids)->get();
+        $values = Value::select('id','type_id','value')->whereIn('id',$value_ids)->get();
+        $my_types = [];
+        foreach($types as $type) {
+            $my_values = $values->where('type_id',$type->id)->pluck('value')->toArray();
+            if (count($my_values) === 1) {
+                $my_values = $my_values[0];
+            }
+            $my_types[] = [
+                'type' => $type->type, 'value' => $my_values,
+            ];
+        }
+        $this->plain_text_values = $my_types;
         return $this;
     }
 
@@ -85,37 +117,44 @@ class Activity extends Model
             [
                 "name" => "title",
                 "type" => "text",
-                "label" => "Title"
+                "label" => "Title",
+                "required" => true,
             ],
             [
                 "name" => "description",
                 "type" => "textarea",
-                "label" => "Description"
+                "label" => "Description",
+                "required" => true,
             ],
             [
                 "name" => "contact_name",
                 "type" => "text",
-                "label" => "Contact Name"
+                "label" => "Contact Name",
+                "required" => true,
             ],
             [
                 "name" => "contact_email",
                 "type" => "email",
-                "label" => "Contact Email"
+                "label" => "Contact Email",
+                "required" => true,
             ],
             [
                 "name" => "ksa_requirement",
                 "type" => "text",
-                "label" => "KSA Requirements"
+                "label" => "KSA Requirements",
+                "required" => true,
             ],
             [
                 "name" => "learning_objectives",
                 "type" => "text",
-                "label" => "Learning Objectives"
+                "label" => "Learning Objectives",
+                "required" => true,
             ],
             [
                 "name" => "number_of_learners",
-                "type" => "text",
-                "label" => "Number of Learners"
+                "type" => "number",
+                "label" => "Number of Learners",
+                "required" => true,
             ]
         ];
 

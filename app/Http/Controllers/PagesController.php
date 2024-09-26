@@ -88,7 +88,7 @@ class PagesController extends Controller
 
     public function activity(Request $request, Activity $activity){
         return view('pages.activity',[
-            'activity'=>$activity
+            'activity'=>$activity->withPlainTextValues()
         ]);
     }
     public function manage(Request $request){

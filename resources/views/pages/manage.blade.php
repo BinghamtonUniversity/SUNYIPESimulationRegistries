@@ -3,8 +3,11 @@
 @section('title',"Manage: ".Auth::user()->name)
 
 @section('content')
-<h1 style="text-align:center;">Manage My Activities</h1>
-<div class="alert alert-info" style="margin-top:15px;">
+<div class="panel panel-default" style="margin-top:20px;">
+    <div class="panel-body">
+        <h1 style="text-align:center;margin:0px;">Manage My Activities</h1>
+    </div>
+</div><div class="alert alert-info" style="margin-top:15px;">
     <h3 style="margin-top:0px;">Instructions:</h3>
     Use the <div class="btn btn-success btn-xs">New</div> button below to create a new project listing.  <br>
     Select the <i class="fa fa-check-square-o"></i> next to the listing you want to modify and click <div class="btn btn-primary btn-xs">Edit</div> or <div class="btn btn-danger btn-xs">Delete</div>
