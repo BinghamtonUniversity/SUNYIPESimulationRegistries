@@ -9,22 +9,9 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon"  type="image/png" href="/assets/icons/fontawesome/gray/32/user-circle.png">
-    <title>SUNYIPESimulationRegistries | {{$title}}</title>
+    <title>OpenSim | {{$title}}</title>
 
-
-      <!-- Custom Light / Dark Mode CSS -->
-    <script>
-      if (window.matchMedia('(prefers-color-scheme: dark)').media === 'not all') {
-        document.documentElement.style.display = 'none';
-        document.head.insertAdjacentHTML(
-          'beforeend',
-          '<link rel="stylesheet" href="/light.css" onload="document.documentElement.style.display = \'\'">',
-        );
-      }
-    </script>
-    <link rel="stylesheet" href="/assets/css/bootstrap.darkly.min.css" media="(prefers-color-scheme: dark)" />
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" media="(prefers-color-scheme: light)" />
-    <!-- AFTER -->
+    <link rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.min.css" media="(prefers-color-scheme: light)" />
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
@@ -47,13 +34,11 @@
     <link data-name="vs/editor/editor.main" rel="stylesheet" href="/assets/js/vendor/vs/editor/editor.main.css">
   </head>
   <body>
-
-<style>
-@media (prefers-color-scheme: dark) {
-
-}
-</style>
-
+  <style>
+    .navbar-inverse a:hover, .navbar-inverse a:active {
+      color:#ddd !important;
+    }
+  </style>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -63,8 +48,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/admin" style="background: #004c93;padding: 12px 0px 0px 18px;">
-            <h4 style="color:#fff;margin:0px;"><i class="fa fa-user-circle fa-fw"></i>Registries</h4>
+          <a class="navbar-brand" href="/admin" style="background: #004c93;width:200px;">
+            <h4 style="color:#fff;margin:0px;"><i class="fa fa-user-circle fa-fw"></i> OpenSim</h4>
           </a>
             <ul class="nav navbar-nav  hidden-xs">
                 <li><a href="#"><h4 style="margin:0">{{$title}}</h4></a></li>
@@ -76,7 +61,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-          <li><a href="/"><h4 style="margin:0;">SUNY IPE/Simulation Registries Admin</h4></a>
+          <li><a href="/"><h4 style="margin:0;">OpenSim Admin</h4></a>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle identity-info" data-toggle="dropdown" role="button">
 {{--                <img class="gravatar" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?d=mm" />--}}
@@ -85,7 +70,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a href="/"><i class="fa fa-arrow-left"></i> Home</a></li>
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-times-circle"></i> Logout</a></li>
+                <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
               </ul>
 
               <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>

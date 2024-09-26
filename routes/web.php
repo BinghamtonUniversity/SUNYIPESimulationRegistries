@@ -12,7 +12,24 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
+// No Authentication Required!
+Route::get('/', [PagesController::class,'home'])->name('home');
+Route::get('/search',[PagesController::class,'search'])->name('search');
+Route::get('/search/results',[PagesController::class,'search_results'])->name('search_results');
+Route::get('/activities/{activity}',[PagesController::class,'activity']);
+
+Route::middleware(['web','auth','auth.session'])->group(function () {
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect('https://bingwayf.binghamton.edu/logout');
+    })->name('logout');;
+    Route::get('/manage', [PagesController::class,'manage'])->name('manage');
+});
+
 Route::get('/login', function () {
+    if (Auth::check()) {
+        return redirect(route('home'));
+    }
     return redirect('/auth/redirect');
 })->name('login');
 
@@ -31,19 +48,3 @@ Route::prefix('auth')->group(function () {
     });
 });
 
-Route::middleware(['web','auth','auth.session'])->group(function () {
-    Route::get('/logout', function () {
-        $user = Auth::user();
-//        Auth::logout();
-        return redirect('/auth/redirect');
-    });
-
-    Route::get('/', [PagesController::class,'home']);
-    Route::get('/home',[PagesController::class,'home'])->name('home');
-    Route::get('/search',[PagesController::class,'search'])->name('search');
-    Route::get('/search/results',[PagesController::class,'search_results'])->name('search_results');
-
-    // Activities
-    Route::get('/activities/{activity}',[PagesController::class,'activity']);
-    Route::get('/manage', [PagesController::class,'manage'])->name('manage_page');
-});

@@ -23,7 +23,7 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"delete","label"=>"Delete User","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"user_permissions","label"=>"Update Permissions","min"=>1,"max"=>1];
 
-        return view('admin.admin',[
+        return view('pages.admin',[
             'page'=>'users',
             'title'=>'Manage Users',
             'actions'=>$user_actions,
@@ -44,7 +44,7 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"manage_permissions","label"=>"Update Permissions","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"delete","label"=>"Delete User","min"=>1,"max"=>1]; //may remove max
 
-        return view('admin.admin',[
+        return view('pages.admin',[
             'page'=>'users',
             'title'=>'Manage Users',
             'actions'=>$user_actions,
@@ -57,7 +57,7 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"view_logs","label"=>"View Logs","min"=>1,"max"=>1];
         $form_fields = Activity::get_form_fields();
-        return view('admin.admin',[
+        return view('pages.admin',[
             'page'=>'activities',
             'title'=>'Manage Activities',
             'actions'=>$user_actions,
@@ -71,7 +71,7 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"manage_values","label"=>"Values","min"=>1,"max"=>1];
 
-        return view('admin.admin',[
+        return view('pages.admin',[
             'page'=>'types',
             'title'=>'Manage Types',
             'actions'=>$user_actions,
@@ -83,7 +83,7 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"create","label"=>"Create Value"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 //        dd($type);
-        return view('admin.admin',[
+        return view('pages.admin',[
             'page'=>'values',
             'title'=>'Manage Values of'.$type->type,
             'actions'=>$user_actions,
@@ -95,7 +95,7 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"create","label"=>"Create Campuse"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 
-        return view('admin.admin',[
+        return view('pages.admin',[
             'page'=>'campuses',
             'title'=>'ManageCampuses',
             'actions'=>$user_actions,
@@ -107,7 +107,7 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"create","label"=>"Create Configuration"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 
-        return view('admin.admin',[
+        return view('pages.admin',[
             'page'=>'site_configurations',
             'title'=>'Manage Site Configurations',
             'actions'=>$user_actions,
@@ -118,7 +118,7 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"create","label"=>"Create Value"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
 
-        return view('admin.admin',[
+        return view('pages.admin',[
             'page'=>'activity_logs',
             'title'=>'Manage Values of'.$activity->title,
             'actions'=>$user_actions,

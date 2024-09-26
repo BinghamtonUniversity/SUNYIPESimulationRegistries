@@ -1,25 +1,11 @@
 @extends('pages.default')
 
 @section('title',"Manage: ".Auth::user()->name)
-@section('description')
-    @if((config('templates.page.manage.alert'))!=='')
-        <div class="alert alert-danger">
-            {!! config('templates.page.manage.alert') !!}
-        </div>
-    @endif
-    This page provides a portal for organizations and service groups to
-    manage their organization page and project activities from one convenient
-    location.
-@endsection
 
 @section('content')
-<div>
-    <a href="{{url('/logout')}}" class="btn btn-danger pull-right">Logout</a>
-</div>
-
-
+<h1 style="text-align:center;">Manage My Entries</h1>
 <div class="alert alert-info" style="margin-top:15px;">
-    <h3>Instructions:</h3>
+    <h3 style="margin-top:0px;">Instructions:</h3>
     Use the <div class="btn btn-success btn-xs">New</div> button below to create a new project listing.  <br>
     Select the <i class="fa fa-check-square-o"></i> next to the listing you want to modify and click <div class="btn btn-primary btn-xs">Edit</div> or <div class="btn btn-danger btn-xs">Delete</div>
 </div>

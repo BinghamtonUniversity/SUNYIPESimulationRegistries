@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.darkly.min.css" media="(prefers-color-scheme: dark)" />
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" media="(prefers-color-scheme: light)" />
+    <link rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.min.css" media="(prefers-color-scheme: light)" />
     <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
     <link href="/assets/css/toastr.min.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
@@ -13,59 +12,73 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body style="margin-top:119px;">
+<body style="background-color:#eee;">
+<style>
+  .navbar-inverse a:hover {
+    color:#ddd !important;
+  }
+</style>
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;"><i class="fa fa-medkit fa-fw"></i> OpenSim</a>
+    </div>
 
-    <!-- New Stuff -->
-    <nav class="navbar navbar-fixed-top navbar-default" style=" background-color:#004c93;">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header" style="width:100%;">
-            <a class="navbar-brand pull-left" href="/" style="color: white; background: #004c93;">
-                IPE/Simulation Registries
-            </a>
-          <div class="hidden-xs pull-right center-block">
-                <a class="btn btn-xs btn-primary" href="{{route('admin')}}">Admin</a>
-                <a class="btn btn-xs btn-primary" href="{{route('manage_page')}}">Manage Account</a>
-          </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li @if(request()->routeIs('home')) class="active" @endif><a href="{{route('home')}}"><i class="fa fa-home fa-fw"></i> Home <span class="sr-only">(current)</span></a></li>
+        <li @if(request()->routeIs('search')) class="active" @endif><a href="{{route('search')}}"><i class="fa fa-search fa-fw"></i> Search</a></li>
+        @auth<li @if(request()->routeIs('manage')) class="active" @endif><a href="{{route('manage')}}"><i class="fa fa-cog fa-fw"></i> Manage My Entries</a></li>@endauth
+      </ul>
+      <!--
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
         </div>
-      </div>
-    </nav>
-    <!-- End New Stuff -->
-
-    <nav class="navbar navbar-fixed-top navbar-default" role="navigation" style="margin-top:60px;border:0px;">
-      <div class="container-fluid" style="background-color:#004c93;">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-          </button>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse"  id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav" >
-              <li><a href="/" style="color: white">Home</a></li>
-              <li><a href="/search" style="color: white">Search</a></li>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      -->
+      <ul class="nav navbar-nav navbar-right">
+        @guest<li><a href="{{route('login')}}"><i class="fa fa-sign-in fa-fw"></i> Login</a></li>@endguest
+        @auth
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{route('admin')}}"><i class="fa fa-cog fa-fw"></i> Admin</a></li>
+            <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
           </ul>
+        </li>
+        @endauth
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          @yield('description')
         </div>
       </div>
-    </nav>
-
-    <div class="container-fluid" style="background-color:white">
-{{--        <div class="row" style="text-align:center;">--}}
-{{--            <strong>@yield('title')</strong>--}}
-{{--        </div>--}}
-        <div class="row">
-            <div class="col-sm-12">
-                <strong>@yield('description')</strong>
-            </div>
+      <div class="row">
+        <div class="col-sm-12">
+          @yield('content')
         </div>
-        <div>
-            @yield('content')
-        </div>
-        <nav class="footer navbar-fixed-bottom"  style="background-color: #89949B; color: #CCD6DF;text-align: center;">
-            {!! config('templates.footer') !!}
-        </nav>
+      </div>
+      <nav class="footer navbar-fixed-bottom"  style="background-color:#004c93; color: #CCD6DF;text-align: center;">
+        <span>OpenSim | &copy; 2024 Binghamton University |
+          <a href="https://www.binghamton.edu" target="_blank" style="color:white;">Binghamton University</a>
+        </span>
+      </nav>
     </div>
 
     <script src="{{url('/assets/js/vendor/jquery.min.js')}}"></script>

@@ -93,8 +93,7 @@ class PagesController extends Controller
     }
     public function manage(Request $request){
         if (Auth::check()) {
-
-            return view('admin.manage',[
+            return view('pages.manage',[
                 'activities_form_fields'=>Activity::get_form_fields(),
             ]);
         } else {
