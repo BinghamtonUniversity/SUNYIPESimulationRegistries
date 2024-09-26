@@ -21,8 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->name('admin')
                 ->group(base_path('routes/admin.php'));
         },
-    )
-    ->withMiddleware(function (Middleware $middleware) {
+    )->withMiddleware(function (Middleware $middleware) {
         $middleware->group('web', [
             \Illuminate\Cookie\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -56,7 +55,13 @@ return Application::configure(basePath: dirname(__DIR__))
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \App\Http\Middleware\Initialization::class,
         ]);
-    })
-    ->withExceptions(function (Exceptions $exceptions) {
+        $middleware->trustProxies(at: '*');
+        $middleware->trustProxies(headers: Request::HEADER_X_FORWARDED_FOR |
+            Request::HEADER_X_FORWARDED_HOST |
+            Request::HEADER_X_FORWARDED_PORT |
+            Request::HEADER_X_FORWARDED_PROTO |
+            Request::HEADER_X_FORWARDED_AWS_ELB
+        );
+    })->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
