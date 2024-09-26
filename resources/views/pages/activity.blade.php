@@ -11,6 +11,15 @@
 @endsection
 
 @section('content')
+
+@if($activity->status !== 'approved')
+    <div class="alert alert-warning">
+        This submission is currently under review and cannot be viewed.
+        Please try back at a later date.
+    </div>
+@endif
+
+@if($activity->status === 'approved')
 <div class="panel panel-default">   
     <div class="panel-body">
         <div class="row">
@@ -67,4 +76,5 @@
         <i class="fa fa-file-o fa-4x"></i>
     </div>
 </div>
+@endif
 @endsection

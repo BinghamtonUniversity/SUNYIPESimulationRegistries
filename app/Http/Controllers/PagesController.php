@@ -48,7 +48,7 @@ class PagesController extends Controller
             if ($request->is_simulation === true) {
                 $q->orWhere('is_simulation',true);
             }
-        })->get()->pluck('id');
+        })->where('status','approved')->get()->pluck('id');
 
         $activity_values = ActivityValue::select('activity_id','value_id')
             ->whereIn('activity_id',$activity_ids)

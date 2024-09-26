@@ -49,9 +49,15 @@ Route::prefix('auth')->group(function () {
     });
     Route::get('callback', function () {
         $bingwayfuser = Socialite::driver('bingwayf')->stateless()->user();
-        $user = User::where('email',$bingwayfuser->user['email'])->first();
+        $user = User::where('unique_id',$bingwayfuser->user['preferred_username'])->first();
         if (is_null($user)) {
-            return response('Permission Denied',301);
+            $user = new User([
+                'first_name' => $bingwayfuser->user['given_name'],
+                'last_name' => $bingwayfuser->user['family_name'],
+                'unique_id' => $bingwayfuser->user['preferred_username'],
+                'email' => $bingwayfuser->user['email'],
+            ]);
+            $user->save();
         }
         Auth::login($user);
         return redirect(route('home'));

@@ -56,7 +56,7 @@ class ActivityPolicy
                     ->orWhere('permission','view_activities');
             })->exists()
             ||
-            $activity->user == $user->id;
+            $activity->user->id == $user->id;
     }
 
     /**

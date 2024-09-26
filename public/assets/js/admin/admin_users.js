@@ -10,6 +10,10 @@ ajax.get('/api/users',function(data) {
             count:20,
             schema:[
                 {name:'id',type:'hidden'},
+                {name:'first_name',type:'text',label:'First Name'},
+                {name:'last_name',type:'text',label:'Last Name'},
+                {name:'email',type:'email',label:'Email'},
+                {name:'unique_id',type:'text',label:'Unique ID'},
                 {
                     name:'campus_id',type:"combobox",label:'Institution',
                     options:"/api/campuses",
@@ -18,11 +22,7 @@ ajax.get('/api/users',function(data) {
                         value:"{{id}}",
                         display:"{{name}}"
                     }
-                },
-                {name:'first_name',type:'text',label:'First Name'},
-                {name:'last_name',type:'text',label:'Last Name'},
-                {name:'password',type:'password',label:'Password'},
-                {name:'email',type:'email',label:'Email'},
+                }
             ],
             data:data
         }).on("model:created",function(grid_event) {

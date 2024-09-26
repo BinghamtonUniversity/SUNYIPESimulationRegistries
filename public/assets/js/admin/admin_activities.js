@@ -8,7 +8,7 @@ ajax.get('/api/activities',function(data) {
             sortBy:'order',
             actions:actions,
             count:20,
-            schema:[...form_fields,
+            schema:[
                 {label:"Submitter", name:'submitter_id',type:'user'},
                 {label:"Status", name:'status',type:'select', options:[
                     {
@@ -25,7 +25,7 @@ ajax.get('/api/activities',function(data) {
                     }
                     ]
                 },
-            ],
+                ...form_fields],
             data:data
         }).on("model:created",function(grid_event) {
             ajax.post('/api/activities', grid_event.model.attributes,function(data) {
