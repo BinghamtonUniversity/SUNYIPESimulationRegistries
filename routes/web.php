@@ -19,6 +19,16 @@ Route::get('/search/results',[PagesController::class,'search_results'])->name('s
 Route::get('/activities/{activity}',[PagesController::class,'activity']);
 
 Route::middleware(['web','auth','auth.session'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/',[AdminController::class,'admin'])->name('admin');
+        Route::get('/users',[AdminController::class,'users']);
+        Route::get('/activities/{activity}/logs',[AdminController::class,'activity_logs']);
+        Route::get('/activities',[AdminController::class,'activities']);
+        Route::get('/types',[AdminController::class,'types']);
+        Route::get('/types/{type}/values',[AdminController::class,'values']);
+        Route::get('/campuses',[AdminController::class,'campuses']);
+        Route::get('/site_configurations',[AdminController::class,'site_configurations']);
+    });
     Route::get('/logout', function () {
         Auth::logout();
         return redirect('https://bingwayf.binghamton.edu/logout');

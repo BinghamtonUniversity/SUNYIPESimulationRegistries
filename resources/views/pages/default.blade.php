@@ -76,7 +76,7 @@
         </div>
       </div>
       <nav class="footer navbar-fixed-bottom" style="background-color:#004c93;color:#CCD6DF;text-align:center;">
-        <span>OpenSim | &copy; 2024 Binghamton University</span>
+        <span>OpenSim Registry | &copy; 2024 Binghamton University</span>
       </nav>
     </div>
 

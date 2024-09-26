@@ -21,7 +21,7 @@
     <div class="row">
     @foreach($activities as $activity)
         <div class="col-sm-4">
-        <div class="panel panel-default" style="height:200px;overflow:scroll;">
+        <div class="panel panel-default" style="height:300px;overflow:scroll;">
             <div class="panel-body">
                 <h4>
                     <div class="badge pull-right">

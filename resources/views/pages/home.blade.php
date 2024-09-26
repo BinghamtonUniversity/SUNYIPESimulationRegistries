@@ -18,12 +18,7 @@
                     Binghamton University and across State University of New York (SUNY) institutions. 
                     This platform allows users to <a href="{{route('search')}}">easily search</a>
                     for and access a wide range of validated 
-                    learning activities in healthcare simulation and IPE.
-                </p>
-                <p>
-                    Key features include user login for tracking activity, flexible reporting options, and 
-                    the ability to download activity PDFs. Data entry is restricted to approved users, 
-                    ensuring the integrity and quality of the content.
+                    learning activities in healthcare simulation and interprofessional education (IPE).
                 </p>
                 <p>
                     This registry serves as a centralized resource for managing and coordinating educational 
