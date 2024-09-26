@@ -3,7 +3,7 @@
 @section('title',"Manage: ".Auth::user()->name)
 
 @section('content')
-<h1 style="text-align:center;">Manage My Entries</h1>
+<h1 style="text-align:center;">Manage My Activities</h1>
 <div class="alert alert-info" style="margin-top:15px;">
     <h3 style="margin-top:0px;">Instructions:</h3>
     Use the <div class="btn btn-success btn-xs">New</div> button below to create a new project listing.  <br>

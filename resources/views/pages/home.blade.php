@@ -3,12 +3,12 @@
 @section('title', 'OpenSim')
 
 @section('content')
-<h1 style="text-align:center;">OpenSim</h1>
+<h1 style="text-align:center;"><i class="fa fa-medkit fa-fw"></i> OpenSim</h1>
 <div class="row">
 <div class="col-sm-6" style="font-size:20px;">
 <p>
     Welcome to the OpenSim, 
-    an open-source database designed to enhance experiential learning activities at 
+    an open-source registry designed to enhance experiential learning activities at 
     Binghamton University and across State University of New York (SUNY) institutions. 
     Our platform allows users to <a href="{{route('search')}}">easily search</a>
     for and access a wide range of validated 
@@ -27,6 +27,9 @@
     a network that enhances educational experiences and encourages the exchange of ideas and 
     successful strategies across disciplines.
 </p>
+<p>
+    For more information, <a href="https://www.binghamton.edu/decker/clinics-centers/ispc/contact.html" target="_blank">
+    contact</a> the Binghamton University Innovative Simulation and Practice Center
 </div>
 <div class="col-sm-6">
     <img src="https://www.binghamton.edu/news/images/uploads/features/P1040099.jpg" style="width:100%;">

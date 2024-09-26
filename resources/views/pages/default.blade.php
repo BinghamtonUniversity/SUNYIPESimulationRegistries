@@ -36,7 +36,7 @@
       <ul class="nav navbar-nav">
         <li @if(request()->routeIs('home')) class="active" @endif><a href="{{route('home')}}"><i class="fa fa-home fa-fw"></i> Home <span class="sr-only">(current)</span></a></li>
         <li @if(request()->routeIs('search')) class="active" @endif><a href="{{route('search')}}"><i class="fa fa-search fa-fw"></i> Search</a></li>
-        @auth<li @if(request()->routeIs('manage')) class="active" @endif><a href="{{route('manage')}}"><i class="fa fa-cog fa-fw"></i> Manage My Entries</a></li>@endauth
+        @auth<li @if(request()->routeIs('manage')) class="active" @endif><a href="{{route('manage')}}"><i class="fa fa-cog fa-fw"></i> Manage My Activities</a></li>@endauth
       </ul>
       <!--
       <form class="navbar-form navbar-left">
@@ -52,7 +52,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{route('admin')}}"><i class="fa fa-cog fa-fw"></i> Admin</a></li>
+            <li><a href="/admin"><i class="fa fa-cog fa-fw"></i> Admin</a></li>
             <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
           </ul>
         </li>
@@ -74,10 +74,8 @@
           @yield('content')
         </div>
       </div>
-      <nav class="footer navbar-fixed-bottom"  style="background-color:#004c93; color: #CCD6DF;text-align: center;">
-        <span>OpenSim | &copy; 2024 Binghamton University |
-          <a href="https://www.binghamton.edu" target="_blank" style="color:white;">Binghamton University</a>
-        </span>
+      <nav class="footer navbar-fixed-bottom" style="background-color:#004c93;color:#CCD6DF;text-align:center;">
+        <span>OpenSim | &copy; 2024 Binghamton University</span>
       </nav>
     </div>
 

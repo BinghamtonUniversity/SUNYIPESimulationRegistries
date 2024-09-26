@@ -49,7 +49,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/admin" style="background: #004c93;width:200px;">
-            <h4 style="color:#fff;margin:0px;"><i class="fa fa-user-circle fa-fw"></i> OpenSim</h4>
+            <h4 style="color:#fff;margin:0px;"><i class="fa fa-medkit fa-fw"></i> OpenSim Admin</h4>
           </a>
             <ul class="nav navbar-nav  hidden-xs">
                 <li><a href="#"><h4 style="margin:0">{{$title}}</h4></a></li>
@@ -61,7 +61,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-          <li><a href="/"><h4 style="margin:0;">OpenSim Admin</h4></a>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle identity-info" data-toggle="dropdown" role="button">
 {{--                <img class="gravatar" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?d=mm" />--}}
@@ -72,14 +71,11 @@
                 <li><a href="/"><i class="fa fa-arrow-left"></i> Home</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
               </ul>
-
               <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
               <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
               <li class="visible-xs-block @if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-user fa-fw"></i>&nbsp; Types</a></li>
-
               <li class="visible-xs-block @if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
               <li class="visible-xs-block @if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
-                <li class="visible-xs-block"><a href="https://github.com/BinghamtonUniversity/IPESimulationRegistries/wiki" target="_blank"><i class="fa fa-info fa-fw"></i>&nbsp; View Documentation</a></li>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right visible-xs-block">
@@ -89,14 +85,13 @@
       </div>
     </nav>
     <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-            <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
-            <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
-            <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
-            <li class="@if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-user fa-fw"></i>&nbsp;Types</a></li>
-            <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
-            <li><a href="https://github.com/BinghamtonUniversity/IPESimulationRegistries/wiki" target="_blank"><i class="fa fa-fw fa-info"></i>&nbsp; View Documentation</a></li>
-        </ul>
+      <ul class="nav nav-sidebar">
+        <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-user fa-fw"></i>&nbsp; Users</a></li>
+        <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-user fa-fw"></i>&nbsp; Activities</a></li>
+        <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-user fa-fw"></i>&nbsp;Campuses</a></li>
+        <li class="@if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-user fa-fw"></i>&nbsp;Types</a></li>
+        <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-user fa-fw"></i>&nbsp; Site Configurations</a></li>
+      </ul>
     </div>
     <div class="container-fluid" id="main-container">
       <div class="row">
