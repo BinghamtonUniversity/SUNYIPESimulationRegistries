@@ -8,6 +8,7 @@ use App\Models\Activity;
 use App\Models\ActivityLog;
 use App\Models\ActivityValue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ActivityController extends Controller
 {
@@ -38,6 +39,7 @@ class ActivityController extends Controller
     public function store(StoreActivityRequest $request)
     {
         $activity = new Activity($request->all());
+        $activity->submitter_id = Auth::user()->id;
         $activity->save();
         foreach($request->all() as $type => $value) {
             if(str_starts_with( $type, "type_")) {
@@ -115,8 +117,8 @@ class ActivityController extends Controller
      */
     public function destroy(Request $request, Activity $activity)
     {
+        ActivityValue::where('activity_id',$activity->id)->delete();
         $activity->delete();
-
         return 1;
     }
 

@@ -23,16 +23,14 @@ class StoreActivityRequest extends FormRequest
     {
         return [
             "title" => ["required", "string", "max:255"],
-            "description" => ["required", "string", "max:500"],
+            "description" => ["required", "string", "max:65535"],
             "is_ipe"=>["boolean"],
             "is_simulation"=>["boolean"],
-            "submitter_id"=>["required","integer"],
             "contact_name" => ["required", "string", "max:255"],
             "contact_email" => ["required", "email"],
-            "ksa_requirement" => ["required", "string", "max:255"],
-            "learning_objectives"=>["required", "string", "max:255"],
+            "ksa_requirement" => ["required", "string", "max:65535"],
+            "learning_objectives"=>["required", "string", "max:65535"],
             "number_of_learners"=>["required", "integer"],
-            "status"=>["required", "string", "in:submitted,review,approved"]
         ];
     }
 }

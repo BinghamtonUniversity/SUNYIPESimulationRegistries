@@ -17,11 +17,11 @@ return new class extends Migration
             $table->boolean('is_ipe')->default(false)->index();
             $table->boolean('is_simulation')->default(false)->index();
             $table->string('title');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('contact_name')->nullable();
             $table->string('contact_email')->nullable();
-            $table->string('ksa_requirement')->nullable();
-            $table->string('learning_objectives')->nullable();
+            $table->text('ksa_requirement')->nullable();
+            $table->text('learning_objectives')->nullable();
             $table->unsignedInteger('number_of_learners')->nullable();
             $table->enum('status',['submitted','review','approved'])->default('submitted')->index();
             $table->unsignedBigInteger('approved_by')->nullable();

@@ -90,6 +90,8 @@
     <script src="{{url('/assets/js/vendor/GrapheneDataGrid.min.js')}}"></script>
     <script src="{{url('/assets/js/vendor/moment.js')}}"></script>
     <script src="{{url('/assets/js/vendor/bootstrap-datetimepicker.min.js')}}"></script>
+    <script src='/assets/js/vendor/ractive.min.js'></script>
+    <script src="/assets/js/_framework.js"></script>
     <script type="text/javascript">
     var root_url = "{{url('/')}}";
     </script>

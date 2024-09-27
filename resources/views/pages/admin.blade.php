@@ -155,7 +155,7 @@
     <script src='/assets/js/vendor/bootstrap-datetimepicker.min.js'></script>
     <script src='/assets/js/vendor/sortable.js'></script>
     <script src='/assets/js/vendor/ractive.min.js'></script>
-    <script src="/assets/js/admin/_framework.js"></script>
+    <script src="/assets/js/_framework.js"></script>
     <script src="/assets/js/admin/admin.js"></script>
     <script>
         @if(isset($id)) window.id={!!json_encode($id)!!}; @endif

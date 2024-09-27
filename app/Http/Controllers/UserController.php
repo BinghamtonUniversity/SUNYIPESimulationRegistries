@@ -128,9 +128,4 @@ class UserController extends Controller
         }
         return $activities;
     }
-    public function add_user_activity(StoreActivityRequest $request, User $user) {
-        $activity = new Activity($request->all());
-        $activity->save();
-        return $activity;
-    }
 }

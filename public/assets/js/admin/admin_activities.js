@@ -9,7 +9,7 @@ ajax.get('/api/activities',function(data) {
             actions:actions,
             count:20,
             schema:[
-                {label:"Submitter", name:'submitter_id',type:'user'},
+                {label:"Submitter", name:'submitter_id',type:'user',show:false},
                 {label:"Status", name:'status',type:'select', options:[
                     {
                         label:"Submitted",

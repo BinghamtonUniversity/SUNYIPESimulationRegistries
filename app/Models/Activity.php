@@ -85,6 +85,13 @@ class Activity extends Model
                 "type" => "hidden"
             ],
             [
+                "name" => "title",
+                "type" => "text",
+                "label" => "Title",
+                "required" => true,
+                "limit" => 255,
+            ],
+            [
                 "name" => "is_ipe",
                 "type" => "switch",
                 "label" => "IPE Related",
@@ -115,18 +122,12 @@ class Activity extends Model
                 ]
             ],
             [
-                "name" => "title",
-                "type" => "text",
-                "label" => "Title",
-                "required" => true,
-                "limit" => 255,
-            ],
-            [
                 "name" => "description",
                 "type" => "textarea",
                 "label" => "Description",
                 "required" => true,
-                "limit" => 255,
+                "limit" => 65535,
+                "showColumn"=>false,
             ],
             [
                 "name" => "contact_name",
@@ -144,23 +145,26 @@ class Activity extends Model
             ],
             [
                 "name" => "ksa_requirement",
-                "type" => "text",
+                "type" => "textarea",
                 "label" => "KSA Requirements",
                 "required" => true,
-                "limit" => 255,
+                "limit" => 65535,
+                "showColumn"=>false,
             ],
             [
                 "name" => "learning_objectives",
-                "type" => "text",
+                "type" => "textarea",
                 "label" => "Learning Objectives",
                 "required" => true,
-                "limit" => 255,
+                "limit" => 65535,
+                "showColumn"=>false,
             ],
             [
                 "name" => "number_of_learners",
                 "type" => "number",
                 "label" => "Number of Learners",
                 "required" => true,
+                "showColumn"=>false,
             ]
         ];
 

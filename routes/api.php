@@ -15,7 +15,6 @@ Route::get('/users/search/{search_string?}',[UserController::class,'search'])->m
 Route::get('/users',[UserController::class,'index'])->middleware('can:view,App\Models\User');
 Route::get('/users/{user}/activities',[UserController::class,'get_user_activites']);
 Route::get('/users/{user}',[UserController::class, 'show'])->middleware('can:view,App\Models\User');
-Route::post('/users/{user}/activities',[UserController::class,'add_user_activity']);
 Route::post('/users',[UserController::class,'store'])->middleware('can:create,App\Models\User');
 Route::put('/users/{user}/permissions',[UserController::class,'update_permissions'])->middleware('can:manage_user_permissions,App\Models\User');
 Route::put('/users/{user}',[UserController::class,'update'])->middleware('can:update,App\Models\User');
@@ -24,9 +23,9 @@ Route::put('/users/{user}',[UserController::class,'update'])->middleware('can:up
 Route::get('/activities',[ActivityController::class,'index'])->middleware('can:viewAny,App\Models\Activity');
 Route::get('/activities/{activity}/logs',[ActivityController::class, 'index_logs'])->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}',[ActivityController::class, 'show'])->middleware('can:view,activity');
-Route::post('/activities',[ActivityController::class,'store'])->middleware('can:create,App\Models\Activity');
-Route::put('/activities/{activity}',[ActivityController::class,'update'])->middleware('can:update,activity');
-Route::delete('/activities/{activity}',[ActivityController::class,'destroy'])->middleware('can:delete,activity');
+Route::post('/activities',[ActivityController::class,'store']);//->middleware('can:create,App\Models\Activity');
+Route::put('/activities/{activity}',[ActivityController::class,'update']);//->middleware('can:update,activity');
+Route::delete('/activities/{activity}',[ActivityController::class,'destroy']);//->middleware('can:delete,activity');
 Route::get('/activities/form_fields/default',[ActivityController::class,'get_form_fields']);
 Route::get('/activities/form_fields/search',[ActivityController::class,'get_search_form_fields']);
 
