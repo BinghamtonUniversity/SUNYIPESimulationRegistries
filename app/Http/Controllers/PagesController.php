@@ -42,10 +42,10 @@ class PagesController extends Controller
             return view('pages.search_results',['error'=>'You must specify at least one type!','activities'=>[]]);
         }
         $activity_ids = Activity::select('id')->where(function($q) use ($request) {
-            if ($request->is_ipe === true) {
+            if ($request->is_ipe == 'true') {
                 $q->orWhere('is_ipe',true);
             }
-            if ($request->is_simulation === true) {
+            if ($request->is_simulation == 'true') {
                 $q->orWhere('is_simulation',true);
             }
         })->where('status','approved')->get()->pluck('id');
@@ -73,15 +73,7 @@ class PagesController extends Controller
             $ranked_activity_ids[$activity_value->activity_id]['values'][] = $activity_value->value->value;
         }
         $ranked_activity_ids = collect($ranked_activity_ids)->sortBy('count')->reverse();
-        $activities = Activity::whereIn('id',$ranked_activity_ids->pluck('id'))
-            ->where(function($q) use ($request) {
-                if ($request->is_ipe === true) {
-                    $q->orWhere('is_ipe',true);
-                }
-                if ($request->is_simulation === true) {
-                    $q->orWhere('is_simulation',true);
-                }
-            })->where('status','approved')->get()
+        $activities = Activity::whereIn('id',$ranked_activity_ids->pluck('id'))->get()
             ->map(function($activity) use ($ranked_activity_ids) {
                 $activity->count = $ranked_activity_ids[$activity->id]['count'];
                 $activity->matches = $ranked_activity_ids[$activity->id]['values'];
