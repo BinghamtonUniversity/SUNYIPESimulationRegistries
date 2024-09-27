@@ -1,6 +1,6 @@
 @extends('pages.default')
 
-@section('title', 'OpenSim')
+@section('title', 'Home')
 
 @section('content')
 <div class="panel panel-default" style="margin-top:20px;">

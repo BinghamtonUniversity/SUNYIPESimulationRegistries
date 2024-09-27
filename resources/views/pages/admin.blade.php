@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon"  type="image/png" href="/assets/icons/fontawesome/gray/32/medkit.png">
-    <title>OpenSim | {{$title}}</title>
+    <title>OpenSim Admin | {{$title}}</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
     <link href="/assets/css/toastr.min.css" rel="stylesheet">

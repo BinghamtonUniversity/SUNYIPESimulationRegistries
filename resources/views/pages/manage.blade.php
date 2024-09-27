@@ -1,6 +1,6 @@
 @extends('pages.default')
 
-@section('title',"Manage: ".Auth::user()->name)
+@section('title',"Manage")
 
 @section('content')
 <div class="panel panel-default" style="margin-top:20px;">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@yield('title')</title>
+    <title>OpenSim | @yield('title')</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
     <link href="/assets/css/toastr.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;"><i class="fa fa-medkit fa-fw"></i> OpenSim</a>
+      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;"><i class="fa fa-medkit fa-fw"></i> OpenSim Registry</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
