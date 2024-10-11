@@ -49,8 +49,16 @@
                     <a href="mailto:{{$activity->contact_email}}">{{$activity->contact_name}}</a>
                 </div>
                 <div>
-                    <strong>KSA Requirement:</strong>
-                    {{$activity->ksa_requirement}}
+                    <strong>Knowledge:</strong>
+                    {{$activity->ksa_knowledge}}
+                </div>
+                <div>
+                    <strong>Skills:</strong>
+                    {{$activity->ksa_skills}}
+                </div>
+                <div>
+                    <strong>Attitudes:</strong>
+                    {{$activity->ksa_attitudes}}
                 </div>
                 <div>
                     <strong>Learning Objectives:</strong>

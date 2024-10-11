@@ -51,6 +51,9 @@ class AdminController extends Controller
         $user_actions[] = ["name"=>"create","label"=>"Create Type"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"manage_values","label"=>"Values","min"=>1,"max"=>1];
+        $user_actions[] = ["|"];
+        $user_actions[] = ["|"];
+        $user_actions[] = ['name'=>'sort', 'max'=>1, 'label'=> '<i class="fa fa-sort"></i> Change Order'];
 
         return view('pages.admin',[
             'page'=>'types',
@@ -63,10 +66,13 @@ class AdminController extends Controller
     public function values(Request $request, Type $type) {
         $user_actions[] = ["name"=>"create","label"=>"Create Value"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
+        $user_actions[] = ["|"];
+        $user_actions[] = ["|"];
+        $user_actions[] = ['name'=>'sort', 'max'=>1, 'label'=> '<i class="fa fa-sort"></i> Change Order'];
 //        dd($type);
         return view('pages.admin',[
             'page'=>'values',
-            'title'=>'Manage Values of'.$type->type,
+            'title'=>'Manage Values of '.$type->type,
             'actions'=>$user_actions,
             "type_id"=>$type->id,
             'help'=>'Use this page to create, search for, view, delete, and modify existing Values.'
@@ -101,7 +107,7 @@ class AdminController extends Controller
 
         return view('pages.admin',[
             'page'=>'activity_logs',
-            'title'=>'Manage Values of'.$activity->title,
+            'title'=>'Manage Values of '.$activity->title,
             'actions'=>$user_actions,
             "id"=>$activity->id,
             'help'=>'Use this page to create, search for, view, delete, and modify existing Values.'

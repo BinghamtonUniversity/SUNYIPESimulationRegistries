@@ -9,7 +9,7 @@ class Activity extends Model
 {
     use HasFactory;
     protected $fillable = ["is_ipe","is_simulation","title","submitter_id","description", "contact_name", "contact_email", "contact_phone",
-        "ksa_requirement","number_of_learners","status",'learning_objectives'];
+        "ksa_knowledge","ksa_skills","ksa_attitudes","number_of_learners","status",'learning_objectives'];
 
     protected $casts = [
         'is_simulation' => 'boolean','is_ipe' => 'boolean'
@@ -144,9 +144,33 @@ class Activity extends Model
                 "limit" => 255,
             ],
             [
-                "name" => "ksa_requirement",
+                "type" => "output",
+                "label" => "",
+                "name" => "",
+                "parse" => false,
+                "showColumn" => false,
+                "format" => ["value" => "<h4>KSA</h4>"]
+            ],
+            [
+                "name" => "ksa_knowledge",
                 "type" => "textarea",
-                "label" => "KSA Requirements",
+                "label" => "Knowledge",
+                "required" => true,
+                "limit" => 65535,
+                "showColumn"=>false,
+            ],
+            [
+                "name" => "ksa_skills",
+                "type" => "textarea",
+                "label" => "Skills",
+                "required" => true,
+                "limit" => 65535,
+                "showColumn"=>false,
+            ],
+            [
+                "name" => "ksa_attitudes",
+                "type" => "textarea",
+                "label" => "Attitudes / Behaviors",
                 "required" => true,
                 "limit" => 65535,
                 "showColumn"=>false,
@@ -168,12 +192,13 @@ class Activity extends Model
             ]
         ];
 
-        $all_types = Type::with('values')->get();
+        $all_types = Type::with('values')->orderBy('order','asc')->get();
         $all_types->each(function($type,$type_index) use (&$form_fields) {
             $field = [
                 "showColumn"=>false,
                 'label' => $type->type,
                 'name' => 'type_'.$type->id,
+                'help' => $type->help_text,
             ];
             if ($type->multi_select === true) {
                 $field['type'] = 'radio';

@@ -20,7 +20,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('contact_name')->nullable();
             $table->string('contact_email')->nullable();
-            $table->text('ksa_requirement')->nullable();
+            $table->text('ksa_knowledge')->nullable();
+            $table->text('ksa_skills')->nullable();
+            $table->text('ksa_attitudes')->nullable();
             $table->text('learning_objectives')->nullable();
             $table->unsignedInteger('number_of_learners')->nullable();
             $table->enum('status',['submitted','review','approved'])->default('submitted')->index();

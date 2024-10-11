@@ -28,7 +28,9 @@ class StoreActivityRequest extends FormRequest
             "is_simulation"=>["boolean"],
             "contact_name" => ["required", "string", "max:255"],
             "contact_email" => ["required", "email"],
-            "ksa_requirement" => ["required", "string", "max:65535"],
+            "ksa_knowledge" => ["required", "string", "max:65535"],
+            "ksa_skills" => ["required", "string", "max:65535"],
+            "ksa_attitudes" => ["required", "string", "max:65535"],
             "learning_objectives"=>["required", "string", "max:65535"],
             "number_of_learners"=>["required", "integer"],
         ];

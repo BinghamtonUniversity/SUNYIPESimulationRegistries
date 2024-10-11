@@ -43,10 +43,20 @@
                         <strong>Contact Email: </strong> <a href="mailto:{{$activity->contact_email}}">{{$activity->contact_email}}</a>
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-sm-6">
-                        <strong>KSA Requirements: </strong> {{$activity->ksa_requirements}}
+                        <strong>Knowledge: </strong> {{$activity->ksa_knowledge}}
                     </div>
+                    <div class="col-sm-6">
+                        <strong>Skills: </strong> {{$activity->ksa_skills}}
+                    </div>
+                    <div class="col-sm-6">
+                        <strong>Attitudes / Behaviors: </strong> {{$activity->ksa_attitudes}}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
                     <div class="col-sm-6">
                         <strong>Number of Learners: </strong> {{$activity->number_of_learners}}
                     </div>

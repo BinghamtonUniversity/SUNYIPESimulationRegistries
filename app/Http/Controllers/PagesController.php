@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Activity;
 use App\Models\ActivityValue;
+use App\Models\Type;
 
 class PagesController extends Controller
 {
@@ -83,6 +84,16 @@ class PagesController extends Controller
         return view('pages.search_results',[
             'title'=>'Search Results',
             'activities' => $activities,
+        ]);
+    }
+
+    public function glossary(){
+        $types = Type::with('values')->get();
+        return view('pages.glossary',[
+            'title'=>'Glossary',
+            'data'=>[
+                'types' => $types
+            ]
         ]);
     }
 

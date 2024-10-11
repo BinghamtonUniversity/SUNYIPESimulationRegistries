@@ -52,12 +52,13 @@ Route::delete('/files/{file}',[FileController::class,'destroy']);
 Route::get('/types',[TypeController::class,'index'])->middleware('can:view,App\Models\Type');
 Route::get('/types/{type}',[TypeController::class, 'show'])->middleware('can:view,App\Models\Type');
 Route::post('/types',[TypeController::class,'store'])->middleware('can:manage,App\Models\Type');
+Route::put('/types/order',[TypeController::class,'order'])->middleware('can:manage,App\Models\Type');
 Route::put('/types/{type}',[TypeController::class,'update'])->middleware('can:manage,App\Models\Type');
 Route::delete('/types/{type}',[TypeController::class,'destroy'])->middleware('can:manage,App\Models\Type');
 
 Route::get('/types/{type}/values',[TypeController::class,'value_index'])->middleware('can:manage,App\Models\Type');
 Route::get('/types/{type}/values/{value}',[TypeController::class, 'value_show'])->middleware('can:manage,App\Models\Type');
 Route::post('/types/{type}/values',[TypeController::class,'value_store'])->middleware('can:manage,App\Models\Type');
+Route::put('/types/{type}/values/order',[TypeController::class,'value_order'])->middleware('can:manage,App\Models\Type');
 Route::put('/types/{type}/values/{value}',[TypeController::class,'value_update'])->middleware('can:manage,App\Models\Type');
 Route::delete('/types/{type}/values/{value}',[TypeController::class,'value_destroy'])->middleware('can:manage,App\Models\Type');
-
