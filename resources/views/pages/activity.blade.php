@@ -58,6 +58,9 @@
                 <hr>
                 <div class="row">
                     <div class="col-sm-6">
+                        <strong>Learning Objectives: </strong> {{$activity->learning_objectives}}
+                    </div>
+                    <div class="col-sm-6">
                         <strong>Number of Learners: </strong> {{$activity->number_of_learners}}
                     </div>
                 </div>

@@ -75,6 +75,7 @@
         <li class="@if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-table fa-fw"></i>&nbsp;Types</a></li>
         <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-university fa-fw"></i>&nbsp;Institutions</a></li>
         <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-cogs fa-fw"></i>&nbsp; Site Configuration</a></li>
+        <li onclick="localStorage.clear();location.reload(true);"><a href="#"><i class="fa fa-code fa-fw"></i>&nbsp; Clear Cache</a></li>
       </ul>
     </div>
     <div class="container-fluid" id="main-container">
