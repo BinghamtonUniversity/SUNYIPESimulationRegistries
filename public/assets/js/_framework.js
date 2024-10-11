@@ -9,6 +9,7 @@ window.app = {
 window.templates = {
     main: ''
 }
+window.forms = [];
 
 var ractive = Ractive({
     target: '#main_target',

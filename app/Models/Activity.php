@@ -199,6 +199,7 @@ class Activity extends Model
                 'label' => $type->type,
                 'name' => 'type_'.$type->id,
                 'help' => $type->help_text,
+                "required" => true,
             ];
             if ($type->multi_select === true) {
                 $field['type'] = 'radio';
@@ -220,6 +221,16 @@ class Activity extends Model
                     'name'=> 'is_simulation',
                     'value'=> [true]
                 ];
+            }
+            if ($type->multi_select === false) {
+                $default_option = [
+                    'label' => '', // Default Option
+                    'type' => 'optgroup',
+                    'show' => true,
+                    'options' => [['label' => '== Please Select a '.$type->type.' ==','value' => null]]
+                ];
+            } else {
+                $default_option = null;
             }
             $ipe_only_options = [
                 'label' => '', // IPE Only
@@ -274,7 +285,7 @@ class Activity extends Model
                         return ['label' => $value->value,'value' => 'value_'.$value->id];
                     })->values()->toArray(),
             ];
-            $field['options'] = [$all_options,$ipe_only_options,$simulation_only_options];
+            $field['options'] = [$default_option,$all_options,$ipe_only_options,$simulation_only_options];
             $form_fields[] = $field;
         });
         return $form_fields;

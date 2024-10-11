@@ -88,6 +88,32 @@
     <div class="panel-body">
         <i class="fa fa-file-o fa-4x"></i>
     </div>
+    <div class="btn btn-xl btn-primary download_files">Download Files</div>
 </div>
 @endif
+@endsection
+
+@section('scripts')
+    window.forms['download_form'] = {"name":"download_form","legend":"Please Provide Your Contact Information",
+        "actions":[
+            {"type": "cancel","action": "cancel","label": "<i class=\"fa fa-times\"></i> Cancel","modifiers": "btn btn-danger"},
+            {"type":"save","action":"save","label":"Download Files","modifiers":"btn btn-info"},
+        ],
+        "fields":[
+            {"label":"Your Name","name":"name","type":"text","required":true,"limit":255},
+            {"label":"Your Organization","name":"name","type":"text","required":true,"limit":255},
+            {"type":"email","label":"Email","name":"email","required":true},
+        ]
+    }
+    app.form('download_form').on('save',function(e) {
+        if (e.form.validate()) {
+            e.form.trigger('close');
+            toastr.success('Prentending to Download Files...');
+        }
+    }).on('cancel',function(e) {
+        e.form.trigger('close');
+    })
+    app.click('.download_files',function() {
+        app.form('download_form').modal();
+    })
 @endsection
