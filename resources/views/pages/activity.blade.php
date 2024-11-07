@@ -92,7 +92,7 @@
         <div class="row">
             @foreach($files as $file)
                 <div class="col-sm-3" style="text-align:center;">
-                    <div class="btn btn-primary download_files">
+                    <div class="btn btn-primary download_files" data-file_id="{{$file->id}}" data-activity_id="{{$activity->id}}">
                         <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
                         <div>{{$file->name}}.{{$file->ext}}</div>
                     </div>
@@ -111,20 +111,26 @@
             {"type":"save","action":"save","label":"Download Files","modifiers":"btn btn-info"},
         ],
         "fields":[
+            {name:"activity_id",type:"hidden"},
+            {name:"file_id",type:"hidden"},
             {"label":"Your Name","name":"name","type":"text","required":true,"limit":255},
             {"label":"Your Organization","name":"name","type":"text","required":true,"limit":255},
             {"type":"email","label":"Email","name":"email","required":true},
         ]
     }
     app.form('download_form').on('save',function(e) {
+        var form_data = e.form.get();
         if (e.form.validate()) {
             e.form.trigger('close');
             toastr.success('Prentending to Download Files...');
+            window.open('/api/activities/'+form_data.activity_id+'/files/'+form_data.file_id, '_blank');
         }
     }).on('cancel',function(e) {
         e.form.trigger('close');
     })
-    app.click('.download_files',function() {
+    app.click('.download_files',function(e) {
+        var data = e.target.closest('.btn').dataset;
+        app.form('download_form').set(data);
         app.form('download_form').modal();
     })
 @endsection

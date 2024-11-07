@@ -6,6 +6,7 @@ use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Activity;
 use App\Models\ActivityLog;
 use App\Models\ActivityValue;
@@ -137,6 +138,25 @@ class ActivityController extends Controller
         ]);
         $uploaded_file->user_id_created = Auth::user()->id;
         $uploaded_file->save();
+
+        $path = 'activities/'.$activity->id;
+        if (!Storage::disk('local')->exists($path)) {
+            Storage::disk('local')->makeDirectory($path);
+        }    
+
+        $new_file_name = $uploaded_file->id.'.'.$uploaded_file->ext;
+        $filePath = Storage::disk('local')->putFileAs($path, $file, $new_file_name);
+
+        return response()->json(['filePath' => $filePath]);
+    }
+
+    public function download_file(Request $request, Activity $activity, File $file) {
+        $file_path = 'activities/'.$activity->id.'/'.$file->id.'.'.$file->ext;
+        if (Storage::disk('local')->exists($file_path)) {
+            return Storage::disk('local')->download($file_path, $file->name.'.'.$file->ext);
+        } else {
+            return response()->json(['message' => 'File does not exist'], 404);
+        }
     }
 
     public function rename_file(Request $request, Activity $activity, File $file) {
@@ -149,6 +169,10 @@ class ActivityController extends Controller
         $file->user_id_deleted = Auth::user()->id;
         $file->save();
         $file->delete();
+        $file_path = 'activities/'.$activity->id.'/'.$file->id.'.'.$file->ext;
+        if (Storage::disk('local')->exists($file_path)) {
+            Storage::disk('local')->delete($file_path);
+        } 
         return 1;
     }
 

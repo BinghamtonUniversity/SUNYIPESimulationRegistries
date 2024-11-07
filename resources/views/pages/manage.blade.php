@@ -36,9 +36,9 @@ window.templates.files_modal = `
         @{{/files.length}}
         <div class="row">
             @{{#files}}
-                <div class="col-sm-6" style="text-align:center;">
+                <div class="col-sm-6" style="text-align:center;margin-bottom:15px;">
                     <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
-                    <div><input id="file-@{{id}}" type="text" value="@{{name}}" style="margin-top:10px;">.@{{ext}}</div>
+                    <div><input id="file-@{{id}}" type="text" value="@{{name}}" style="margin-top:10px;width:80%;display:inline" class="form-control">.@{{ext}}</div>
                     <div class="btn btn-xs btn-info rename-file" data-id="@{{id}}" style="margin-top:10px;">Rename</div>
                     <div class="btn btn-xs btn-danger delete-file" data-id="@{{id}}" style="margin-top:10px;">Delete</div>
                 </div>
@@ -154,10 +154,12 @@ app.pond = FilePond.create(document.querySelector('input[type="file"]'), {
 });
 app.pond.on('processfile', (error, file) => {
     if (error) {
+        toastr.error("File Upload Error!")
         console.log('Error processing file:', error);
     } else {
         console.log('File processed successfully:', file);
         app.get('/api/activities/'+app.data.current_activity.id+'/files',function(data) {
+            toastr.success("File Uploaded!")
             app.data.files = data;
             app.update();
             app.pond.removeFiles();

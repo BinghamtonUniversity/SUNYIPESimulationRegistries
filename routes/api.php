@@ -25,6 +25,7 @@ Route::get('/activities/{activity}/files',[ActivityController::class, 'index_fil
 Route::post('/activities/{activity}/files',[ActivityController::class, 'upload_file']);//->middleware('can:viewLogs,activity');
 Route::put('/activities/{activity}/files/{file}',[ActivityController::class, 'rename_file']);//->middleware('can:viewLogs,activity');
 Route::delete('/activities/{activity}/files/{file}',[ActivityController::class, 'delete_file']);//->middleware('can:viewLogs,activity');
+Route::get('/activities/{activity}/files/{file}',[ActivityController::class, 'download_file']);//->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}/logs',[ActivityController::class, 'index_logs'])->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}',[ActivityController::class, 'show'])->middleware('can:view,activity');
 Route::post('/activities',[ActivityController::class,'store']);//->middleware('can:create,App\Models\Activity');
@@ -44,13 +45,6 @@ Route::get('/site_configurations',[SiteConfigurationController::class,'index'])-
 Route::get('/site_configurations/{site_configuration}',[SiteConfigurationController::class, 'show'])->middleware('can:manage,App\Models\SiteConfiguration');
 Route::post('/site_configurations',[SiteConfigurationController::class,'store'])->middleware('can:manage,App\Models\SiteConfiguration');
 Route::put('/site_configurations/{site_configuration}',[SiteConfigurationController::class,'update'])->middleware('can:manage,App\Models\SiteConfiguration');
-
-/* File routes */
-Route::get('/files',[FileController::class,'index']);
-Route::get('/files/{file}',[FileController::class, 'show']);
-Route::post('/files',[FileController::class,'create']);
-Route::put('/files/{file}',[FileController::class,'update']);
-Route::delete('/files/{file}',[FileController::class,'destroy']);
 
 /* Types */
 Route::get('/types',[TypeController::class,'index'])->middleware('can:view,App\Models\Type');
