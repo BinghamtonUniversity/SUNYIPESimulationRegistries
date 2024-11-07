@@ -154,7 +154,7 @@ app.pond.on('processfile', (error, file) => {
         app.get('/api/activities/'+app.data.current_activity.id+'/files',function(data) {
             app.data.files = data;
             app.update();
-            pond.removeFiles();
+            app.pond.removeFiles();
         });
     }
 });
