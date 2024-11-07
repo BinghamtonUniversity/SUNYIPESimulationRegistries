@@ -22,7 +22,7 @@ Route::put('/users/{user}',[UserController::class,'update'])->middleware('can:up
 /* Activity Routes */
 Route::get('/activities',[ActivityController::class,'index'])->middleware('can:viewAny,App\Models\Activity');
 Route::get('/activities/{activity}/files',[ActivityController::class, 'index_files']);//->middleware('can:viewLogs,activity');
-// Route::post('/activities/{activity}/files',[ActivityController::class, 'upload_file']);//->middleware('can:viewLogs,activity');
+Route::post('/activities/{activity}/files',[ActivityController::class, 'upload_file']);//->middleware('can:viewLogs,activity');
 Route::put('/activities/{activity}/files/{file}',[ActivityController::class, 'rename_file']);//->middleware('can:viewLogs,activity');
 Route::delete('/activities/{activity}/files/{file}',[ActivityController::class, 'delete_file']);//->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}/logs',[ActivityController::class, 'index_logs'])->middleware('can:viewLogs,activity');

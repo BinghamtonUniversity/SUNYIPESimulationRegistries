@@ -9,8 +9,9 @@
     </div>
 </div><div class="alert alert-info" style="margin-top:15px;">
     <h3 style="margin-top:0px;">Instructions:</h3>
-    Use the <div class="btn btn-success btn-xs">New</div> button below to create a new project listing.  <br>
-    Select the <i class="fa fa-check-square-o"></i> next to the listing you want to modify and click <div class="btn btn-primary btn-xs">Edit</div> or <div class="btn btn-danger btn-xs">Delete</div>
+    Use the <div class="btn btn-success btn-xs">Add Activity</div> button below to create a new activity. <br>
+    Select the <i class="fa fa-check-square-o"></i> next to the activity you want to modify and click <div class="btn btn-primary btn-xs">Update Activity</div> or <div class="btn btn-danger btn-xs">Delete Activity</div> <br>
+    To upload or modify files associated with a particular activity, select the <i class="fa fa-check-square-o"></i> next to the appropriate activity and click <div class="btn btn-default btn-xs">Manage Files</div>
 </div>
 <div id="admin-update-activities"></div>
 
@@ -29,19 +30,22 @@ window.templates.files_modal = `
         <h4 class="modal-title">@{{current_activity.title}}</h4>
       </div>
       <div class="modal-body">
-        <div class="row">
+        
         @{{^files.length}}
             <div class="alert alert-warning">No files have been uploaded yet!</div>
         @{{/files.length}}
-        @{{#files}}
-            <div class="col-sm-6" style="text-align:center;">
-                <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
-                <div><input id="file-@{{id}}" type="text" value="@{{name}}" style="margin-top:10px;">.@{{ext}}</div>
-                <div class="btn btn-xs btn-info rename-file" data-id="@{{id}}" style="margin-top:10px;">Rename</div>
-                <div class="btn btn-xs btn-danger delete-file" data-id="@{{id}}" style="margin-top:10px;">Delete</div>
-            </div>
-        @{{/files}}
+        <div class="row">
+            @{{#files}}
+                <div class="col-sm-6" style="text-align:center;">
+                    <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
+                    <div><input id="file-@{{id}}" type="text" value="@{{name}}" style="margin-top:10px;">.@{{ext}}</div>
+                    <div class="btn btn-xs btn-info rename-file" data-id="@{{id}}" style="margin-top:10px;">Rename</div>
+                    <div class="btn btn-xs btn-danger delete-file" data-id="@{{id}}" style="margin-top:10px;">Delete</div>
+                </div>
+            @{{/files}}
         </div>
+        <hr>
+        <input type="file" class="filepond" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -126,6 +130,50 @@ window.ractive = Ractive({
     template: window.templates.main,
     partials: window.templates,
     data: app.data
+});
+
+// Get the file input element
+const inputElement = document.querySelector('input[type="file"]');
+
+// Create a FilePond instance
+const pond = FilePond.create(inputElement, {
+  allowMultiple: true,
+  acceptedFileTypes: ['application/pdf'],
+  maxFileSize: '20MB',
+  // Set the server URL for file uploads
+  server: {
+    process: {
+      url: '/api/activities/4/files',
+      method: 'POST',
+    },
+  },
+});
+
+// Listen for file upload events
+pond.on('addfile', (error, file) => {
+  if (error) {
+    console.error('Error adding file:', error);
+  } else {
+    console.log('File added:', file);
+  }
+});
+
+pond.on('processfile', (error, file) => {
+  if (error) {
+    console.error('Error processing file:', error);
+    toastr.error('Error processing file');
+  } else {
+    console.log('File processed:', file);
+    toastr.success('File processed!');
+  }
+});
+
+pond.on('removefile', (error, file) => {
+  if (error) {
+    console.error('Error removing file:', error);
+  } else {
+    console.log('File removed:', file);
+  }
 });
 
 @endsection

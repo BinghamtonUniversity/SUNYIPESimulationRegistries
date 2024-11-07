@@ -127,6 +127,10 @@ class ActivityController extends Controller
         return File::where('activity_id',$activity->id)->get();
     }
 
+    public function upload_file(Request $request, Activity $activity) {
+        return $request->all();
+    }
+
     public function rename_file(Request $request, Activity $activity, File $file) {
         $file->name = $request->name;
         $file->save();
