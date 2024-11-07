@@ -94,6 +94,14 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
             app.data.files = data;
             app.update();
             $('#files-modal').modal('show')
+            app.pond.setOptions({
+                server: {
+                    process: {
+                        url: '/api/activities/'+app.data.current_activity.id+'/files',
+                        method: 'POST',
+                    },
+                },
+            });
         },function(data) {
             // Do nothing
         });
@@ -132,48 +140,24 @@ window.ractive = Ractive({
     data: app.data
 });
 
-// Get the file input element
-const inputElement = document.querySelector('input[type="file"]');
-
 // Create a FilePond instance
-const pond = FilePond.create(inputElement, {
-  allowMultiple: true,
-  acceptedFileTypes: ['application/pdf'],
-  maxFileSize: '20MB',
-  // Set the server URL for file uploads
-  server: {
-    process: {
-      url: '/api/activities/4/files',
-      method: 'POST',
-    },
-  },
+app.pond = FilePond.create(document.querySelector('input[type="file"]'), {
+    allowMultiple: true,
+    acceptedFileTypes: ['application/pdf'],
+    maxFileSize: '20MB'
+});
+app.pond.on('processfile', (error, file) => {
+    if (error) {
+        console.log('Error processing file:', error);
+    } else {
+        console.log('File processed successfully:', file);
+        app.get('/api/activities/'+app.data.current_activity.id+'/files',function(data) {
+            app.data.files = data;
+            app.update();
+            pond.removeFiles();
+        });
+    }
 });
 
-// Listen for file upload events
-pond.on('addfile', (error, file) => {
-  if (error) {
-    console.error('Error adding file:', error);
-  } else {
-    console.log('File added:', file);
-  }
-});
-
-pond.on('processfile', (error, file) => {
-  if (error) {
-    console.error('Error processing file:', error);
-    toastr.error('Error processing file');
-  } else {
-    console.log('File processed:', file);
-    toastr.success('File processed!');
-  }
-});
-
-pond.on('removefile', (error, file) => {
-  if (error) {
-    console.error('Error removing file:', error);
-  } else {
-    console.log('File removed:', file);
-  }
-});
 
 @endsection

@@ -128,7 +128,15 @@ class ActivityController extends Controller
     }
 
     public function upload_file(Request $request, Activity $activity) {
-        return $request->all();
+        $file = $request->file('filepond');    
+        $uploaded_file = new File([
+            'activity_id' => $activity->id,
+            'name' => pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME),
+            'ext' => $file->getClientOriginalExtension(),
+            'mime_type' => $file->getClientMimeType(),
+        ]);
+        $uploaded_file->user_id_created = Auth::user()->id;
+        $uploaded_file->save();
     }
 
     public function rename_file(Request $request, Activity $activity, File $file) {
@@ -138,6 +146,8 @@ class ActivityController extends Controller
     }
 
     public function delete_file(Request $request, Activity $activity, File $file) {
+        $file->user_id_deleted = Auth::user()->id;
+        $file->save();
         $file->delete();
         return 1;
     }
