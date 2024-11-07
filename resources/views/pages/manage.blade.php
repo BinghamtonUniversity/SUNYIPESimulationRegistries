@@ -60,6 +60,7 @@ var actions = [
     {"name":"edit","label":"Update Activity","min":1,"max":1},
     '|',
     {"name":"manage_files","label":"Manage Files","min":1,"max":1},
+    {"name":"visit","label":"View Activity","min":1,"max":1},
     '|','|',
     {"name":"delete","label":"Delete Activity","min":1,"max":1},
 ];
@@ -105,6 +106,10 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
         },function(data) {
             // Do nothing
         });
+    }).on("model:visit",function(grid_event) {
+        window.location = '/activities/'+grid_event.model.attributes.id;
+    }).on("click",function(grid_event) {
+        window.location = '/activities/'+grid_event.model.attributes.id;
     })
 });
 

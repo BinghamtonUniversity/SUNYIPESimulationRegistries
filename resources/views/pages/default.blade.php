@@ -6,8 +6,7 @@
     <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
     <link href="/assets/css/toastr.min.css" rel="stylesheet">
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link href="/assets/css/filepond.css" rel="stylesheet" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -93,7 +92,7 @@
     <script src="{{url('/assets/js/vendor/moment.js')}}"></script>
     <script src="{{url('/assets/js/vendor/bootstrap-datetimepicker.min.js')}}"></script>
     <script src='/assets/js/vendor/ractive.min.js'></script>
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="/assets/js/vendor/filepond.js"></script>
     <script src="/assets/js/_framework.js"></script>
     <script type="text/javascript">
     var root_url = "{{url('/')}}";
