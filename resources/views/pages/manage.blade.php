@@ -45,6 +45,7 @@ window.templates.files_modal = `
             @{{/files}}
         </div>
         <hr>
+        <h4>Upload Files:</h4>
         <input type="file" class="filepond" />
       </div>
       <div class="modal-footer">

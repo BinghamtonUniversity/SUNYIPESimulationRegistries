@@ -19,8 +19,7 @@ class AdminController extends Controller
 
         $user_actions[] = ["name"=>"create","label"=>"Create"];
         $user_actions[] = ["name"=>"edit","label"=>"Update User","min"=>1,"max"=>1];
-        $user_actions[] = [""];
-        $user_actions[] = [""];
+        $user_actions[] = [];
         $user_actions[] = [];
         $user_actions[] = ["name"=>"manage_permissions","label"=>"Update Permissions","min"=>1,"max"=>1];
         $user_actions[] = ["name"=>"delete","label"=>"Delete User","min"=>1,"max"=>1]; //may remove max
@@ -36,6 +35,10 @@ class AdminController extends Controller
     public function activities(Request $request) {
         $user_actions[] = ["name"=>"create","label"=>"Create Activity"];
         $user_actions[] = ["name"=>"edit","label"=>"Update","min"=>1,"max"=>1];
+        $user_actions[] = [];
+        $user_actions[] = ["name"=>"visit","label"=>"View Activity","min"=>1,"max"=>1];
+        $user_actions[] = [];
+        $user_actions[] = [];
         $user_actions[] = ["name"=>"view_logs","label"=>"View Logs","min"=>1,"max"=>1];
         $form_fields = Activity::get_form_fields();
         return view('pages.admin',[

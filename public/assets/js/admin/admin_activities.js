@@ -45,5 +45,7 @@ ajax.get('/api/activities',function(data) {
             });
         }).on('model:view_logs',function (grid_event){
             window.location = '/admin/activities/'+grid_event.model.attributes.id+'/logs';
+        }).on('model:visit',function (grid_event){
+            window.location = '/activities/'+grid_event.model.attributes.id;
         })
 });
