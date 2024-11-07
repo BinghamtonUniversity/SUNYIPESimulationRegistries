@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Activity;
 use App\Models\ActivityValue;
 use App\Models\Type;
+use App\Models\File;
 
 class PagesController extends Controller
 {
@@ -98,10 +99,13 @@ class PagesController extends Controller
     }
 
     public function activity(Request $request, Activity $activity){
+        $files = File::where('activity_id',$activity->id)->get();
         return view('pages.activity',[
-            'activity'=>$activity->withPlainTextValues()
+            'activity'=>$activity->withPlainTextValues(),
+            'files'=>$files,
         ]);
     }
+
     public function manage(Request $request){
         if (Auth::check()) {
             return view('pages.manage',[

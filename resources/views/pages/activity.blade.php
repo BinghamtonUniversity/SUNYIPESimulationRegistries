@@ -84,11 +84,22 @@
     </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h3 class="panel-title">Files</h3></div>
+    <div class="panel-heading"><h3 class="panel-title">Files (Click to Download)</h3></div>
     <div class="panel-body">
-        <i class="fa fa-file-o fa-4x"></i>
+        @if(count($files) === 0)
+            <div class="alert alert-warning">No files available</div>
+        @endif
+        <div class="row">
+            @foreach($files as $file)
+                <div class="col-sm-3" style="text-align:center;">
+                    <div class="btn btn-primary download_files">
+                        <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
+                        <div>{{$file->name}}.{{$file->ext}}</div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
-    <div class="btn btn-xl btn-primary download_files">Download Files</div>
 </div>
 @endif
 @endsection
