@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Activity;
 use App\Models\ActivityLog;
 use App\Models\ActivityValue;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\File;
 
 class ActivityController extends Controller
 {
@@ -119,6 +120,21 @@ class ActivityController extends Controller
     {
         ActivityValue::where('activity_id',$activity->id)->delete();
         $activity->delete();
+        return 1;
+    }
+
+    public function index_files(Request $request, Activity $activity) {
+        return File::where('activity_id',$activity->id)->get();
+    }
+
+    public function rename_file(Request $request, Activity $activity, File $file) {
+        $file->name = $request->name;
+        $file->save();
+        return $file;
+    }
+
+    public function delete_file(Request $request, Activity $activity, File $file) {
+        $file->delete();
         return 1;
     }
 

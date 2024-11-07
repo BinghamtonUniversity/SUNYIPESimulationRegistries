@@ -7,11 +7,11 @@ window.app = {
     forms:{},
 }
 window.templates = {
-    main: ''
+    main:'',
 }
 window.forms = [];
 
-var ractive = Ractive({
+window.ractive = Ractive({
     target: '#main_target',
     template: window.templates.main,
     partials: window.templates,
@@ -24,7 +24,7 @@ app.update = function(newdata) {
             app.data[new_data_key] = newdata[new_data_key]
         }
     } 
-    ractive.set(app.data)
+    window.ractive.set(app.data)
     for (data_key in app.data) {
         gform.collections.update(data_key, app.data[data_key])
     }
@@ -179,6 +179,7 @@ $('#app-modal').on('hide.bs.modal', function (e) {
     app.data._modal.content = '';
     app.update();
 })
+
 app.modal = function(config,callback) {
     if (typeof config === 'string') {
         app.data._modal.title = '';
@@ -231,3 +232,5 @@ app.copy = function(selector) {
     window.getSelection().removeAllRanges();
     app.alert("Copied to Clipboard")
 }
+
+
