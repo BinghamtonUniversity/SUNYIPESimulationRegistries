@@ -5,6 +5,9 @@
 @section('description')
 <div class="panel panel-default" style="margin-top:20px;">
     <div class="panel-body">
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
+            <img src="/assets/images/by-nc-nd.png" style="width:150px;" class="pull-right">
+        </a>
         <h1 style="text-align:center;margin:0px;">{{$activity->title}}</h1>
     </div>
 </div>
@@ -105,10 +108,10 @@
 @endsection
 
 @section('scripts')
-    window.forms['download_form'] = {"name":"download_form","legend":"Please Provide Your Contact Information",
+    window.forms['download_form'] = {"name":"download_form","legend":"Please Provide The Following Information:",
         "actions":[
             {"type": "cancel","action": "cancel","label": "<i class=\"fa fa-times\"></i> Cancel","modifiers": "btn btn-danger"},
-            {"type":"save","action":"save","label":"Download Files","modifiers":"btn btn-info"},
+            {"type":"save","action":"save","label":"Download File","modifiers":"btn btn-info"},
         ],
         "fields":[
             {name:"activity_id",type:"hidden"},
@@ -116,6 +119,16 @@
             {"label":"Your Name","name":"name","type":"text","required":true,"limit":255},
             {"label":"Your Organization","name":"name","type":"text","required":true,"limit":255},
             {"type":"email","label":"Email","name":"email","required":true},
+            {"type":"checkbox","label":"Terms and Conditions",name:"terms_accept","required":true,options:[
+                {label:'I accept the terms and conditions of this website',value:false},
+                {label:'I accept the terms and conditions of this website',value:true}
+            ],
+            "help":'<a href="#" target="_blank">Click here</a> to review the terms and conditions.'},
+            {"type":"checkbox","label":'Activity License',name:"license_accept","required":true,options:[
+                {label:'I accept the "CC BY-NC-ND 4.0" license associated with this activity',value:false},
+                {label:'I accept the "CC BY-NC-ND 4.0" license associated with this activity',value:true}
+            ],
+            "help":'<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">Click here</a> to review the "CC BY-NC-ND 4.0" license.'},
         ]
     }
     app.form('download_form').on('save',function(e) {
