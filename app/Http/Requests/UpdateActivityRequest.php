@@ -21,19 +21,6 @@ class UpdateActivityRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            "id"=>["required","integer","exists:activities,id"],
-            "title" => ["required", "string", "max:255"],
-            "description" => ["required", "string", "max:65535"],
-            "is_ipe"=>["boolean"],
-            "is_simulation"=>["boolean"],
-            "contact_name" => ["required", "string", "max:255"],
-            "contact_email" => ["required", "email"],
-            "ksa_knowledge" => ["required", "string", "max:65535"],
-            "ksa_skills" => ["required", "string", "max:65535"],
-            "ksa_attitudes" => ["required", "string", "max:65535"],
-            "learning_objectives"=>["required", "string", "max:65535"],
-            "number_of_learners"=>["required", "integer"],
-        ];
+        return [];
     }
 }

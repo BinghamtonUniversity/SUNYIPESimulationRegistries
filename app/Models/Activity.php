@@ -85,6 +85,19 @@ class Activity extends Model
                 "type" => "hidden"
             ],
             [
+                'label'=>"Status","name"=>'status','type'=>'select','options'=>[
+                    ['label'=>"Draft",'value'=>'draft'],
+                    ['label'=>"Submitted (Under Review)",'value'=>'submitted'],
+                    ['label'=>"Approved",'value'=>'approved'],
+                    ['label'=>"Rejected",'value'=>'rejected']
+                ],'edit' => [['op' => 'or',
+					'conditions'=> [[
+                        'type'=> 'matches',
+                        'name'=> 'is_admin',
+                        'value'=> [true]
+                ]]]]
+            ],
+            [
                 "name" => "title",
                 "type" => "text",
                 "label" => "Title",

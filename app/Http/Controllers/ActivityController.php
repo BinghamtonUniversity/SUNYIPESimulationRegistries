@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Activity;
-use App\Models\ActivityLog;
+use App\Models\ActivityDownloadLog;
 use App\Models\ActivityValue;
 use App\Models\File;
 
@@ -87,7 +87,7 @@ class ActivityController extends Controller
         $activity->update($request->all());
         $updated_value_ids = collect();
         foreach($request->all() as $type => $value) {
-            if(str_starts_with( $type, "type_")) {
+            if(str_starts_with($type, "type_") && !is_null($value)) {
                 // Handle Multi-Select Types
                 if (is_array($value)) {
                     foreach($value as $value_item) {
@@ -151,6 +151,17 @@ class ActivityController extends Controller
     }
 
     public function download_file(Request $request, Activity $activity, File $file) {
+        if (!($request->has('name') && $request->has('organization') && $request->has('email'))) {
+            return response()->json(['message' => 'Required name, organization, and email not provided'], 403);
+        }
+        $log = new ActivityDownloadLog([
+            'activity_id' => $activity->id,
+            'file_id' => $file->id,
+            'name' => $request->name,
+            'organization' => $request->organization,
+            'email' => $request->email,
+        ]);
+        $log->save();
         $file_path = 'activities/'.$activity->id.'/'.$file->id.'.'.$file->ext;
         if (Storage::disk('local')->exists($file_path)) {
             return Storage::disk('local')->download($file_path, $file->name.'.'.$file->ext);
@@ -176,8 +187,10 @@ class ActivityController extends Controller
         return 1;
     }
 
-    public function index_logs(Request $request, Activity $activity){
-        return ActivityLog::where('activity_id',$activity->id)->get();
+    public function activity_logs(Request $request, Activity $activity) {
+        return ActivityDownloadLog::where('activity_id',$activity->id)
+            ->with('file')
+            ->orderBy('created_at')->get();
     }
 
     public function get_form_fields(Request $request) {

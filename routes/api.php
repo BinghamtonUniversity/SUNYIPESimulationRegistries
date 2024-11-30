@@ -26,7 +26,7 @@ Route::post('/activities/{activity}/files',[ActivityController::class, 'upload_f
 Route::put('/activities/{activity}/files/{file}',[ActivityController::class, 'rename_file']);//->middleware('can:viewLogs,activity');
 Route::delete('/activities/{activity}/files/{file}',[ActivityController::class, 'delete_file']);//->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}/files/{file}',[ActivityController::class, 'download_file']);//->middleware('can:viewLogs,activity');
-Route::get('/activities/{activity}/logs',[ActivityController::class, 'index_logs'])->middleware('can:viewLogs,activity');
+Route::get('/activities/{activity}/logs',[ActivityController::class, 'activity_logs']);//->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}',[ActivityController::class, 'show'])->middleware('can:view,activity');
 Route::post('/activities',[ActivityController::class,'store']);//->middleware('can:create,App\Models\Activity');
 Route::put('/activities/{activity}',[ActivityController::class,'update']);//->middleware('can:update,activity');

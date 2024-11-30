@@ -20,7 +20,20 @@
 
 @section('scripts')
 
-window.templates.main = `@{{>files_modal}}`;
+var activities_form_fields = {!! json_encode($activities_form_fields) !!};
+
+window.forms.activity_form = {
+    "name":"activity_form",
+    "legend":"Manage Activity",
+    "actions":[
+        {"type": "cancel","action": "cancel","label": "<i class=\"fa fa-times\"></i> Cancel","modifiers": "btn btn-danger"},
+        {"type":"save","action":"save_draft","label":"Save Draft","modifiers":"btn btn-warning"},
+        {"type":"save","action":"submit","label":"Submit (For Review)","modifiers":"btn btn-success"},
+    ],
+    "fields":activities_form_fields
+};
+
+window.templates.main = `@{{>files_modal}}@{{>logs_modal}}`;
 window.templates.files_modal = `
 <div class="modal fade" id="files-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -55,16 +68,74 @@ window.templates.files_modal = `
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 `;
+window.templates.logs_modal = `
+<div class="modal fade" id="logs-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">@{{current_activity.title}} File Download Logs</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+            <thead><tr><th>File</th><th>Name</th><th>Organization</th><th>Email</th><th>Date</th></tr></thead>
+            <tbody>
+            @{{#logs}}
+                <tr><td>@{{file.name}}</td><td>@{{name}}</td><td>@{{organization}}</td><td>@{{email}}</td><td>@{{created_at}}</td></tr>
+            @{{/logs}}
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+`;
 
 var actions = [
-    {"name":"create","label":"Add Activity"},
-    {"name":"edit","label":"Update Activity","min":1,"max":1},
+    {"name":"add_activity","label":"Add Activity","type":"success"},
+    {"name":"update_activity","label":"Update Activity","min":1,"max":1,"type":"primary"},
     '|',
     {"name":"manage_files","label":"Manage Files","min":1,"max":1},
     {"name":"visit","label":"View Activity","min":1,"max":1},
+    {"name":"logs","label":"View File Download Logs","min":1,"max":1},
     '|','|',
     {"name":"delete","label":"Delete Activity","min":1,"max":1},
 ];
+
+app.create_update_activity = function(e,validate=false) {
+    if (validate) {
+        if (!e.form.validate()) {
+            return false;
+        }
+    }
+    var form_data = e.form.get();
+    if (_.has(form_data,'id') && form_data.id !== null && form_data.id !== '') {
+        app.put('/api/activities/'+form_data.id,form_data,function(data) {
+            e.form.trigger('close');
+            app.current_grid_event.model.update(data)
+        },function(data) {
+            app.current_grid_event.model.undo();
+        });
+    } else {
+        app.post('/api/activities', e.form.get(),function(data) {
+            e.form.trigger('close');
+            app.current_grid_event.grid.add(data)
+        });
+    }
+}
+
+app.form('activity_form').on('save_draft',function(e) {
+    e.form.set({status:'draft'});
+    app.create_update_activity(e);
+}).on('submit',function(e) {
+    e.form.set({status:'submitted'});
+    app.create_update_activity(e,true);
+}).on('cancel',function(e) {
+    e.form.trigger('close');
+})
 
 app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
     gdg = new GrapheneDataGrid({el:'#admin-update-activities',
@@ -72,20 +143,15 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
         actions:actions,
         entries:[],
         count:20,
-        schema:{!! json_encode($activities_form_fields) !!},
+        schema:activities_form_fields,
         data: activities
-    }).on("model:created",function(grid_event) {
-        app.post('/api/activities', grid_event.model.attributes,function(data) {
-            grid_event.model.update(data)
-        },function(data) {
-            grid_event.model.undo();
-        });
-    }).on('model:edited',function (grid_event) {
-        app.put('/api/activities/'+grid_event.model.attributes.id,grid_event.model.attributes,function(data) {
-            grid_event.model.update(data)
-        },function(data) {
-            grid_event.model.undo();
-        });
+    }).on("add_activity",function(grid_event) {
+        app.current_grid_event = grid_event;
+        app.form('activity_form').modal();
+    }).on('model:update_activity',function (grid_event) {
+        app.current_grid_event = grid_event;
+        app.form('activity_form').set(grid_event.model.attributes);
+        app.form('activity_form').modal();
     }).on("model:deleted",function(grid_event) {
         app.delete('/api/activities/'+grid_event.model.attributes.id,{},function(data) {},function(data) {
             grid_event.model.delete();
@@ -107,10 +173,17 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
         },function(data) {
             // Do nothing
         });
+    }).on("model:logs",function(grid_event) {
+        app.get('/api/activities/'+grid_event.model.attributes.id+'/logs',function(data) {
+            app.data.current_activity = grid_event.model.attributes;
+            app.data.logs = data;
+            app.update();
+            $('#logs-modal').modal('show')
+        });
     }).on("model:visit",function(grid_event) {
-        window.location = '/activities/'+grid_event.model.attributes.id;
+        window.location = '/activities/'+grid_event.model.attributes.id+'?preview=true';
     }).on("click",function(grid_event) {
-        window.location = '/activities/'+grid_event.model.attributes.id;
+        window.location = '/activities/'+grid_event.model.attributes.id+'?preview=true';
     })
 });
 

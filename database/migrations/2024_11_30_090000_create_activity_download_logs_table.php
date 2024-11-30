@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activity_logs', function (Blueprint $table) {
+        Schema::create('activity_download_logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('activity_id')->index();
-            $table->unsignedBigInteger('user_id_created')->index()->nullable()->default(null);
-            $table->unsignedBigInteger('user_id_deleted')->index()->nullable()->default(null);
-            $table->json('data');
-            $table->foreign('user_id_created')->references('id')->on('users');
-            $table->foreign('user_id_deleted')->references('id')->on('users');
+            $table->unsignedBigInteger('file_id')->index();
+            $table->string('name');
+            $table->string('organization');
+            $table->string('email');
             $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

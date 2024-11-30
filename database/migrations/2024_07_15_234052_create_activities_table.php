@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('ksa_attitudes')->nullable();
             $table->text('learning_objectives')->nullable();
             $table->unsignedInteger('number_of_learners')->nullable();
-            $table->enum('status',['submitted','review','approved'])->default('submitted')->index();
+            $table->enum('status',['draft','submitted','approved','rejected'])->default('draft')->index();
             $table->unsignedBigInteger('approved_by')->nullable();
             $table->date('approved_at')->nullable();
             $table->foreign('submitter_id')->references('id')->on('users');
