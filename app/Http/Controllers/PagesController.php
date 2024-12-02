@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
+use Cohensive\OEmbed\Facades\OEmbed;
 
 use App\Models\User;
 use App\Models\Activity;
@@ -24,25 +25,7 @@ class PagesController extends Controller
         ]);
     }
 
-    public function search(){
-        return view('pages.search',[
-            'title'=>'Search',
-            'data'=>[
-                'search_form'=>[
-                    'name' => 'Search',
-                    'fields' => Activity::get_search_form_fields(),
-                    'actions' => [
-                        ['type' => 'save','action' => 'save','label' => 'Search','modifiers' => 'btn btn-info']
-                    ],
-                ]
-            ]
-        ]);
-    }
-
-    public function search_results(Request $request){
-        if (!$request->has('types')) {
-            return view('pages.search_results',['error'=>'You must specify at least one type!','activities'=>[]]);
-        }
+    public function browse(Request $request){
         $activity_ids = Activity::select('id')->where(function($q) use ($request) {
             if ($request->is_ipe == 'true') {
                 $q->orWhere('is_ipe',true);
@@ -52,17 +35,20 @@ class PagesController extends Controller
             }
         })->where('status','approved')->get()->pluck('id');
 
-        $activity_values = ActivityValue::select('activity_id','value_id')
-            ->whereIn('activity_id',$activity_ids)
-            ->where(function($q) use ($request) {
-                foreach($request->types as $type => $values) {
-                    foreach($values as $value) {
-                        $value_id = Str::of($value)->ltrim('value_');
-                        $q->orWhere('value_id',$value_id);
+        if (!$request->has('types')) {
+            $activity_values = ActivityValue::select('activity_id','value_id')->with('value')->get();
+        } else {
+            $activity_values = ActivityValue::select('activity_id','value_id')
+                ->whereIn('activity_id',$activity_ids)
+                ->where(function($q) use ($request) {
+                    foreach($request->types as $type => $values) {
+                        foreach($values as $value) {
+                            $value_id = Str::of($value)->ltrim('value_');
+                            $q->orWhere('value_id',$value_id);
+                        }
                     }
-                }
-            })->with('value')->get();
-        // return $activity_values;
+                })->with('value')->get();
+        }
 
         $ranked_activity_ids = [];
         foreach($activity_values as $activity_value) {
@@ -75,16 +61,17 @@ class PagesController extends Controller
             $ranked_activity_ids[$activity_value->activity_id]['values'][] = $activity_value->value->value;
         }
         $ranked_activity_ids = collect($ranked_activity_ids)->sortBy('count')->reverse();
-        $activities = Activity::whereIn('id',$ranked_activity_ids->pluck('id'))->get()
+        $activities = Activity::whereIn('id',$ranked_activity_ids->pluck('id'))
+            ->where('status','approved')->get()
             ->map(function($activity) use ($ranked_activity_ids) {
                 $activity->count = $ranked_activity_ids[$activity->id]['count'];
                 $activity->matches = $ranked_activity_ids[$activity->id]['values'];
                 return $activity;
             })->sortBy('count')->reverse()->values();
-
-        return view('pages.search_results',[
+        return view('pages.browse',[
             'title'=>'Search Results',
             'activities' => $activities,
+            'data' => ['search_form_fields' => Activity::get_search_form_fields()]
         ]);
     }
 
@@ -100,9 +87,16 @@ class PagesController extends Controller
 
     public function activity(Request $request, Activity $activity){
         $files = File::where('activity_id',$activity->id)->get();
+        if (!is_null($activity->video_url)) {
+            $video_embed = OEmbed::get('https://www.youtube.com/watch?v=YITDLmRWnqM');
+            $video_html = $video_embed->html(['width' => 400]);
+        } else {
+            $video_html = null;
+        }
         return view('pages.activity',[
             'activity'=>$activity->withPlainTextValues(),
             'files'=>$files,
+            'video_html'=>$video_html,
         ]);
     }
 
@@ -116,12 +110,4 @@ class PagesController extends Controller
         }
     }
 
-//    public function log_out(Request $request){
-//        if (Auth::check()) {
-//            Auth::logout();
-//            return redirect(url('/'));
-//        } else {
-//            return redirect(url('/manage/login'));
-//        }
-//    }
 }

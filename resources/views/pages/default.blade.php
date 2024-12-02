@@ -36,7 +36,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li @if(request()->routeIs('home')) class="active" @endif><a href="{{route('home')}}"><i class="fa fa-home fa-fw"></i> Home <span class="sr-only">(current)</span></a></li>
-        <li @if(request()->routeIs('search')) class="active" @endif><a href="{{route('search')}}"><i class="fa fa-search fa-fw"></i> Search</a></li>
+        <li @if(request()->routeIs('browse')) class="active" @endif><a href="{{route('browse')}}"><i class="fa fa-search fa-fw"></i> Browse</a></li>
         <li @if(request()->routeIs('glossary')) class="active" @endif><a href="{{route('glossary')}}"><i class="fa fa-file fa-fw"></i> Glossary</a></li>
         @auth<li @if(request()->routeIs('manage')) class="active" @endif><a href="{{route('manage')}}"><i class="fa fa-cog fa-fw"></i> Manage My Activities</a></li>@endauth
       </ul>

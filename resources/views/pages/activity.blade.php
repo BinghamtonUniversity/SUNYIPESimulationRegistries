@@ -47,22 +47,33 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
-                            <strong>Knowledge: </strong> {{$activity->ksa_knowledge}}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <strong>Knowledge: </strong> {{$activity->ksa_knowledge}}
+                                </div>
+                                <div class="col-sm-12">
+                                    <strong>Skills: </strong> {{$activity->ksa_skills}}
+                                </div>
+                                <div class="col-sm-12">
+                                    <strong>Attitudes / Behaviors: </strong> {{$activity->ksa_attitudes}}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <strong>Learning Objectives: </strong> {{$activity->learning_objectives}}
+                                </div>
+                                <div class="col-sm-12">
+                                    <strong>Number of Learners: </strong> {{$activity->number_of_learners}}
+                                </div>
+                            </div>
                         </div>
                         <div class="col-sm-6">
-                            <strong>Skills: </strong> {{$activity->ksa_skills}}
-                        </div>
-                        <div class="col-sm-6">
-                            <strong>Attitudes / Behaviors: </strong> {{$activity->ksa_attitudes}}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong>Learning Objectives: </strong> {{$activity->learning_objectives}}
-                        </div>
-                        <div class="col-sm-6">
-                            <strong>Number of Learners: </strong> {{$activity->number_of_learners}}
+                            @if (is_null($video_html)) 
+                                <div class="alert alert-info" style="font-size:12px;">No Video to Display</div>
+                            @else
+                                {!! $video_html !!}
+                            @endif
                         </div>
                     </div>
                 </div>

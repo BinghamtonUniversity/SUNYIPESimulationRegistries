@@ -9,7 +9,7 @@ class Activity extends Model
 {
     use HasFactory;
     protected $fillable = ["is_ipe","is_simulation","title","submitter_id","description", "contact_name", "contact_email", "contact_phone",
-        "ksa_knowledge","ksa_skills","ksa_attitudes","number_of_learners","status",'learning_objectives'];
+        "ksa_knowledge","ksa_skills","ksa_attitudes","number_of_learners","video_url","status",'learning_objectives'];
 
     protected $casts = [
         'is_simulation' => 'boolean','is_ipe' => 'boolean'
@@ -202,7 +202,15 @@ class Activity extends Model
                 "label" => "Number of Learners",
                 "required" => true,
                 "showColumn"=>false,
-            ]
+            ],
+            [
+                "name" => "video_url",
+                "type" => "text",
+                "label" => "Youtube / Vimeo URL",
+                "required" => false,
+                "limit" => 255,
+                "showColumn"=>false,
+            ],
         ];
 
         $all_types = Type::with('values')->orderBy('order','asc')->get();
@@ -349,7 +357,7 @@ class Activity extends Model
                 'label' => $type->type,
                 'name' => 'type_'.$type->id,
                 'type' => 'radio',
-                'columns' => 2,
+                'columns' => 6,
                 'multiple' => true
             ];
             $field['show'] = [['op' => 'or','conditions'=> []]];

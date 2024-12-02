@@ -16,7 +16,7 @@
                     Welcome to the OpenSim Registry, 
                     an open-source database designed to enhance experiential learning activities at 
                     Binghamton University and across State University of New York (SUNY) institutions. 
-                    This platform allows users to <a href="{{route('search')}}">easily search</a>
+                    This platform allows users to <a href="{{route('browse')}}">easily browse and search</a>
                     for and access a wide range of validated 
                     learning activities in healthcare simulation and interprofessional education (IPE).
                 </p>

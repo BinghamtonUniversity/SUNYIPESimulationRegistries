@@ -14,10 +14,9 @@ use Laravel\Socialite\Facades\Socialite;
 
 // No Authentication Required!
 Route::get('/', [PagesController::class,'home'])->name('home');
-Route::get('/search',[PagesController::class,'search'])->name('search');
-Route::get('/glossary',[PagesController::class,'glossary'])->name('glossary');
-Route::get('/search/results',[PagesController::class,'search_results'])->name('search_results');
+Route::get('/browse',[PagesController::class,'browse'])->name('browse');
 Route::get('/activities/{activity}',[PagesController::class,'activity']);
+Route::get('/glossary',[PagesController::class,'glossary'])->name('glossary');
 
 Route::middleware(['web','auth','auth.session'])->group(function () {
     Route::prefix('admin')->group(function () {
