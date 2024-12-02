@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('is_ipe')->default(false)->index();
             $table->boolean('is_simulation')->default(false)->index();
             $table->string('title');
+            $table->string('license')->default('by');
             $table->text('description')->nullable();
             $table->string('contact_name')->nullable();
             $table->string('contact_email')->nullable();

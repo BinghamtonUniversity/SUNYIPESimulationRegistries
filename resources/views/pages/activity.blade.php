@@ -5,8 +5,8 @@
 @section('description')
 <div class="panel panel-default" style="margin-top:20px;">
     <div class="panel-body">
-        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
-            <img src="/assets/images/by-nc-nd.png" style="width:150px;" class="pull-right">
+        <a href="https://creativecommons.org/licenses/{{$activity->license}}/4.0/" target="_blank">
+            <img src="/assets/images/licenses/{{$activity->license}}.png" style="width:150px;" class="pull-right">
         </a>
         <h1 style="text-align:center;margin:0px;">{{$activity->title}}</h1>
     </div>
@@ -139,8 +139,8 @@
             ],
             "help":'<a href="#" target="_blank">Click here</a> to review the terms and conditions.'},
             {"type":"checkbox","label":'Activity License',name:"license_accept","required":true,options:[
-                {label:'I accept the "CC BY-NC-ND 4.0" license associated with this activity',value:false},
-                {label:'I accept the "CC BY-NC-ND 4.0" license associated with this activity',value:true}
+                {label:'I accept the license associated with this activity',value:false},
+                {label:'I accept the license associated with this activity',value:true}
             ],
             "help":'<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">Click here</a> to review the "CC BY-NC-ND 4.0" license.'},
         ]

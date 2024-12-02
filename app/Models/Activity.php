@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     use HasFactory;
-    protected $fillable = ["is_ipe","is_simulation","title","submitter_id","description", "contact_name", "contact_email", "contact_phone",
+    protected $fillable = ["is_ipe","is_simulation","title","license","submitter_id","description", "contact_name", "contact_email", "contact_phone",
         "ksa_knowledge","ksa_skills","ksa_attitudes","number_of_learners","video_url","status",'learning_objectives'];
 
     protected $casts = [
@@ -103,6 +103,38 @@ class Activity extends Model
                 "label" => "Title",
                 "required" => true,
                 "limit" => 255,
+            ],
+            [
+                "name" => "license",
+                "type" => "select",
+                "label" => "CC License",
+                "showColumn"=>false,
+                "options" => [
+                    [
+                        "label" => "CC BY",
+                        "value" => 'by'
+                    ],
+                    [
+                        "label" => "CC BY-SA",
+                        "value" => 'by-sa'
+                    ],
+                    [
+                        "label" => "CC BY-NC",
+                        "value" => 'by-nc'
+                    ],
+                    [
+                        "label" => "CC BY-NC-SA",
+                        "value" => 'by-nc-sa'
+                    ],
+                    [
+                        "label" => "CC BY-ND",
+                        "value" => 'by-nd'
+                    ],
+                    [
+                        "label" => "CC BY-NC-ND",
+                        "value" => 'by-nc-nd'
+                    ],
+                ]
             ],
             [
                 "name" => "is_ipe",

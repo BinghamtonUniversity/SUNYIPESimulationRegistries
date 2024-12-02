@@ -98,8 +98,8 @@ var actions = [
     {"name":"add_activity","label":"Add Activity","type":"success"},
     {"name":"update_activity","label":"Update Activity","min":1,"max":1,"type":"primary"},
     '|',
-    {"name":"manage_files","label":"Manage Files","min":1,"max":1},
     {"name":"visit","label":"View Activity","min":1,"max":1},
+    {"name":"manage_files","label":"Manage Files","min":1,"max":1},
     {"name":"logs","label":"View File Download Logs","min":1,"max":1},
     '|','|',
     {"name":"delete","label":"Delete Activity","min":1,"max":1},
@@ -147,9 +147,11 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
         data: activities
     }).on("add_activity",function(grid_event) {
         app.current_grid_event = grid_event;
+        app.form('activity_form').set(null);
         app.form('activity_form').modal();
     }).on('model:update_activity',function (grid_event) {
         app.current_grid_event = grid_event;
+        app.form('activity_form').set(null);
         app.form('activity_form').set(grid_event.model.attributes);
         app.form('activity_form').modal();
     }).on("model:deleted",function(grid_event) {
