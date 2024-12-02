@@ -142,7 +142,7 @@
                 {label:'I accept the license associated with this activity',value:false},
                 {label:'I accept the license associated with this activity',value:true}
             ],
-            "help":'<a href="https://creativecommons.org/licenses" target="_blank">Click here</a> to review the various Creative Commons licenses.'},
+            "help":'<a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank">Click here</a> to review the various Creative Commons licenses.'},
         ]
     }
     app.form('download_form').on('save',function(e) {

@@ -148,6 +148,7 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
     }).on("add_activity",function(grid_event) {
         app.current_grid_event = grid_event;
         app.form('activity_form').set(null);
+        app.form('activity_form').set({status:'draft'});
         app.form('activity_form').modal();
     }).on('model:update_activity',function (grid_event) {
         app.current_grid_event = grid_event;

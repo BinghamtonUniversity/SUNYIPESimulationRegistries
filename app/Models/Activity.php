@@ -109,10 +109,11 @@ class Activity extends Model
                 "type" => "select",
                 "label" => "Creative Commons License",
                 "showColumn"=>false,
-                "help" => '<a href="https://creativecommons.org/licenses" target="_blank" style="text-decoration:underline;">Click here</a> to review the various Creative Commons licenses.',
+                "help" => '<a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" style="text-decoration:underline;">Click here</a> to review the various Creative Commons licenses.',
+                "required" => true,
                 "options" => [
                     [
-                        "label" => "CC BY",
+                        "label" => "CC BY (Most Permissive)",
                         "value" => 'by'
                     ],
                     [
@@ -132,7 +133,7 @@ class Activity extends Model
                         "value" => 'by-nd'
                     ],
                     [
-                        "label" => "CC BY-NC-ND",
+                        "label" => "CC BY-NC-ND (Least Permissive)",
                         "value" => 'by-nc-nd'
                     ],
                 ]
