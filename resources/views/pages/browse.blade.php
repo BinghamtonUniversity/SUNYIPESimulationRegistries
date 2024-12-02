@@ -26,10 +26,10 @@
                 <h4>
                     @if(!is_null($activity->video_url))
                     <div class="badge pull-right" style="margin-left:5px;">
-                        <a href="{{$activity->video_url}}" target="_blank" <i class="fa fa-video-camera fa-fw"></i></a>
+                        <a href="{{$activity->video_url}}" target="_blank" <i style="color:white;" class="fa fa-video-camera fa-fw"></i></a>
                     </div>
                     @endif
-                    <div class="badge pull-right">
+                    <div class="badge pull-right" style="margin-left:5px;">
                         @if($activity->is_ipe === true && $activity->is_simulation === false)
                             IPE
                         @elseif($activity->is_ipe === false && $activity->is_simulation === true)
@@ -42,7 +42,7 @@
                 </h4>
                 <div>
                     @foreach($activity->matches as $match)
-                        <div class="label label-success">{{$match}}</div>&nbsp;
+                        <div class="label label-primary">{{$match}}</div>&nbsp;
                     @endforeach
                 </div>
                 <div>

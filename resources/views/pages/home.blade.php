@@ -12,6 +12,7 @@
     <div class="col-sm-6" style="font-size:20px;">
         <div class="panel panel-default">
             <div class="panel-body">
+                <img src="/assets/images/suny_logo.png" style="width:300px;margin:10px;" class="pull-right">
                 <p>
                     Welcome to the OpenSim Registry, 
                     an open-source database designed to enhance experiential learning activities at 

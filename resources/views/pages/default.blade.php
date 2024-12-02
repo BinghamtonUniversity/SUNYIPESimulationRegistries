@@ -15,11 +15,11 @@
 
 <body style="background-color:#eee;padding-bottom:20px;">
 <style>
-  .navbar-inverse a:hover {
+  .navbar-default a:hover {
     color:#ddd !important;
   }
 </style>
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

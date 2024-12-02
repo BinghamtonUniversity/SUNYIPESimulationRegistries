@@ -782,3 +782,10 @@ textarea[name=template] {
   display:inline-block !important;
   margin:0px !important;
 }
+
+a {
+  color:#004c93;
+}
+a:hover {
+  color:#2c3e50;
+}
