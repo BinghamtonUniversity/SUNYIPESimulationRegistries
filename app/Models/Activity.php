@@ -107,8 +107,9 @@ class Activity extends Model
             [
                 "name" => "license",
                 "type" => "select",
-                "label" => "CC License",
+                "label" => "Creative Commons License",
                 "showColumn"=>false,
+                "help" => '<a href="https://creativecommons.org/licenses" target="_blank" style="text-decoration:underline;">Click here</a> to review the various Creative Commons licenses.',
                 "options" => [
                     [
                         "label" => "CC BY",
