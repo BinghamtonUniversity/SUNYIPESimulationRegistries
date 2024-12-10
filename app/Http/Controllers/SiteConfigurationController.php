@@ -18,9 +18,9 @@ class SiteConfigurationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage.
      */
-    public function create(Request $request)
+    public function store(StoreSiteConfigurationRequest $request)
     {
         $site_configuration = new SiteConfiguration($request->all());
         $site_configuration->save();
@@ -29,27 +29,11 @@ class SiteConfigurationController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreSiteConfigurationRequest $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      */
     public function show(Request $request, SiteConfiguration $siteConfiguration)
     {
         return $siteConfiguration;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(SiteConfiguration $siteConfiguration)
-    {
-        //
     }
 
     /**
