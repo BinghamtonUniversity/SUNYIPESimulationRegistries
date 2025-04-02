@@ -5,7 +5,7 @@
 @section('content')
 <div class="panel panel-default" style="margin-top:20px;">
     <div class="panel-body">
-        <h1 style="text-align:center;margin:0px;"><i class="fa fa-medkit fa-fw"></i> OpenSim Registry</h1>
+        <h1 style="text-align:center;margin:0px;"><i class="fa fa-medkit fa-fw"></i> SUNY Share Repository</h1>
     </div>
 </div>
 <div class="row">
@@ -14,7 +14,7 @@
             <div class="panel-body">
                 <img src="/assets/images/suny_logo.png" style="width:300px;margin:10px;" class="pull-right">
                 <p>
-                    Welcome to the OpenSim Registry, 
+                    Welcome to the SUNY Share Repository, 
                     an open-source database designed to enhance experiential learning activities at 
                     Binghamton University and across State University of New York (SUNY) institutions. 
                     This platform allows users to <a href="{{route('browse')}}">easily browse and search</a>

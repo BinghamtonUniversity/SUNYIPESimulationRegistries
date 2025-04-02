@@ -40,11 +40,13 @@
                     </div>
                     <a href="{{url('/activities/'.$activity->id)}}">{{$activity->title}}</a>
                 </h4>
+                <!--
                 <div>
                     @foreach($activity->matches as $match)
                         <div class="label label-primary">{{$match}}</div>&nbsp;
                     @endforeach
                 </div>
+                -->
                 <div>
                     <strong>Description:</strong>
                     {{substr($activity->description,0,250)}}

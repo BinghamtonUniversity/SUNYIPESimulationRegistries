@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OpenSim | @yield('title')</title>
+    <title>SUNY Share | @yield('title')</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link href="/assets/css/IPESimulationRegistries.css" rel="stylesheet">
     <link href="/assets/css/toastr.min.css" rel="stylesheet">
@@ -29,14 +29,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;"><i class="fa fa-medkit fa-fw"></i> OpenSim Registry</a>
+      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;"><i class="fa fa-medkit fa-fw"></i> SUNY Share Repository</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li @if(request()->routeIs('home')) class="active" @endif><a href="{{route('home')}}"><i class="fa fa-home fa-fw"></i> Home <span class="sr-only">(current)</span></a></li>
-        <li @if(request()->routeIs('browse')) class="active" @endif><a href="{{route('browse')}}"><i class="fa fa-search fa-fw"></i> Browse</a></li>
+        <li @if(request()->routeIs('browse')) class="active" @endif><a href="{{route('browse')}}"><i class="fa fa-search fa-fw"></i> Browse Activities</a></li>
         <li @if(request()->routeIs('glossary')) class="active" @endif><a href="{{route('glossary')}}"><i class="fa fa-file fa-fw"></i> Glossary</a></li>
         @auth<li @if(request()->routeIs('manage')) class="active" @endif><a href="{{route('manage')}}"><i class="fa fa-cog fa-fw"></i> Manage My Activities</a></li>@endauth
       </ul>
@@ -77,7 +77,7 @@
         </div>
       </div>
       <nav class="footer navbar-fixed-bottom" style="background-color:#004c93;color:#CCD6DF;text-align:center;">
-        <span>OpenSim Registry | &copy; 2024 Binghamton University</span>
+        <span>SUNY Share Repository | &copy; 2024 Binghamton University</span>
       </nav>
     </div>
 
