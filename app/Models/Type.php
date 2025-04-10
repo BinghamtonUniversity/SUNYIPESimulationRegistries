@@ -12,10 +12,10 @@ class Type extends Model
 
     protected $table = 'types';
     protected $fillable = [
-        'type','is_ipe','is_simulation','searchable','multi_select','order','help_text',
+        'type','is_ipe','is_simulation','searchable','multi_select','in_glossary','order','help_text',
     ];
     protected $casts = [
-        'searchable' => 'boolean','multi_select' => 'boolean','is_simulation' => 'boolean','is_ipe' => 'boolean'
+        'searchable' => 'boolean','multi_select' => 'boolean','is_simulation' => 'boolean','is_ipe' => 'boolean', 'in_glossary' => 'boolean'
     ];
 
     protected static function boot() {

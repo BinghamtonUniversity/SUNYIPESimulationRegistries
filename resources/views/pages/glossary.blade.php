@@ -11,28 +11,21 @@
 <div class="row">
 <div class="col-sm-12">
     @foreach($data['types'] as $type)
+        @if ($type->in_glossary === true)
         <div class="panel panel-default">
             <div class="panel-body">
-                <h1>{{$type->type}}</h1>
+                <h2>{{$type->type}}</h2>
                 @if (isset($type->help_text))
-                    <div class="alert alert-info">{{$type->help_text}}</div>
-                @else
-                    <div class="alert alert-danger">No Help Text Specified</div>
+                    <h4><div class="label label-default">{{$type->help_text}}</div></h4><br>
                 @endif
-                <div class="row">
                 @foreach($type['values'] as $value)
-                    <div class="col-sm-4">
-                        <h3>{{$value->value}}</h3>
-                        @if (isset($value->help_text))
-                            <div class="alert alert-success">{{$value->help_text}}</div>
-                        @else
-                            <div class="alert alert-warning">No Help Text Specified</div>
-                        @endif
-                    </div>
+                    @if (isset($value->help_text))
+                        <div><b>{{$value->value}}</b>: {{$value->help_text}}</div>
+                    @endif
                 @endforeach
-                </div>
             </div>
         </div>
+        @endif
     @endforeach
 </div>
 </div>

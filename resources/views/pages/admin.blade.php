@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/admin" style="background: #004c93;width:200px;">
-            <h4 style="color:#fff;margin:0px;"><i class="fa fa-medkit fa-fw"></i> SUNY Share Admin</h4>
+            <h4 style="color:#fff;margin:0px;"><i class="fa fa-medkit fa-fw"></i> Admin</h4>
           </a>
             <ul class="nav navbar-nav  hidden-xs">
                 <li><a href="#"><h4 style="margin:0">{{$title}}</h4></a></li>

@@ -5,8 +5,8 @@
 @section('description')
 <div class="panel panel-default" style="margin-top:20px;">
     <div class="panel-body">
-        <a href="https://creativecommons.org/licenses/{{$activity->license}}/4.0/" target="_blank">
-            <img src="/assets/images/licenses/{{$activity->license}}.png" style="width:150px;" class="pull-right">
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
+            <img src="/assets/images/licenses/by-nc.png" style="width:150px;" class="pull-right">
         </a>
         <h1 style="text-align:center;margin:0px;">{{$activity->title}}</h1>
     </div>
@@ -34,7 +34,10 @@
                             IPE/Simulation
                         @endif
                     </div>
-                    <div><strong>Description: </strong><br> {{$activity->description}}</div>
+                    <div>
+                        <strong>Description: </strong><br> 
+                        {!! str_replace("\n",'<br>',$activity->description) !!}
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
@@ -47,30 +50,8 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <strong>Knowledge: </strong> {{$activity->ksa_knowledge}}
-                                </div>
-                                <div class="col-sm-12">
-                                    <strong>Skills: </strong> {{$activity->ksa_skills}}
-                                </div>
-                                <div class="col-sm-12">
-                                    <strong>Attitudes / Behaviors: </strong> {{$activity->ksa_attitudes}}
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <strong>Learning Objectives: </strong> {{$activity->learning_objectives}}
-                                </div>
-                                <div class="col-sm-12">
-                                    <strong>Number of Learners: </strong> {{$activity->number_of_learners}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
                             @if (is_null($video_html)) 
-                                <div class="alert alert-info" style="font-size:12px;">No Video to Display</div>
+                                <!-- <div class="alert alert-info" style="font-size:12px;">No Video to Display</div> -->
                             @else
                                 {!! $video_html !!}
                             @endif

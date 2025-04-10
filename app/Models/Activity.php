@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     use HasFactory;
-    protected $fillable = ["is_ipe","is_simulation","title","license","submitter_id","description", "contact_name", "contact_email", "contact_phone",
-        "ksa_knowledge","ksa_skills","ksa_attitudes","number_of_learners","video_url","status",'learning_objectives'];
+    protected $fillable = ["is_ipe","is_simulation","title","submitter_id","description", "contact_name", "contact_email", "contact_phone",
+        "video_url","status"];
 
     protected $casts = [
         'is_simulation' => 'boolean','is_ipe' => 'boolean'
@@ -107,40 +107,6 @@ class Activity extends Model
                 "limit" => 255,
             ],
             [
-                "name" => "license",
-                "type" => "select",
-                "label" => "Creative Commons License",
-                "showColumn"=>false,
-                "help" => '<a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" style="text-decoration:underline;">Click here</a> to review the various Creative Commons licenses.',
-                "required" => true,
-                "options" => [
-                    [
-                        "label" => "CC BY (Most Permissive)",
-                        "value" => 'by'
-                    ],
-                    [
-                        "label" => "CC BY-SA",
-                        "value" => 'by-sa'
-                    ],
-                    [
-                        "label" => "CC BY-NC",
-                        "value" => 'by-nc'
-                    ],
-                    [
-                        "label" => "CC BY-NC-SA",
-                        "value" => 'by-nc-sa'
-                    ],
-                    [
-                        "label" => "CC BY-ND",
-                        "value" => 'by-nd'
-                    ],
-                    [
-                        "label" => "CC BY-NC-ND (Least Permissive)",
-                        "value" => 'by-nc-nd'
-                    ],
-                ]
-            ],
-            [
                 "name" => "is_ipe",
                 "type" => "switch",
                 "label" => "IPE Related",
@@ -193,59 +159,13 @@ class Activity extends Model
                 "limit" => 255,
             ],
             [
-                "type" => "output",
-                "label" => "",
-                "name" => "",
-                "parse" => false,
-                "showColumn" => false,
-                "format" => ["value" => "<h4>KSA</h4>"]
-            ],
-            [
-                "name" => "ksa_knowledge",
-                "type" => "textarea",
-                "label" => "Knowledge",
-                "required" => true,
-                "limit" => 65535,
-                "showColumn"=>false,
-            ],
-            [
-                "name" => "ksa_skills",
-                "type" => "textarea",
-                "label" => "Skills",
-                "required" => true,
-                "limit" => 65535,
-                "showColumn"=>false,
-            ],
-            [
-                "name" => "ksa_attitudes",
-                "type" => "textarea",
-                "label" => "Attitudes / Behaviors",
-                "required" => true,
-                "limit" => 65535,
-                "showColumn"=>false,
-            ],
-            [
-                "name" => "learning_objectives",
-                "type" => "textarea",
-                "label" => "Learning Objectives",
-                "required" => true,
-                "limit" => 65535,
-                "showColumn"=>false,
-            ],
-            [
-                "name" => "number_of_learners",
-                "type" => "number",
-                "label" => "Number of Learners",
-                "required" => true,
-                "showColumn"=>false,
-            ],
-            [
                 "name" => "video_url",
                 "type" => "text",
                 "label" => "Youtube / Vimeo URL",
                 "required" => false,
                 "limit" => 255,
                 "showColumn"=>false,
+                "help" => 'This is the full URL of the video you want to embed. <br>Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ'
             ],
         ];
 
