@@ -77,7 +77,7 @@
         </div>
       </div>
       <nav class="footer navbar-fixed-bottom" style="background-color:#004c93;color:#CCD6DF;text-align:center;">
-        <span>SUNY Share Repository | &copy; 2024 Binghamton University</span>
+        {!! $site_config['footer'] !!}
       </nav>
     </div>
 

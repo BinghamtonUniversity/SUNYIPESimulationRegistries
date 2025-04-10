@@ -20,7 +20,7 @@ Route::get('/glossary',[PagesController::class,'glossary'])->name('glossary');
 
 Route::middleware(['web','auth','auth.session'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/',[AdminController::class,'users'])->name('admin');
+        Route::get('/',[AdminController::class,'activities'])->name('admin');
         Route::get('/users',[AdminController::class,'users']);
         Route::get('/activities/{activity}/logs',[AdminController::class,'activity_logs']);
         Route::get('/activities',[AdminController::class,'activities']);
