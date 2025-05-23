@@ -114,14 +114,10 @@
             {"label":"Your Name","name":"name","type":"text","required":true,"limit":255},
             {"label":"Your Organization","name":"organization","type":"text","required":true,"limit":255},
             {"type":"email","label":"Email","name":"email","required":true,"limit":255},
-            {"type":"checkbox","label":"Terms and Conditions",name:"terms_accept","required":true,options:[
-                {label:'I accept the terms and conditions of this website',value:false},
-                {label:'I accept the terms and conditions of this website',value:true}
-            ],
-            "help":'<a href="#" target="_blank">Click here</a> to review the terms and conditions.'},
+            "help":'<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Click here</a> to review the CC BY-NC 4.0 license'},
             {"type":"checkbox","label":'Activity License',name:"license_accept","required":true,options:[
-                {label:'I accept the license associated with this activity',value:false},
-                {label:'I accept the license associated with this activity',value:true}
+                {label:'I accept the CC BY-NC 4.0 license associated with this activity',value:false},
+                {label:'I accept the CC BY-NC 4.0 license associated with this activity',value:true}
             ],
             "help":'<a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank">Click here</a> to review the various Creative Commons licenses.'},
         ]
@@ -130,7 +126,7 @@
         var form_data = e.form.get();
         if (e.form.validate()) {
             e.form.trigger('close');
-            toastr.success('Prentending to Download Files...');
+            toastr.success('Downloading Files ...');
             window.open('/api/activities/'+form_data.activity_id+'/files/'+form_data.file_id+'?name='+form_data.name+'&organization='+form_data.organization+'&email='+form_data.email, '_blank');
         }
     }).on('cancel',function(e) {

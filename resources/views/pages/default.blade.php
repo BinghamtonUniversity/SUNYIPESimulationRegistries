@@ -54,7 +54,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/admin"><i class="fa fa-cog fa-fw"></i> Admin</a></li>
+            @can('admin', App\Models\User::class)
+              <li><a href="/admin"><i class="fa fa-cog fa-fw"></i> Admin</a></li>
+            @endcan
             <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
           </ul>
         </li>

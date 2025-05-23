@@ -11,6 +11,12 @@ class UserPolicy
     /**
      * Determine whether the user can view any models.
      */
+
+    public function admin(User $user): bool {
+        // Check to see if this person has any admin permissions whatsoever
+        return Permission::where('user_id',$user->id)->exists();
+    }
+
     public function viewAny(User $user): bool
     {
         return Permission::where('user_id',$user->id)

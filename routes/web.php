@@ -28,7 +28,7 @@ Route::middleware(['web','auth','auth.session'])->group(function () {
         Route::get('/types/{type}/values',[AdminController::class,'values']);
         Route::get('/campuses',[AdminController::class,'campuses']);
         Route::get('/site_configurations',[AdminController::class,'site_configurations']);
-    });
+    })->middleware('can:admin,App\Models\User');
     Route::get('/logout', function () {
         Auth::logout();
         return redirect('https://bingwayf.binghamton.edu/logout');
