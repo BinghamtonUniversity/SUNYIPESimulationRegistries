@@ -20,15 +20,15 @@ Route::get('/glossary',[PagesController::class,'glossary'])->name('glossary');
 
 Route::middleware(['web','auth','auth.session'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/',[AdminController::class,'activities'])->name('admin');
-        Route::get('/users',[AdminController::class,'users']);
-        Route::get('/activities/{activity}/logs',[AdminController::class,'activity_logs']);
-        Route::get('/activities',[AdminController::class,'activities']);
-        Route::get('/types',[AdminController::class,'types']);
-        Route::get('/types/{type}/values',[AdminController::class,'values']);
-        Route::get('/campuses',[AdminController::class,'campuses']);
-        Route::get('/site_configurations',[AdminController::class,'site_configurations']);
-    })->middleware('can:admin',App\Models\User::class);
+        Route::get('/',[AdminController::class,'activities'])->name('admin')->can('admin',App\Models\User::class);
+        Route::get('/users',[AdminController::class,'users'])->can('admin',App\Models\User::class);
+        Route::get('/activities/{activity}/logs',[AdminController::class,'activity_logs'])->can('admin',App\Models\User::class);
+        Route::get('/activities',[AdminController::class,'activities'])->can('admin',App\Models\User::class);
+        Route::get('/types',[AdminController::class,'types'])->can('admin',App\Models\User::class);
+        Route::get('/types/{type}/values',[AdminController::class,'values'])->can('admin',App\Models\User::class);
+        Route::get('/campuses',[AdminController::class,'campuses'])->can('admin',App\Models\User::class);
+        Route::get('/site_configurations',[AdminController::class,'site_configurations'])->can('admin',App\Models\User::class);
+    });
     Route::get('/logout', function () {
         Auth::logout();
         return redirect('https://bingwayf.binghamton.edu/logout');
