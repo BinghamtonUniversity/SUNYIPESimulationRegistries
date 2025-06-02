@@ -66,13 +66,15 @@ class ActivityPolicy
     {
         return Permission::where('user_id',$user->id)
             ->where('permission','manage_activities')
-            ->exists();
+            ->exists()
+            ||
+            $activity->user->id == $user->id;;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Activity $activity): bool
+    public function restore(User $user): bool
     {
         return Permission::where('user_id',$user->id)
             ->where('permission','manage_activities')
@@ -82,7 +84,7 @@ class ActivityPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Activity $activity): bool
+    public function forceDelete(User $user): bool
     {
         return Permission::where('user_id',$user->id)
             ->where('permission','manage_activities')

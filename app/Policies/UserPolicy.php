@@ -51,26 +51,10 @@ class UserPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, User $model):bool
+    public function delete(User $user):bool
     {
         return Permission::where('user_id',$user->id)->where('permission',"manage_users")->exists();
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-//    public function restore(User $user, User $model): bool
-//    {
-//        //
-//    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-//    public function forceDelete(User $user, User $model): bool
-//    {
-//        //
-//    }
 
     public function manage_user_permissions(User $user):bool {
         return Permission::where('user_id',$user->id)->where('permission','manage_permissions')->exists();
