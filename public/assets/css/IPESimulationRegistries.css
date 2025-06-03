@@ -789,3 +789,24 @@ a {
 a:hover {
   color:#2c3e50;
 }
+
+/* Custom CSS to increase modal width */
+.modal-dialog {
+  width: 800px; /* Set your desired width here */
+  margin: 30px auto; /* Maintains vertical spacing and horizontal centering */
+}
+
+/* Optional: Adjust for larger screens if needed */
+@media (min-width: 992px) {
+  .modal-dialog {
+      width: 900px; /* Wider for larger screens */
+  }
+}
+
+/* Optional: Adjust for smaller screens */
+@media (max-width: 767px) {
+  .modal-dialog {
+      width: auto; /* Ensures it remains responsive on small screens */
+      margin: 10px; /* Adjust margin for smaller screens */
+  }
+}

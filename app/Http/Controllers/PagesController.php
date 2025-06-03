@@ -13,15 +13,22 @@ use App\Models\Activity;
 use App\Models\ActivityValue;
 use App\Models\Type;
 use App\Models\File;
+use App\Models\SiteConfiguration;
 
 class PagesController extends Controller
 {
+    public $site_config = [];
+
     public function __construct() {
+        $this->site_config = SiteConfiguration::get()->mapWithKeys(function($value) {
+            return [$value->key => $value->value];
+        });
     }
 
     public function home(){
         return view('pages.home',[
-            'title'=>'Home'
+            'title'=>'Home',
+            'site_config' => $this->site_config
         ]);
     }
 
@@ -71,7 +78,8 @@ class PagesController extends Controller
         return view('pages.browse',[
             'title'=>'Search Results',
             'activities' => $activities,
-            'data' => ['search_form_fields' => Activity::get_search_form_fields()]
+            'data' => ['search_form_fields' => Activity::get_search_form_fields()],
+            'site_config' => $this->site_config
         ]);
     }
 
@@ -81,14 +89,15 @@ class PagesController extends Controller
             'title'=>'Glossary',
             'data'=>[
                 'types' => $types
-            ]
+            ],
+            'site_config' => $this->site_config
         ]);
     }
 
     public function activity(Request $request, Activity $activity){
         $files = File::where('activity_id',$activity->id)->get();
         if (!is_null($activity->video_url)) {
-            $video_embed = OEmbed::get('https://www.youtube.com/watch?v=YITDLmRWnqM');
+            $video_embed = OEmbed::get($activity->video_url);
             $video_html = $video_embed->html(['width' => 400]);
         } else {
             $video_html = null;
@@ -97,6 +106,7 @@ class PagesController extends Controller
             'activity'=>$activity->withPlainTextValues(),
             'files'=>$files,
             'video_html'=>$video_html,
+            'site_config' => $this->site_config
         ]);
     }
 
@@ -104,6 +114,7 @@ class PagesController extends Controller
         if (Auth::check()) {
             return view('pages.manage',[
                 'activities_form_fields'=>Activity::get_form_fields(),
+                'site_config' => $this->site_config
             ]);
         } else {
             return redirect(url('/manage/login'));

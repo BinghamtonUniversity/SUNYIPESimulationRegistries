@@ -5,8 +5,8 @@
 @section('description')
 <div class="panel panel-default" style="margin-top:20px;">
     <div class="panel-body">
-        <a href="https://creativecommons.org/licenses/{{$activity->license}}/4.0/" target="_blank">
-            <img src="/assets/images/licenses/{{$activity->license}}.png" style="width:150px;" class="pull-right">
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
+            <img src="/assets/images/licenses/by-nc.png" style="width:150px;" class="pull-right">
         </a>
         <h1 style="text-align:center;margin:0px;">{{$activity->title}}</h1>
     </div>
@@ -34,7 +34,10 @@
                             IPE/Simulation
                         @endif
                     </div>
-                    <div><strong>Description: </strong><br> {{$activity->description}}</div>
+                    <div>
+                        <strong>Description: </strong><br> 
+                        {!! str_replace("\n",'<br>',$activity->description) !!}
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
@@ -47,30 +50,8 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <strong>Knowledge: </strong> {{$activity->ksa_knowledge}}
-                                </div>
-                                <div class="col-sm-12">
-                                    <strong>Skills: </strong> {{$activity->ksa_skills}}
-                                </div>
-                                <div class="col-sm-12">
-                                    <strong>Attitudes / Behaviors: </strong> {{$activity->ksa_attitudes}}
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <strong>Learning Objectives: </strong> {{$activity->learning_objectives}}
-                                </div>
-                                <div class="col-sm-12">
-                                    <strong>Number of Learners: </strong> {{$activity->number_of_learners}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
                             @if (is_null($video_html)) 
-                                <div class="alert alert-info" style="font-size:12px;">No Video to Display</div>
+                                <!-- <div class="alert alert-info" style="font-size:12px;">No Video to Display</div> -->
                             @else
                                 {!! $video_html !!}
                             @endif
@@ -133,14 +114,10 @@
             {"label":"Your Name","name":"name","type":"text","required":true,"limit":255},
             {"label":"Your Organization","name":"organization","type":"text","required":true,"limit":255},
             {"type":"email","label":"Email","name":"email","required":true,"limit":255},
-            {"type":"checkbox","label":"Terms and Conditions",name:"terms_accept","required":true,options:[
-                {label:'I accept the terms and conditions of this website',value:false},
-                {label:'I accept the terms and conditions of this website',value:true}
-            ],
-            "help":'<a href="#" target="_blank">Click here</a> to review the terms and conditions.'},
+            "help":'<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Click here</a> to review the CC BY-NC 4.0 license'},
             {"type":"checkbox","label":'Activity License',name:"license_accept","required":true,options:[
-                {label:'I accept the license associated with this activity',value:false},
-                {label:'I accept the license associated with this activity',value:true}
+                {label:'I accept the CC BY-NC 4.0 license associated with this activity',value:false},
+                {label:'I accept the CC BY-NC 4.0 license associated with this activity',value:true}
             ],
             "help":'<a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank">Click here</a> to review the various Creative Commons licenses.'},
         ]
@@ -149,7 +126,7 @@
         var form_data = e.form.get();
         if (e.form.validate()) {
             e.form.trigger('close');
-            toastr.success('Prentending to Download Files...');
+            toastr.success('Downloading Files ...');
             window.open('/api/activities/'+form_data.activity_id+'/files/'+form_data.file_id+'?name='+form_data.name+'&organization='+form_data.organization+'&email='+form_data.email, '_blank');
         }
     }).on('cancel',function(e) {

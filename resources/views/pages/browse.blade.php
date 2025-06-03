@@ -40,11 +40,13 @@
                     </div>
                     <a href="{{url('/activities/'.$activity->id)}}">{{$activity->title}}</a>
                 </h4>
+                <!--
                 <div>
                     @foreach($activity->matches as $match)
                         <div class="label label-primary">{{$match}}</div>&nbsp;
                     @endforeach
                 </div>
+                -->
                 <div>
                     <strong>Description:</strong>
                     {{substr($activity->description,0,250)}}
@@ -52,22 +54,6 @@
                 <div>
                     <strong>Contact:</strong>
                     <a href="mailto:{{$activity->contact_email}}">{{$activity->contact_name}}</a>
-                </div>
-                <div>
-                    <strong>Knowledge:</strong>
-                    {{$activity->ksa_knowledge}}
-                </div>
-                <div>
-                    <strong>Skills:</strong>
-                    {{$activity->ksa_skills}}
-                </div>
-                <div>
-                    <strong>Attitudes:</strong>
-                    {{$activity->ksa_attitudes}}
-                </div>
-                <div>
-                    <strong>Learning Objectives:</strong>
-                    {{$activity->learning_objectives}}
                 </div>
             </div>
         </div>

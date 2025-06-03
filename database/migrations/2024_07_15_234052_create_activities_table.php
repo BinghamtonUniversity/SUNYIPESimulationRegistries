@@ -21,11 +21,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('contact_name')->nullable();
             $table->string('contact_email')->nullable();
-            $table->text('ksa_knowledge')->nullable();
-            $table->text('ksa_skills')->nullable();
-            $table->text('ksa_attitudes')->nullable();
-            $table->text('learning_objectives')->nullable();
-            $table->unsignedInteger('number_of_learners')->nullable();
             $table->string('video_url')->nullable()->default(null);
             $table->enum('status',['draft','submitted','approved','rejected'])->default('draft')->index();
             $table->unsignedBigInteger('approved_by')->nullable();

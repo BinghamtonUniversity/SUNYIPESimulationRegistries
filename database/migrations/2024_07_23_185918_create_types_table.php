@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('is_simulation')->default(false)->index();
             $table->boolean('searchable')->default(true)->index();
             $table->boolean('multi_select')->default(false)->index();
+            $table->boolean('in_glossary')->default(false)->index();
             $table->unsignedInteger('order')->default(4294967295);
             $table->string('help_text')->nullable()->default(NULL);
             $table->timestamps();

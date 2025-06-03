@@ -31,6 +31,11 @@ ajax.get('/api/types',function(data) {
                     {value:true,label:"Yes"}
                 ],
             },
+            {name:'in_glossary',type:'switch',label:'In Glossary', help: 'Include in Glossary', options: [
+                    {value:false,label:"No"},
+                    {value:true,label:"Yes"}
+                ],
+            },
             {name:'help_text',type:'textarea',label:'Help Text',showColumn:false,limit:255},
         ],
         data:data

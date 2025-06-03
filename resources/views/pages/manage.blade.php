@@ -7,7 +7,7 @@
     <div class="panel-body">
         <h1 style="text-align:center;margin:0px;">Manage My Activities</h1>
     </div>
-</div><div class="alert alert-info" style="margin-top:15px;">
+</div><div class="alert alert-info" style="margin-top:15px;background-color:#004c93;">
     <h3 style="margin-top:0px;">Instructions:</h3>
     Use the <div class="btn btn-success btn-xs">Add Activity</div> button below to create a new activity. <br>
     Select the <i class="fa fa-check-square-o"></i> next to the activity you want to modify and click <div class="btn btn-primary btn-xs">Update Activity</div> or <div class="btn btn-danger btn-xs">Delete Activity</div> <br>
