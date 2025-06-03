@@ -20,14 +20,14 @@ Route::get('/glossary',[PagesController::class,'glossary'])->name('glossary');
 
 Route::middleware(['web','auth','auth.session'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/',[AdminController::class,'users'])->name('admin')->middleware('can:viewAny,App\Models\User');
-        Route::get('/users',[AdminController::class,'users'])->middleware('can:viewAny,App\Models\User');
-        Route::get('/activities/{activity}/logs',[AdminController::class,'activity_logs'])->middleware('can:view,App\Models\ActivityLog');
-        Route::get('/activities',[AdminController::class,'activities'])->middleware('can:viewAny,App\Models\Activity');
-        Route::get('/types',[AdminController::class,'types'])->middleware('can:view,App\Models\Type');
-        Route::get('/types/{type}/values',[AdminController::class,'values'])->middleware('can:manage,App\Models\TypeValue');
-        Route::get('/campuses',[AdminController::class,'campuses'])->middleware('can:manage,App\Models\Campus');
-        Route::get('/site_configurations',[AdminController::class,'site_configurations'])->middleware('can:manage,App\Models\SiteConfiguration');
+        Route::get('/',[AdminController::class,'users'])->name('admin');
+        Route::get('/users',[AdminController::class,'users']);
+        Route::get('/activities/{activity}/logs',[AdminController::class,'activity_logs']);
+        Route::get('/activities',[AdminController::class,'activities']);
+        Route::get('/types',[AdminController::class,'types']);
+        Route::get('/types/{type}/values',[AdminController::class,'values']);
+        Route::get('/campuses',[AdminController::class,'campuses']);
+        Route::get('/site_configurations',[AdminController::class,'site_configurations']);
     });
     Route::get('/logout', function () {
         Auth::logout();

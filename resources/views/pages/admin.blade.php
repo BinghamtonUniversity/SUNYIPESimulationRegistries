@@ -55,18 +55,10 @@
                 <li><a href="/"><i class="fa fa-arrow-left"></i> Home</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
               </ul>
-              @can('viewAny', 'App\User')
-                <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-users fa-fw"></i>&nbsp; Users</a></li>
-              @endcan
-              @can('viewAny','App\Activity')
-                <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-stethoscope fa-fw"></i>&nbsp; Activities</a></li>
-              @endcan
-              @can('view', 'App\Type')
-                <li class="visible-xs-block @if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-table fa-fw"></i>&nbsp; Types</a></li>
-              @endcan
-              @can('manage', 'App\Campus')
+              <li class="visible-xs-block @if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-users fa-fw"></i>&nbsp; Users</a></li>
+              <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-stethoscope fa-fw"></i>&nbsp; Activities</a></li>
+              <li class="visible-xs-block @if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-table fa-fw"></i>&nbsp; Types</a></li>
               <li class="visible-xs-block @if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-university fa-fw"></i>&nbsp;Institutions</a></li>
-              @endcan
               @can('manage','App\SiteConfiguration')
                 <li class="visible-xs-block @if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-cogs fa-fw"></i>&nbsp; Site Configuration</a></li>
               @endcan
@@ -80,18 +72,10 @@
     </nav>
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        @can('viewAny', 'App\User')
-            <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-users fa-fw"></i>&nbsp; Users</a></li>
-        @endcan
-        @can('viewAny','App\Activity')
-            <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-stethoscope fa-fw"></i>&nbsp; Activities</a></li>
-        @endcan
-        @can('view', 'App\Type')
-            <li class="@if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-table fa-fw"></i>&nbsp;Types</a></li>
-        @endcan
-        @can('manage', 'App\Campus')
-            <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-university fa-fw"></i>&nbsp;Institutions</a></li>
-        @endcan
+        <li class="@if($page=="users") active @endif"><a href="/admin/users"><i class="fa fa-users fa-fw"></i>&nbsp; Users</a></li>
+        <li class="@if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-stethoscope fa-fw"></i>&nbsp; Activities</a></li>
+        <li class="@if($page=="types") active @endif"><a href="/admin/types"><i class="fa fa-table fa-fw"></i>&nbsp;Types</a></li>
+        <li class="@if($page=="campuses") active @endif"><a href="/admin/campuses"><i class="fa fa-university fa-fw"></i>&nbsp;Institutions</a></li>
         @can('manage','App\SiteConfiguration')
             <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-cogs fa-fw"></i>&nbsp; Site Configuration</a></li>
         @endcan

@@ -13,7 +13,7 @@ use App\Http\Controllers\TypeController;
 /* User Routes */
 Route::get('/users/search/{search_string?}',[UserController::class,'search'])->middleware('can:viewAny,App\Models\User');
 Route::get('/users',[UserController::class,'index'])->middleware('can:view,App\Models\User');
-Route::get('/users/{user}/activities',[UserController::class,'get_user_activities']);
+Route::get('/users/{user}/activities',[UserController::class,'get_user_activites']);
 Route::get('/users/{user}',[UserController::class, 'show'])->middleware('can:view,App\Models\User');
 Route::post('/users',[UserController::class,'store'])->middleware('can:create,App\Models\User');
 Route::put('/users/{user}/permissions',[UserController::class,'update_permissions'])->middleware('can:manage_user_permissions,App\Models\User');
@@ -21,16 +21,16 @@ Route::put('/users/{user}',[UserController::class,'update'])->middleware('can:up
 
 /* Activity Routes */
 Route::get('/activities',[ActivityController::class,'index'])->middleware('can:viewAny,App\Models\Activity');
-Route::get('/activities/{activity}/files',[ActivityController::class, 'index_files'])->middleware('can:update,activity');
-Route::post('/activities/{activity}/files',[ActivityController::class, 'upload_file'])->middleware('can:update,activity');
-Route::put('/activities/{activity}/files/{file}',[ActivityController::class, 'rename_file'])->middleware('can:update,activity');
-Route::delete('/activities/{activity}/files/{file}',[ActivityController::class, 'delete_file'])->middleware('can:update,activity');
+Route::get('/activities/{activity}/files',[ActivityController::class, 'index_files']);//->middleware('can:viewLogs,activity');
+Route::post('/activities/{activity}/files',[ActivityController::class, 'upload_file']);//->middleware('can:viewLogs,activity');
+Route::put('/activities/{activity}/files/{file}',[ActivityController::class, 'rename_file']);//->middleware('can:viewLogs,activity');
+Route::delete('/activities/{activity}/files/{file}',[ActivityController::class, 'delete_file']);//->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}/files/{file}',[ActivityController::class, 'download_file']);//->middleware('can:viewLogs,activity');
-Route::get('/activities/{activity}/logs',[ActivityController::class, 'activity_logs'])->middleware('can:viewLogs,activity');
+Route::get('/activities/{activity}/logs',[ActivityController::class, 'activity_logs']);//->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}',[ActivityController::class, 'show'])->middleware('can:view,activity');
-Route::post('/activities',[ActivityController::class,'store']);
-Route::put('/activities/{activity}',[ActivityController::class,'update'])->middleware('can:update,activity');
-Route::delete('/activities/{activity}',[ActivityController::class,'destroy'])->middleware('can:delete,activity');
+Route::post('/activities',[ActivityController::class,'store']);//->middleware('can:create,App\Models\Activity');
+Route::put('/activities/{activity}',[ActivityController::class,'update']);//->middleware('can:update,activity');
+Route::delete('/activities/{activity}',[ActivityController::class,'destroy']);//->middleware('can:delete,activity');
 Route::get('/activities/form_fields/default',[ActivityController::class,'get_form_fields']);
 Route::get('/activities/form_fields/search',[ActivityController::class,'get_search_form_fields']);
 

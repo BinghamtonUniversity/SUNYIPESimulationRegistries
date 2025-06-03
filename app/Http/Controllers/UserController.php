@@ -121,7 +121,7 @@ class UserController extends Controller
         return Permission::where('user_id',$user->id)->get();
     }
 
-    public function get_user_activities(Request $request, User $user) {
+    public function get_user_activites(Request $request, User $user) {
         $activities =  Activity::where('submitter_id',$user->id)->get();
         foreach ($activities as $activity) {
             $activity->withValuesModified();
