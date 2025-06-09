@@ -98,7 +98,11 @@ class PagesController extends Controller
         $files = File::where('activity_id',$activity->id)->get();
         if (!is_null($activity->video_url)) {
             $video_embed = OEmbed::get($activity->video_url);
-            $video_html = $video_embed->html(['width' => 400]);
+            if (!is_null($video_embed)) {
+                $video_html = $video_embed->html(['width' => 400]);
+            }else{
+                $video_html = null;
+            }
         } else {
             $video_html = null;
         }
