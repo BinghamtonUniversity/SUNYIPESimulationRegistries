@@ -12,7 +12,7 @@
     Use the <div class="btn btn-success btn-xs">Add Activity</div> button below to create a new activity. <br>
     Select the <i class="fa fa-check-square-o"></i> next to the activity you want to modify and click <div class="btn btn-primary btn-xs">Update Activity</div> or <div class="btn btn-danger btn-xs">Delete Activity</div> <br>
     To upload or modify files associated with a particular activity, select the <i class="fa fa-check-square-o"></i> next to the appropriate activity and click <div class="btn btn-default btn-xs">Manage Files</div><br>
-    Download the <a href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank">SUNY Nursing Simulation Fellowship Simulation Template</a>
+    Download the <a class="btn btn-default btn-xs" href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank">SUNY Nursing Simulation Fellowship Simulation Template</a>
 </div>
 <div id="admin-update-activities"></div>
 
