@@ -85,9 +85,9 @@
             <div class="row">
                 @foreach($files as $file)
                     <div class="col-sm-3" style="text-align:center;">
-                        <div class="btn btn-primary download_files" data-file_id="{{$file->id}}" data-activity_id="{{$activity->id}}">
+                        <div class="btn btn-primary download_files" style="width:100%;" data-file_id="{{$file->id}}" data-activity_id="{{$activity->id}}">
                             <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
-                            <div>{{$file->name}}.{{$file->ext}}</div>
+                            <div style="text-wrap:wrap;">{{$file->name}}.{{$file->ext}}</div>
                         </div>
                     </div>
                 @endforeach
