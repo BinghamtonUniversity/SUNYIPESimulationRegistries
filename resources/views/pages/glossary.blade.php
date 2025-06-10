@@ -16,7 +16,7 @@
             <div class="panel-body">
                 <h2>{{$type->type}}</h2>
                 @if (isset($type->help_text))
-                    <!-- <h4><div class="label label-default">{{$type->help_text}}</div></h4><br> -->
+                    <h4><div class="label label-default">{{$type->help_text}}</div></h4><br>
                 @endif
                 @foreach($type['values'] as $value)
                     @if (isset($value->help_text))
