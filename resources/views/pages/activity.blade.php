@@ -113,13 +113,15 @@
             {name:"file_id",type:"hidden"},
             {"label":"Your Name","name":"name","type":"text","required":true,"limit":255},
             {"label":"Your Organization","name":"organization","type":"text","required":true,"limit":255},
-            {"type":"email","label":"Email","name":"email","required":true,"limit":255},
-            "help":'<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Click here</a> to review the CC BY-NC 4.0 license'},
+            {"type":"email","label":"Email","name":"email","required":true,"limit":255}
+                "help":"<a href='https://creativecommons.org/licenses/by-nc/4.0/' target='_blank'>Click here</a> to review the CC BY-NC 4.0 license"
+            },
             {"type":"checkbox","label":'Activity License',name:"license_accept","required":true,options:[
                 {label:'I accept the CC BY-NC 4.0 license associated with this activity',value:false},
                 {label:'I accept the CC BY-NC 4.0 license associated with this activity',value:true}
             ],
-            "help":'<a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank">Click here</a> to review the various Creative Commons licenses.'},
+                "help":"<a href='https://creativecommons.org/share-your-work/cclicenses/' target='_blank'>Click here</a> to review the various Creative Commons licenses."
+            },
         ]
     }
     app.form('download_form').on('save',function(e) {
