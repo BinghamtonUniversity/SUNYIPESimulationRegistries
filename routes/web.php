@@ -20,14 +20,14 @@ Route::get('/glossary',[PagesController::class,'glossary'])->name('glossary');
 
 Route::middleware(['web','auth','auth.session'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/',[AdminController::class,'activities'])->name('admin')->can('admin',App\Models\User::class);
-        Route::get('/users',[AdminController::class,'users'])->can('admin',App\Models\User::class);
-        Route::get('/activities/{activity}/logs',[AdminController::class,'activity_logs'])->can('admin',App\Models\User::class);
-        Route::get('/activities',[AdminController::class,'activities'])->can('admin',App\Models\User::class);
-        Route::get('/types',[AdminController::class,'types'])->can('admin',App\Models\User::class);
-        Route::get('/types/{type}/values',[AdminController::class,'values'])->can('admin',App\Models\User::class);
-        Route::get('/campuses',[AdminController::class,'campuses'])->can('admin',App\Models\User::class);
-        Route::get('/site_configurations',[AdminController::class,'site_configurations'])->can('admin',App\Models\User::class);
+        Route::get('/',[AdminController::class,'activities'])->name('admin')->can('viewAny',App\Models\Activity::class);
+        Route::get('/users',[AdminController::class,'users'])->can('viewAny',App\Models\User::class);
+        Route::get('/activities/{activity}/logs',[AdminController::class,'activity_logs'])->can('viewAny',App\Models\ActivityDownloadLog::class);
+        Route::get('/activities',[AdminController::class,'activities'])->can('viewAny',App\Models\Activity::class);
+        Route::get('/types',[AdminController::class,'types'])->can('view',App\Models\Type::class);
+        Route::get('/types/{type}/values',[AdminController::class,'values'])->can('manage',App\Models\Type::class);
+        Route::get('/campuses',[AdminController::class,'campuses'])->can('manage',App\Models\Campus::class);
+        Route::get('/site_configurations',[AdminController::class,'site_configurations'])->can('manage',App\Models\SiteConfiguration::class);
     });
     Route::get('/logout', function () {
         Auth::logout();

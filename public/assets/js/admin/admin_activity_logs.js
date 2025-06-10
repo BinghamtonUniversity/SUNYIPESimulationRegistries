@@ -6,11 +6,16 @@ ajax.get(`/api/activities/${id}/logs`,function(data) {
             search:false,columns:false,upload:false,download:false,title:'Activity Logs',
             entries:[],
             sortBy:'order',
-            actions:actions,
+            actions:[],
             count:20,
             schema:[
                 {name:'id',type:'hidden'},
-                {name:'actor',type:"user",label:'Actor'},
+                {name:'name',type:"text",label:'Actor Name'},
+                {name:'organization',type:"text",label:'Organization'},
+                {name:'email',type:"text",label:'Email'},
+                {name:'file_name',type:"text",label:'File Name',
+                    template:"{{attributes.file.name}}"
+                },
                 {
                     name:'activity_id',type:"combobox",label:'Activity',
                     options:"/api/activities",
