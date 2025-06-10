@@ -113,7 +113,7 @@
             {name:"file_id",type:"hidden"},
             {"label":"Your Name","name":"name","type":"text","required":true,"limit":255},
             {"label":"Your Organization","name":"organization","type":"text","required":true,"limit":255},
-            {"type":"email","label":"Email","name":"email","required":true,"limit":255},
+            {"type":"email","label":"Email","name":"email","required":true,"limit":255,
                 "help":"<a href='https://creativecommons.org/licenses/by-nc/4.0/' target='_blank'>Click here</a> to review the CC BY-NC 4.0 license"
             },
             {"type":"checkbox","label":'Activity License',name:"license_accept","required":true,options:[
