@@ -11,7 +11,18 @@
 @endsection
 
 @section('content')
-    <div class="btn btn-primary" id="filter-activities-btn" style="width:100%;margin-bottom:20px;"><i class="fa fa-filter"></i> Search / Filter Activities</div>
+    <div class="panel panel-default" style="font-size:18px;">
+        <div class="panel-body">
+            <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="pull-right">
+                <img src="/assets/images/licenses/by-nc.png" style="width:150px;">
+            </a>
+            Activities are submitted under the CC BY-NC license.  This license enables users to adapt and build upon the activities for noncommercial purposes.  
+            We encourage you to modify an activity to fit your needs. The user may also distribute the activity.  When using or distributing the activity, credit for authorship must be given.
+            Activities are vetted by simulation and/or IPE content experts for essential activity components prior to approval for inclusion.
+        </div>
+    </div>
+
+    <div class="btn btn-primary" id="filter-activities-btn" style="width:100%;margin-bottom:20px;font-size:20px;"><i class="fa fa-filter"></i> Search / Filter Activities</div>
     @if (isset($error))  
         <div class="alert alert-danger">{{$error}}</div>
     @endif
@@ -22,8 +33,8 @@
     @foreach($activities as $activity)
         <div class="col-sm-4">
         <div class="panel panel-default" style="height:300px;overflow:scroll;">
-            <div class="panel-body">
-                <h4>
+            <div class="panel-body" style="font-size: 20px;">
+                <h2 style="font-size: 26px;">
                     @if(!is_null($activity->video_url))
                     <div class="badge pull-right" style="margin-left:5px;">
                         <a href="{{$activity->video_url}}" target="_blank" <i style="color:white;" class="fa fa-video-camera fa-fw"></i></a>
@@ -39,7 +50,7 @@
                         @endif
                     </div>
                     <a href="{{url('/activities/'.$activity->id)}}">{{$activity->title}}</a>
-                </h4>
+                </h2>
                 <!--
                 <div>
                     @foreach($activity->matches as $match)

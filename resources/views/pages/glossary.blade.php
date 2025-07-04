@@ -13,14 +13,14 @@
     @foreach($data['types'] as $type)
         @if ($type->in_glossary === true)
         <div class="panel panel-default">
-            <div class="panel-body">
+            <div class="panel-body" style="font-size: 20px;">
                 <h2>{{$type->type}}</h2>
                 @if (isset($type->help_text))
-                    <h4><div class="label label-default">{{$type->help_text}}</div></h4><br>
+                    <div class="label label-default" style="background-color:#009ee0">{{$type->help_text}}</div><br>
                 @endif
                 @foreach($type['values'] as $value)
                     @if (isset($value->help_text))
-                        <h4><label>{{$value->value}}</label>: {{$value->help_text}}</h4>
+                        <label>{{$value->value}}</label>: {{$value->help_text}}<br>
                     @endif
                 @endforeach
             </div>

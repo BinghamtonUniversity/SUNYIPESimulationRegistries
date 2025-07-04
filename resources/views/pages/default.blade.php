@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;"><i class="fa fa-medkit fa-fw"></i> SUNY Share Repository</a>
+      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;"><i class="fa fa-medkit fa-fw"></i> SUNY Share</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,7 +38,7 @@
         <li @if(request()->routeIs('home')) class="active" @endif><a href="{{route('home')}}"><i class="fa fa-home fa-fw"></i> Home <span class="sr-only">(current)</span></a></li>
         <li @if(request()->routeIs('browse')) class="active" @endif><a href="{{route('browse')}}"><i class="fa fa-search fa-fw"></i> Browse Activities</a></li>
         <li @if(request()->routeIs('glossary')) class="active" @endif><a href="{{route('glossary')}}"><i class="fa fa-file fa-fw"></i> Glossary</a></li>
-        @auth<li @if(request()->routeIs('manage')) class="active" @endif><a href="{{route('manage')}}"><i class="fa fa-cog fa-fw"></i> Manage My Activities</a></li>@endauth
+        <li @if(request()->routeIs('manage')) class="active" @endif><a href="{{route('manage')}}"><i class="fa fa-cog fa-fw"></i> Manage My Activities</a></li>
       </ul>
       <!--
       <form class="navbar-form navbar-left">

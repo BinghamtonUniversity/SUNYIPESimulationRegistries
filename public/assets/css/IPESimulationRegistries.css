@@ -810,3 +810,8 @@ a:hover {
       margin: 10px; /* Adjust margin for smaller screens */
   }
 }
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a {
+  background-color:#00ddff;
+  color:#333 !important;
+}
