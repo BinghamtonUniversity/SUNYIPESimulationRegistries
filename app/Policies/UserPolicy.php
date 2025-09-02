@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class UserPolicy
 {
@@ -20,9 +21,9 @@ class UserPolicy
     public function viewAny(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission',"manage_users")
-            ->orWhere('permission','view_users')
-            ->orWhere('permission','manage_permissions')
+            ->where('permission','read')
+            ->orWhere('permission','write')
+            ->orWhere('permission','admin')
             ->exists();
     }
 
@@ -32,9 +33,9 @@ class UserPolicy
     public function view(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission',"manage_users")
-            ->orWhere('permission','view_users')
-            ->orWhere('permission','manage_permissions')
+            ->where('permission','read')
+            ->orWhere('permission','write')
+            ->orWhere('permission','admin')
             ->exists();
     }
 
@@ -43,7 +44,7 @@ class UserPolicy
      */
     public function create(User $user): bool
     {
-        return Permission::where('user_id',$user->id)->where('permission',"manage_users")->exists();
+        return Permission::where('user_id',$user->id)->where('permission',"admin")->exists();
     }
 
     /**
@@ -51,7 +52,7 @@ class UserPolicy
      */
     public function update(User $user): bool
     {
-        return Permission::where('user_id',$user->id)->where('permission',"manage_users")->exists();
+        return Permission::where('user_id',$user->id)->where('permission',"admin")->exists();
     }
 
     /**
@@ -59,7 +60,7 @@ class UserPolicy
      */
     public function delete(User $user):bool
     {
-        return Permission::where('user_id',$user->id)->where('permission',"manage_users")->exists();
+        return Permission::where('user_id',$user->id)->where('permission',"admin")->exists();
     }
 
     /**
@@ -79,6 +80,6 @@ class UserPolicy
 //    }
 
     public function manage_user_permissions(User $user):bool {
-        return Permission::where('user_id',$user->id)->where('permission','manage_permissions')->exists();
+        return Permission::where('user_id',Auth::user()->id)->where('permission','admin')->exists();
     }
 }

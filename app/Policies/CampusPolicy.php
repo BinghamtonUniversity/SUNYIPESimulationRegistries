@@ -15,6 +15,7 @@ class CampusPolicy
     public function manage(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission','manage_campuses')->exists();
+            ->orWhere('permission','admin')
+            ->exists();
     }
 }

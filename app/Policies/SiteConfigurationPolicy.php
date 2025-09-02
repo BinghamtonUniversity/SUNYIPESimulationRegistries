@@ -15,6 +15,6 @@ class SiteConfigurationPolicy
     public function manage(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission','manage_site_configurations')->exists();
+            ->where('permission','admin')->exists();
     }
 }

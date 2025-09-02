@@ -59,48 +59,16 @@ ajax.get('/api/users',function(data) {
                                     type: "optgroup",
                                     options: [
                                         {
-                                            label:"View Users",
-                                            value:"view_users",
+                                            label:"Activity Reviewer",
+                                            value:"read",
                                         },
                                         {
-                                            label:"Manage Users",
-                                            value:"manage_users",
+                                            label:"Activity Contributor",
+                                            value:"write",
                                         },
                                         {
-                                            label:"View Activities",
-                                            value:"view_activities",
-                                        },
-                                        {
-                                            label:"Manage Activities",
-                                            value:"manage_activities",
-                                        },
-                                        {
-                                            label:"Manage Site Configurations",
-                                            value:"manage_site_configurations",
-                                        },
-                                        {
-                                            label:"View Types",
-                                            value:"view_types",
-                                        },
-                                        {
-                                            label:"Manage Types",
-                                            value:"manage_types",
-                                        },
-                                        {
-                                            label:"Manage Permissions",
-                                            value:"manage_permissions",
-                                        },
-                                        {
-                                            label:"Manage Campuses",
-                                            value:"manage_campuses",
-                                        },
-                                        {
-                                            label:"Manage Reports",
-                                            value:"manage_reports",
-                                        },
-                                        {
-                                            label:"Run Reports",
-                                            value:"run_reports",
+                                            label:"Admin",
+                                            value:"admin",
                                         }
                                     ]
                                 }

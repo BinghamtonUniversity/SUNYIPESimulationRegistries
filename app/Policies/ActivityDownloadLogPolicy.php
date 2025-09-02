@@ -15,7 +15,9 @@ class ActivityDownloadLogPolicy
     public function viewAny(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission','manage_activities')
+            ->where('permission','read')
+            ->orWhere('permission','write')
+            ->orWhere('permission','admin')
             ->exists();
     }
 
@@ -25,7 +27,9 @@ class ActivityDownloadLogPolicy
     public function view(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission','manage_activities')
+            ->where('permission','read')
+            ->orWhere('permission','write')
+            ->orWhere('permission','admin')
             ->exists();
     }
 

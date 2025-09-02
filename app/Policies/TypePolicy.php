@@ -15,15 +15,16 @@ class TypePolicy
     public function view(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission','view_types')
-            ->orWhere('permission','manage_types')
+            ->where('permission','read')
+            ->orWhere('permission','write')
+            ->orWhere('permission','admin')
             ->exists();
     }
 
     public function update(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission','manage_types')
+            ->where('permission','admin')
             ->exists();
     }
     /**
@@ -32,7 +33,7 @@ class TypePolicy
     public function manage(User $user): bool
     {
         return Permission::where('user_id',$user->id)
-            ->where('permission','manage_types')
+            ->where('permission','admin')
             ->exists();
     }
 }
