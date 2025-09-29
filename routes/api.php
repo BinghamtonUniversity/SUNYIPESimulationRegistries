@@ -18,6 +18,7 @@ Route::get('/users/{user}',[UserController::class, 'show'])->middleware('can:vie
 Route::post('/users',[UserController::class,'store'])->middleware('can:create,App\Models\User');
 Route::put('/users/{user}/permissions',[UserController::class,'update_permissions'])->middleware('can:manage_user_permissions,App\Models\User');
 Route::put('/users/{user}',[UserController::class,'update'])->middleware('can:update,App\Models\User');
+Route::delete('/users/{user}',[UserController::class,'destroy'])->middleware('can:delete,App\Models\User');
 
 /* Activity Routes */
 Route::get('/activities',[ActivityController::class,'index'])->middleware('can:viewAny,App\Models\Activity');
@@ -28,7 +29,7 @@ Route::delete('/activities/{activity}/files/{file}',[ActivityController::class, 
 Route::get('/activities/{activity}/files/{file}',[ActivityController::class, 'download_file']);//->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}/logs',[ActivityController::class, 'activity_logs'])->middleware('can:viewLogs,activity');
 Route::get('/activities/{activity}',[ActivityController::class, 'show'])->middleware('can:view,activity');
-Route::post('/activities',[ActivityController::class,'store']);
+Route::post('/activities',[ActivityController::class,'store'])->middleware('can:create,App\Models\Activity');
 Route::put('/activities/{activity}',[ActivityController::class,'update'])->middleware('can:update,activity');
 Route::delete('/activities/{activity}',[ActivityController::class,'destroy'])->middleware('can:delete,activity');
 Route::get('/activities/form_fields/default',[ActivityController::class,'get_form_fields']);

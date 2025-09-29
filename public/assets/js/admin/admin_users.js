@@ -15,6 +15,23 @@ ajax.get('/api/users',function(data) {
                 {name:'email',type:'email',label:'Email'},
                 {name:'unique_id',type:'text',label:'Unique ID'},
                 {
+                    "type": "checkbox",
+                    "label": "Is Active",
+                    "name": "active",
+                    "value": 1,
+                    "showColumn": true,
+                    "options": [
+                        {
+                            "value": 0,
+                            "label": "Inactive",
+                        },
+                        {
+                            "value": 1,
+                            "label": "Active",
+                        }
+                    ]
+                },
+                {
                     name:'campus_id',type:"combobox",label:'Institution',
                     options:"/api/campuses",
                     format:{

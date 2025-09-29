@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('unique_id')->unique();
             $table->string('email')->nullable()->default(null);
+            $table->boolean('active')->default(true);
             $table->unsignedBigInteger('campus_id')->nullable()->default(null);
             $table->foreign('campus_id')->references('id')->on('campuses');
             $table->rememberToken();

@@ -41,10 +41,10 @@ class ActivityPolicy
      */
     public function create(User $user): bool
     {
-        return Permission::where('user_id',$user->id)
+        return (Permission::where('user_id',$user->id)
             ->where('permission','write')
             ->orWhere('permission','admin')
-            ->exists();
+            ->exists()) && $user->active;
     }
 
     /**
@@ -52,14 +52,14 @@ class ActivityPolicy
      */
     public function update(User $user, Activity $activity): bool
     {
-        //
-        return Permission::where('user_id',$user->id)
+
+        return (Permission::where('user_id',$user->id)
             ->where(function($query) use ($activity) {
                 $query->where('permission','write')
                     ->orWhere('permission','admin');
             })->exists()
             ||
-            $activity->user->id == $user->id;
+            $activity->user->id == $user->id) && $user->active;
     }
 
     /**
@@ -67,11 +67,11 @@ class ActivityPolicy
      */
     public function delete(User $user, Activity $activity): bool
     {
-        return Permission::where('user_id',$user->id)
+        return (Permission::where('user_id',$user->id)
             ->where('permission','admin')
             ->exists()
             ||
-            $activity->user->id == $user->id;
+            $activity->user->id == $user->id)&& $user->active;
     }
 
     /**
@@ -79,9 +79,9 @@ class ActivityPolicy
      */
     public function restore(User $user): bool
     {
-        return Permission::where('user_id',$user->id)
+        return (Permission::where('user_id',$user->id)
             ->where('permission','admin')
-            ->exists();
+            ->exists())&& $user->active;
     }
 
     /**
@@ -103,7 +103,7 @@ class ActivityPolicy
                     ->orWhere('permission','admin');
             })
             ->exists()||
-            $activity->user->id == $user->id;;
+            $activity->user->id == $user->id;
     }
 
 }
