@@ -80,13 +80,17 @@ class DatabaseSeeder extends Seeder
 
         SiteConfiguration::create([
             "key"=>"page.home.body",
-            "value"=>"<h1 class='alert alert-info'>Welcome to the jungle!</div>"
+            "value"=>"<h1 class='alert alert-info'>Welcome to the SUNY Share!</div>"
         ]);
         SiteConfiguration::create([
             "key"=>"footer",
             "value"=>"
                 <span>IPE/Simulation Registry <br> &copy; 2024 Binghamton University
                 | <a href='https://www.binghamton.edu' target='_blank' style='color:white;'>Binghamton University</a></span>"
+        ]);
+        SiteConfiguration::create([
+            "key"=>"pages.browse_activities.help_text",
+            "value"=>"<p>Activities are submitted under the CC BY-NC license. This license enables users to adapt and build upon the activities for noncommercial purposes. We encourage you to modify an activity to fit your needs. The user may also distribute the activity. When using or distributing the activity, credit for authorship must be given. Activities are vetted by simulation and/or IPE content experts for essential activity components prior to approval for inclusion.</p>"
         ]);
 
         $type_values = collect([
@@ -117,7 +121,7 @@ class DatabaseSeeder extends Seeder
                     'Preschool (3 - 5 yr)',
                     'School Age (5 - 12 yr)',
                     'Adolescent (12 - 18 yr)',
-                    'Other'                
+                    'Other'
                 ]),
             ],[
                 'name' => 'Program',
@@ -151,7 +155,7 @@ class DatabaseSeeder extends Seeder
                     'Provider Office',
                     'Rehab Center',
                     'School-Based',
-                    'Other'                
+                    'Other'
                 ]),
             ],[
                 'name' => 'Experience',
@@ -169,7 +173,7 @@ class DatabaseSeeder extends Seeder
                     'Activity within a course',
                     'Full course',
                     'Co/Extra Curricular',
-                    'One time experience'                
+                    'One time experience'
                 ]),
             ],[
                 'name' => 'Patient Type',
@@ -179,7 +183,7 @@ class DatabaseSeeder extends Seeder
                     'Role Play',
                     'Manikin',
                     'Task Trainer',
-                    'Paper'                
+                    'Paper'
                 ]),
             ],[
                 'name' => 'Time to Complete',
@@ -188,7 +192,7 @@ class DatabaseSeeder extends Seeder
                     'Less than 15 minutes',
                     'Less than 30 minutes',
                     'Less than 60 minutes',
-                    'More than 60 minutes'                
+                    'More than 60 minutes'
                 ])
             ]
         ]);

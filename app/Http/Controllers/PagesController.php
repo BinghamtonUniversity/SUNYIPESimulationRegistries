@@ -75,6 +75,7 @@ class PagesController extends Controller
                 $activity->matches = $ranked_activity_ids[$activity->id]['values'];
                 return $activity;
             })->sortBy('count')->reverse()->values();
+//        dd($this->site_config);
         return view('pages.browse',[
             'title'=>'Search Results',
             'activities' => $activities,

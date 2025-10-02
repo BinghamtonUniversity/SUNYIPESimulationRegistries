@@ -16,14 +16,12 @@
             <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="pull-right">
                 <img src="/assets/images/licenses/by-nc.png" style="width:150px;">
             </a>
-            Activities are submitted under the CC BY-NC license.  This license enables users to adapt and build upon the activities for noncommercial purposes.  
-            We encourage you to modify an activity to fit your needs. The user may also distribute the activity.  When using or distributing the activity, credit for authorship must be given.
-            Activities are vetted by simulation and/or IPE content experts for essential activity components prior to approval for inclusion.
+            {!! $site_config['pages.browse_activities.help_text'] !!}
         </div>
     </div>
 
     <div class="btn btn-primary" id="filter-activities-btn" style="width:100%;margin-bottom:20px;font-size:20px;"><i class="fa fa-filter"></i> Search / Filter Activities</div>
-    @if (isset($error))  
+    @if (isset($error))
         <div class="alert alert-danger">{{$error}}</div>
     @endif
     @if (count($activities) === 0)
@@ -103,7 +101,7 @@
         event.form.trigger('close');
     });
 
-    
+
     app.click('#filter-activities-btn',function(e) {
         app.form('search_form').set(null);
         app.form('search_form').modal();
