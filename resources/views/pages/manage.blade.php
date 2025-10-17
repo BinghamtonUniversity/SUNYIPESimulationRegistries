@@ -17,8 +17,15 @@
     Download the <a class="btn btn-default btn-xs" href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank">SIPTEC Simulation Scenario Template</a><br>
 </div>
 <div class="alert alert-info" style="margin-top:15px;background-color:#004c93;">
-    Interprofessional Education activity submissions will be reviewed using the Interprofessional Education Checklist.
+    <ul>
+
+        <li>Interprofessional Education activity submissions will be reviewed using the Interprofessional Education Checklist.</li>
+        <li>Simulation submissions will be reviewed according to the CSA Scenario Validation Checklist.</li>
+    </ul>
+
+
 </div>
+
 <div id="admin-update-activities"></div>
 
 <div id="#main_target"></div>
