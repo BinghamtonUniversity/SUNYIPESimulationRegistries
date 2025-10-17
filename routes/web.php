@@ -32,7 +32,7 @@ Route::middleware(['web','auth','auth.session'])->group(function () {
     Route::get('/logout', function () {
         Auth::logout();
         return redirect('https://bingwayf.binghamton.edu/logout');
-    })->name('logout');;
+    })->name('logout');
     Route::get('/manage', [PagesController::class,'manage'])->name('manage');
 });
 

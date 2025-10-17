@@ -140,6 +140,7 @@ class Activity extends Model
                 "name" => "description",
                 "type" => "textarea",
                 "label" => "Description",
+                "help"=> "The description should give a brief overview of the activity, the professions the activity was designed for, and whether the activity is intended to be formative or summative.",
                 "required" => true,
                 "limit" => 65535,
                 "showColumn"=>false,
