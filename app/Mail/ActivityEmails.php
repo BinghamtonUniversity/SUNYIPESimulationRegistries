@@ -40,6 +40,7 @@ class ActivityEmails extends Mailable
                 'title'=>$activity['title'],
                 'description'=>$activity['description'],
                 'status'=>$activity['status'],
+                'id'=>$activity['id'],
             ],
             'contact'=>[
                 'name'=>$activity['contact_name'],
@@ -49,7 +50,7 @@ class ActivityEmails extends Mailable
 
         $m = new \Mustache_Engine;
         $this->content = $m->render($config_email['content'],$email_data);
-        $this->config_email = $config_email;
+        $this->subject = $m->render($config_email['subject']);
     }
 
     /**
@@ -61,7 +62,7 @@ class ActivityEmails extends Mailable
     {
         return $this->view('emails.email_raw')
             ->with(['content'=>$this->content])
-            ->subject($this->config_email['subject']);
+            ->subject($this->subject);
 
     }
 

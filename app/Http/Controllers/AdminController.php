@@ -40,6 +40,7 @@ class AdminController extends Controller
         $user_actions[] = [];
         $user_actions[] = [];
         $user_actions[] = ["name"=>"view_logs","label"=>"View Logs","min"=>1,"max"=>1];
+        $user_actions[] = ["name"=>"delete","label"=>"Delete","min"=>1];
         $form_fields = Activity::get_form_fields();
         return view('pages.admin',[
             'page'=>'activities',

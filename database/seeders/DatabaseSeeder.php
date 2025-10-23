@@ -92,6 +92,14 @@ class DatabaseSeeder extends Seeder
             "key"=>"pages.browse_activities.help_text",
             "value"=>"<p>Activities are submitted under the CC BY-NC license. This license enables users to adapt and build upon the activities for noncommercial purposes. We encourage you to modify an activity to fit your needs. The user may also distribute the activity. When using or distributing the activity, credit for authorship must be given. Activities are vetted by simulation and/or IPE content experts for essential activity components prior to approval for inclusion.</p>"
         ]);
+        SiteConfiguration::create([
+            "key"=>"email.activity.admin.review.subject",
+            "value"=>"<p>Activity submitted for review: {{activity.id}}</p>"
+        ]);
+        SiteConfiguration::create([
+            "key"=>"email.activity.admin.review.content",
+            "value"=>"<p>An activity is waiting for your review: {{title}}</p>"
+        ]);
 
         $type_values = collect([
             [
