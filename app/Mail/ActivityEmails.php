@@ -50,7 +50,7 @@ class ActivityEmails extends Mailable
 
         $m = new \Mustache_Engine;
         $this->content = $m->render($config_email['content'],$email_data);
-        $this->subject = $m->render($config_email['subject']);
+        $this->subject = $m->render($config_email['subject'], $email_data);
     }
 
     /**
