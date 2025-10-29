@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
         ]);
         SiteConfiguration::create([
             "key"=>"email.activity.admin.review.content",
-            "value"=>"<p>An activity is waiting for your review: {{title}}</p>"
+            "value"=>"<p>An activity is waiting for your review: {{activity.title}}</p>"
         ]);
 
         $type_values = collect([

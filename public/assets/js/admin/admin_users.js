@@ -76,11 +76,11 @@ ajax.get('/api/users',function(data) {
                                     type: "optgroup",
                                     options: [
                                         {
-                                            label:"Activity Reviewer",
+                                            label:"Activity Reviewer (Read Only)",
                                             value:"read",
                                         },
                                         {
-                                            label:"Activity Contributor",
+                                            label:"Activity Approver",
                                             value:"write",
                                         },
                                         {
