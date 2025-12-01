@@ -67,7 +67,7 @@ class ActivityObserver implements ShouldHandleEventsAfterCommit
                 'content'=> $email_content?$email_content->value:"There has been an update on your activity: ".$activity->title,
                 'subject' => $email_subject?$email_subject->value:"Activity Status update: ".$activity->id,
             ];
-            
+
 
             try {
                 Mail::to($user)->send(new ActivityEmails($activity, $user, $email_configs));
@@ -80,11 +80,10 @@ class ActivityObserver implements ShouldHandleEventsAfterCommit
             $email_configs_res = SiteConfiguration::where('key','like',"email.activity.admin.review%")->get();
 
             // Send email to reviewers
-            $admins = Permission::select('user_id')
-                ->whereIn('permission', ['read', 'admin'])
-                ->groupBy('user_id')
-                ->havingRaw('COUNT(DISTINCT permission) = 2')
-                ->with('user')
+            $admins = User::leftJoin('permissions','users.id','=','permissions.user_id')
+                ->select('email')
+                ->distinct('email')
+                ->whereIn('permission',['read','write'])
                 ->get();
 
             $email_admin_content = $email_configs_res->where('key', 'email.activity.admin.review.content')->first();
@@ -96,9 +95,10 @@ class ActivityObserver implements ShouldHandleEventsAfterCommit
             ];
 
             foreach ($admins as $admin) {
-                if (isset($admin->user->email) && !is_null($admin->user->email) && $admin->user->send_email_check()) {
+                if (isset($admin->email) && !is_null($admin->email) && $admin->send_email_check()) {
                     try {
-                        Mail::to($admin->user)->send(new ActivityEmails($activity, $user, $email_configs));
+
+                        Mail::to($admin)->send(new ActivityEmails($activity, $user, $email_configs));
                     } catch (\Exception $e) {
                         Log::error('Error sending assignment email: ' . $e->getMessage());
                     }
