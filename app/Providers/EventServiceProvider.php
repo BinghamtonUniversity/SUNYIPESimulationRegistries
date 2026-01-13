@@ -14,8 +14,12 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
-        ]
+        ],
+        \Illuminate\Mail\Events\MessageSending::class => [
+            \App\Listeners\AddSesTenantHeader::class,
+        ],
     ];
+    
     public function boot(){
         Activity::observe(ActivityObserver::class);
     }
