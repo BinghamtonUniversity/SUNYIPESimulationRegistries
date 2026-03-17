@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('contact_name')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('video_url')->nullable()->default(null);
-            $table->enum('status',['draft','submitted','approved','rejected'])->default('draft')->index();
+            $table->enum('status',['draft','submitted','approved','rejected','update_requested'])->default('draft')->index();
             $table->unsignedBigInteger('approved_by')->nullable();
             $table->date('approved_at')->nullable();
             $table->foreign('submitter_id')->references('id')->on('users');
