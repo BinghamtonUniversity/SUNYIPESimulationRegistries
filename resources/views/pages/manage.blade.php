@@ -8,22 +8,22 @@
         <h1 style="text-align:center;margin:0px;">Manage My Activities</h1>
     </div>
 </div>
-<div class="alert alert-info" style="margin-top:15px;background-color:#004c93;">
-    <h3 style="margin-top:0px;">Instructions:</h3>
-    Use the <div class="btn btn-success btn-xs">Add Activity</div> button below to create a new activity. <br>
-    Select the <i class="fa fa-check-square-o"></i> next to the activity you want to modify and click <div class="btn btn-primary btn-xs">Update Activity</div> or <div class="btn btn-danger btn-xs">Delete Activity</div> <br>
-    To upload or modify files associated with a particular activity, select the <i class="fa fa-check-square-o"></i> next to the appropriate activity and click <div class="btn btn-default btn-xs">Manage Files</div><br>
-    Download the <a class="btn btn-default btn-xs" href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank">SUNY Nursing Simulation Fellowship Simulation Template</a><br><br>
-    Download the <a class="btn btn-default btn-xs" href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank">SIPTEC Simulation Scenario Template</a><br>
+<div class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;">
+    <h3 style="margin-top:0px;color:#fff;">Instructions:</h3>
+    Use the <span class="badge" style="background-color:#5cb85c;">Add Activity</span> button below to create a new activity.<br>
+    Select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity you want to modify and click
+    <span class="badge" style="background-color:#337ab7;">Update Activity</span> or
+    <span class="badge" style="background-color:#d9534f;">Delete Activity</span>.<br>
+    To upload or modify files, select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity and click
+    <span class="badge" style="background-color:#777;">Manage Files</span>.<br><br>
+    Download the <a href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;">SUNY Nursing Simulation Fellowship Simulation Template</a><br>
+    Download the <a href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;">SIPTEC Simulation Scenario Template</a>
 </div>
-<div class="alert alert-info" style="margin-top:15px;background-color:#004c93;">
-    <ul>
-
+<div class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;">
+    <ul style="margin-bottom:0;">
         <li>Interprofessional Education activity submissions will be reviewed using the Interprofessional Education Checklist.</li>
         <li>Simulation submissions will be reviewed according to the CSA Scenario Validation Checklist.</li>
     </ul>
-
-
 </div>
 
 <div id="admin-update-activities"></div>

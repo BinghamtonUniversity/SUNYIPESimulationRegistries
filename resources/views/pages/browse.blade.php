@@ -32,7 +32,7 @@
     <div class="row">
     @foreach($activities as $activity)
         <div class="col-sm-4">
-        <div class="panel panel-default" style="height:300px;overflow:scroll;">
+        <div class="panel panel-default" style="height:300px;overflow:scroll;" tabindex="0" aria-label="{{$activity->title}} details">
             <div class="panel-body" style="font-size: 20px;">
                 <h2 style="font-size: 26px;">
                     @if(!is_null($activity->video_url))

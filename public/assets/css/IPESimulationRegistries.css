@@ -616,7 +616,7 @@ thead .form-group{margin-bottom:0;}
 
 .filterable.nodisplay{display: none !important;}
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 
@@ -783,11 +783,35 @@ textarea[name=template] {
   margin:0px !important;
 }
 
+/* #004c93 on white = 8.5:1 (WCAG AAA). Underline ensures links are
+   distinguishable from plain text by more than color alone (WCAG 1.4.1). */
 a {
-  color:#004c93;
+  color: #004c93;
+  text-decoration: underline;
 }
 a:hover {
-  color:#2c3e50;
+  color: #002d57;
+  text-decoration: underline;
+}
+/* Suppress underline only on nav/button links where context makes
+   them obviously interactive (not inline body text)              */
+.navbar a,
+.nav a,
+.btn,
+a.btn,
+.dropdown-menu a,
+.panel-title a,
+.breadcrumb a,
+.pagination a {
+  text-decoration: none;
+}
+.navbar a:hover,
+.nav a:hover,
+.dropdown-menu a:hover,
+.panel-title a:hover,
+.breadcrumb a:hover,
+.pagination a:hover {
+  text-decoration: none;
 }
 
 /* Custom CSS to increase modal width */
@@ -811,7 +835,11 @@ a:hover {
   }
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a {
-  background-color:#00ddff;
-  color:#333 !important;
+/* Active nav: brand blue background with white text — 8.5:1 contrast (WCAG AAA) */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: #004c93;
+  color: #fff !important;
+  text-decoration: none;
 }

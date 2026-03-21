@@ -5,8 +5,8 @@
 @section('description')
 <div class="panel panel-default" style="margin-top:20px;">
     <div class="panel-body">
-        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">
-            <img src="/assets/images/licenses/by-nc.png" style="width:150px;" class="pull-right">
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="pull-right">
+            <img src="/assets/images/licenses/by-nc.png" style="width:150px;" alt="Creative Commons Attribution-NonCommercial 4.0 License">
         </a>
         <h1 style="text-align:center;margin:0px;">{{$activity->title}}</h1>
     </div>
@@ -85,10 +85,10 @@
             <div class="row">
                 @foreach($files as $file)
                     <div class="col-sm-3" style="text-align:center;">
-                        <div class="btn btn-primary download_files" style="width:100%;" data-file_id="{{$file->id}}" data-activity_id="{{$activity->id}}">
-                            <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
+                        <button type="button" class="btn btn-primary download_files" style="width:100%;" data-file_id="{{$file->id}}" data-activity_id="{{$activity->id}}" aria-label="Download {{$file->name}}.{{$file->ext}}">
+                            <i class="fa fa-file-pdf-o" style="font-size:80px;" aria-hidden="true"></i>
                             <div style="text-wrap:wrap;">{{$file->name}}.{{$file->ext}}</div>
-                        </div>
+                        </button>
                     </div>
                 @endforeach
             </div>
