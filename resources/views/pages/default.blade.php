@@ -17,7 +17,21 @@
 <style>
   /* ── Navbar base ─────────────────────────────────────────── */
   .navbar-default a:hover {
-    color: #ddd !important;
+    color: #18bc9c !important; /* theme's own hover colour on dark bg */
+  }
+  /* Hamburger toggle: match the SUNY Share brand blue for visual
+     consistency and sufficient contrast on the dark navbar (WCAG 1.4.3) */
+  .navbar-default .navbar-toggle {
+    background-color: #004c93;
+    border-color: #004c93;
+    border-radius: 4px;
+  }
+  .navbar-default .navbar-toggle:hover,
+  .navbar-default .navbar-toggle:focus {
+    background-color: #003a72;
+    border-color: #003a72;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
   }
 
   /* ── Keyboard focus ring inside dropdowns ────────────────── */
@@ -135,7 +149,7 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                   aria-controls="user-dropdown-menu"
-                  style="color:inherit;box-shadow:none;padding:15px;">
+                  style="color:#ffffff;background-color:transparent;box-shadow:none;padding:15px;text-decoration:none;">
             {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
             <span class="caret" aria-hidden="true"></span>
           </button>
