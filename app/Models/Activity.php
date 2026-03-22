@@ -91,6 +91,7 @@ class Activity extends Model
                     ['label'=>"Draft",'value'=>'draft'],
                     ['label'=>"Submitted (Under Review)",'value'=>'submitted'],
                     ['label'=>"Approved",'value'=>'approved'],
+                    ['label'=>"Update Requested",'value'=>'update_requested'],
                     ['label'=>"Rejected",'value'=>'rejected']
                 ],'edit' => [['op' => 'or',
 					'conditions'=> [[
