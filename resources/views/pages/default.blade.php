@@ -95,39 +95,39 @@
     </div>
 
     <div class="collapse navbar-collapse" id="main-nav-collapse">
-      <ul class="nav navbar-nav" role="menubar">
-        <li @if(request()->routeIs('home')) class="active" @endif role="none">
-          <a href="{{route('home')}}" role="menuitem" @if(request()->routeIs('home')) aria-current="page" @endif>
+      <ul class="nav navbar-nav">
+        <li @if(request()->routeIs('home')) class="active" @endif>
+          <a href="{{route('home')}}" @if(request()->routeIs('home')) aria-current="page" @endif>
             <i class="fa fa-home fa-fw" aria-hidden="true"></i> Home
           </a>
         </li>
-        <li @if(request()->routeIs('browse')) class="active" @endif role="none">
-          <a href="{{route('browse')}}" role="menuitem" @if(request()->routeIs('browse')) aria-current="page" @endif>
+        <li @if(request()->routeIs('browse')) class="active" @endif>
+          <a href="{{route('browse')}}" @if(request()->routeIs('browse')) aria-current="page" @endif>
             <i class="fa fa-search fa-fw" aria-hidden="true"></i> Browse Activities
           </a>
         </li>
-        <li @if(request()->routeIs('glossary')) class="active" @endif role="none">
-          <a href="{{route('glossary')}}" role="menuitem" @if(request()->routeIs('glossary')) aria-current="page" @endif>
+        <li @if(request()->routeIs('glossary')) class="active" @endif>
+          <a href="{{route('glossary')}}" @if(request()->routeIs('glossary')) aria-current="page" @endif>
             <i class="fa fa-file fa-fw" aria-hidden="true"></i> Glossary
           </a>
         </li>
-        <li @if(request()->routeIs('manage')) class="active" @endif role="none">
-          <a href="{{route('manage')}}" role="menuitem" @if(request()->routeIs('manage')) aria-current="page" @endif>
+        <li @if(request()->routeIs('manage')) class="active" @endif>
+          <a href="{{route('manage')}}" @if(request()->routeIs('manage')) aria-current="page" @endif>
             <i class="fa fa-cog fa-fw" aria-hidden="true"></i> Manage My Activities
           </a>
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right" role="menubar">
+      <ul class="nav navbar-nav navbar-right">
         @guest
-          <li role="none">
-            <a href="{{route('login')}}" role="menuitem">
+          <li>
+            <a href="{{route('login')}}">
               <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> Login
             </a>
           </li>
         @endguest
         @auth
-        <li class="dropdown" role="none">
+        <li class="dropdown">
           <button type="button"
                   id="user-menu-toggle"
                   class="dropdown-toggle navbar-btn btn btn-link"
