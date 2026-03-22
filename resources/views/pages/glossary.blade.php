@@ -16,7 +16,7 @@
             <div class="panel-body" style="font-size: 20px;">
                 <h2>{{$type->type}}</h2>
                 @if (isset($type->help_text))
-                    <p class="label label-default" style="background-color:#009ee0; display:inline-block;">{{$type->help_text}}</p><br>
+                    <p class="label label-default" style="background-color:#006fa3; color:#fff; display:inline-block;">{{$type->help_text}}</p><br>
                 @endif
                 <dl>
                 @foreach($type['values'] as $value)
