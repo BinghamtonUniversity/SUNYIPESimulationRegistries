@@ -128,17 +128,17 @@
         @endguest
         @auth
         <li class="dropdown" role="none">
-          <a href="#"
-             id="user-menu-toggle"
-             class="dropdown-toggle"
-             data-toggle="dropdown"
-             role="button"
-             aria-haspopup="true"
-             aria-expanded="false"
-             aria-controls="user-dropdown-menu">
+          <button type="button"
+                  id="user-menu-toggle"
+                  class="dropdown-toggle navbar-btn btn btn-link"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-controls="user-dropdown-menu"
+                  style="color:inherit;box-shadow:none;padding:15px;">
             {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
             <span class="caret" aria-hidden="true"></span>
-          </a>
+          </button>
           <ul class="dropdown-menu"
               id="user-dropdown-menu"
               role="menu"
@@ -175,7 +175,7 @@
           @yield('content')
         </div>
       </div>
-      <footer style="background-color:#004c93;color:#CCD6DF;text-align:center;padding:12px 15px;margin-top:30px;">
+      <footer role="contentinfo" style="background-color:#004c93;color:#CCD6DF;text-align:center;padding:12px 15px;margin-top:30px;">
         {!! $site_config['footer'] ?? '' !!}
       </footer>
     </div>

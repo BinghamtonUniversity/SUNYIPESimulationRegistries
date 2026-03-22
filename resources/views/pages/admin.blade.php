@@ -35,25 +35,25 @@
           <a class="navbar-brand" href="/admin" style="background: #004c93;width:200px;">
             <h4 style="color:#fff;margin:0px;"><i class="fa fa-medkit fa-fw"></i> Admin</h4>
           </a>
-            <ul class="nav navbar-nav  hidden-xs">
-                <li><a href="#"><h4 style="margin:0">{{$title}}</h4></a></li>
-            </ul>
-          <ul class="nav navbar-nav navbar-right hidden-xs">
-          </li>
-            <li><a href="#"><h4 style="margin:0"></h4></a></li>
+            <ul class="nav navbar-nav hidden-xs">
+              <li aria-current="page"><span class="navbar-text"><h4 style="margin:0">{{$title}}</h4></span></li>
           </ul>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle identity-info" data-toggle="dropdown" role="button">
-{{--                <img class="gravatar" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?d=mm" />--}}
-                  {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="/"><i class="fa fa-arrow-left"></i> Home</a></li>
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+              <button type="button"
+                      class="dropdown-toggle identity-info navbar-btn btn btn-link"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      style="color:inherit;box-shadow:none;padding:15px;">
+                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                <span class="caret" aria-hidden="true"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li role="none"><a href="/" role="menuitem"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Home</a></li>
+                <li role="none"><a href="{{ url('/logout') }}" role="menuitem"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
               </ul>
               @can('viewAny','App\Activity')
                 <li class="visible-xs-block @if($page=="activities") active @endif"><a href="/admin/activities"><i class="fa fa-stethoscope fa-fw"></i>&nbsp; Activities</a></li>
@@ -95,7 +95,15 @@
         @can('manage','App\SiteConfiguration')
             <li class="@if($page=="site_configurations") active @endif"><a href="/admin/site_configurations"><i class="fa fa-cogs fa-fw"></i>&nbsp; Site Configuration</a></li>
         @endcan
-        <li onclick="localStorage.clear();location.reload(true);"><a href="#"><i class="fa fa-code fa-fw"></i>&nbsp; Clear Cache</a></li>
+        <li>
+          <button type="button"
+                  class="btn btn-link"
+                  style="padding:8px 20px;width:100%;text-align:left;color:inherit;"
+                  onclick="localStorage.clear();location.reload(true);"
+                  aria-label="Clear local cache and reload page">
+            <i class="fa fa-code fa-fw" aria-hidden="true"></i>&nbsp; Clear Cache
+          </button>
+        </li>
       </ul>
     </div>
     <div class="container-fluid" id="main-container">
