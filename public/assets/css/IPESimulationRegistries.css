@@ -21,9 +21,9 @@ body {
  * Top navigation
  * Hide admin border to remove 1px line.
  */
-/*.navbar-fixed-top {*/
+/* .navbar-fixed-top {*/
 /*  border: 0;*/
-/*}*/
+/*} */
 
 /*
  * Sidebar
@@ -147,7 +147,7 @@ body{
 .nav-sidebar .active > a,
 .nav-sidebar .active > a:hover,
 .nav-sidebar .active > a:focus {
-  border-left:solid #004c93;
+  border-left:solid #00539B;
   color: #fff;
   background-color:rgba(0,0,0,0.4);
 }
@@ -412,7 +412,7 @@ li.widget_active{cursor:default}
 	background-color:#f9f9f9;
 	border:1px solid #d4d4d4;
 	border-radius:4px;
-	*zoom:1;
+	zoom:1;
 	-webkit-box-shadow:0 1px 4px rgba(0,0,0,.065);
 	box-shadow:0 1px 4px rgba(0,0,0,.065)
 }
@@ -783,10 +783,10 @@ textarea[name=template] {
   margin:0px !important;
 }
 
-/* #004c93 on white = 8.5:1 (WCAG AAA). Underline ensures links are
+/* #00539B on white = 8.5:1 (WCAG AAA). Underline ensures links are
    distinguishable from plain text by more than color alone (WCAG 1.4.1). */
 a {
-  color: #004c93;
+  color: #00539B;
   text-decoration: underline;
 }
 a:hover {
@@ -839,7 +839,131 @@ a.btn,
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  background-color: #004c93;
+  background-color: #00539B;
   color: #fff !important;
   text-decoration: none;
+  border-color: #ffffff !important;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Navbar height: Bootswatch sets 60px, reset to Bootstrap 50px ── */
+.navbar { max-height: 50px !important; }
+
+
+/* ── Navbar hover colour (Bootswatch teal) ────────────────────────── */
+.navbar-default a:hover, .navbar-default a:focus {
+  color: #ffff !important;
+  background-color: #02235C !important;
+  border-color: #ffffff !important;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Hamburger toggle: SUNY Share brand blue (WCAG 1.4.3) ─────────── */
+.navbar-default .navbar-toggle {
+  background-color: #00539B;
+  border-color: #00539B;
+  border-radius: 4px;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #003a72;
+  border-color: #003a72;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Keyboard focus ring inside dropdowns ─────────────────────────── */
+.dropdown-menu > li > a:focus {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+  background-color: #00539B;
+  color: #fff;
+}
+
+/* ── Mobile nav (< 768 px) ────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .navbar-collapse.in,
+  .navbar-collapse.collapsing {
+    max-height: calc(100vh - 50px);
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+  }
+  .navbar-right {
+    float: none !important;
+    margin: 0 !important;
+    border-top: 1px solid #e7e7e7;
+  }
+  .navbar-right .dropdown-menu {
+    position: static !important;
+    float: none;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  .navbar-right .dropdown-menu > li > a {
+    padding: 8px 15px 8px 30px;
+    color: #555;
+  }
+  .navbar-right .dropdown-menu > li > a:hover,
+  .navbar-right .dropdown-menu > li > a:focus {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  .navbar-right .dropdown-toggle .caret {
+    border-top-color: #777;
+  }
+}
+.navbar-brand {
+  background:#00539B !important;
+  width:200px !important;
+  font-size:18px !important;
+}
+
+.panel-default {
+  margin-top:20px;
+}
+/* End Navbar */
+/* Identity Info */
+.identity-info {
+  color:#ffffff;
+  background-color:transparent;
+  box-shadow:none;
+  text-decoration:none;
+}
+.identity-info:hover, .identity-info:focus {
+  color:#00DDFF !important;
+
+}
+/* End Identity Info */
+
+/* Footer */
+.site-footer {
+  background-color:#00539B;
+  color:#ffffff;
+  text-align:center;
+  padding:12px 15px;
+  margin-top:30px;
+}
+.site-footer a {
+  color:#ffffff !important;
+}
+/* End Footer */
+
+.glossary-help-text {
+  /* background-color:#00539B; */
+  background-color:#781E7F;
+  color:#fff;
+  display:block;
+  padding:4px 8px;
+  border-radius:4px;
+  white-space:normal;
+  word-wrap:break-word;
+  max-width:100%;
+  font-size:0.9em;
+  margin-bottom:8px;
 }

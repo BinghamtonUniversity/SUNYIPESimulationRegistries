@@ -1,9 +1,9 @@
-@extends('pages.default')
+﻿@extends('pages.default')
 
 @section('title',$activity->title)
 
 @section('description')
-<div class="panel panel-default" style="margin-top:20px;">
+<div class="panel panel-default">
     <div class="panel-body">
         <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="pull-right">
             <img src="/assets/images/licenses/by-nc.png" style="width:150px;" alt="Creative Commons Attribution-NonCommercial 4.0 License">

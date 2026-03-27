@@ -14,81 +14,6 @@
 </head>
 
 <body style="background-color:#eee;padding-top:50px;">
-<style>
-  /* ── Navbar base ─────────────────────────────────────────── */
-  .navbar-default a:hover {
-    color: #18bc9c !important; /* theme's own hover colour on dark bg */
-  }
-  /* Hamburger toggle: match the SUNY Share brand blue for visual
-     consistency and sufficient contrast on the dark navbar (WCAG 1.4.3) */
-  .navbar-default .navbar-toggle {
-    background-color: #004c93;
-    border-color: #004c93;
-    border-radius: 4px;
-  }
-  .navbar-default .navbar-toggle:hover,
-  .navbar-default .navbar-toggle:focus {
-    background-color: #003a72;
-    border-color: #003a72;
-    outline: 2px solid #fff;
-    outline-offset: 2px;
-  }
-
-  /* ── Keyboard focus ring inside dropdowns ────────────────── */
-  .dropdown-menu > li > a:focus {
-    outline: 2px solid #fff;
-    outline-offset: -2px;
-    background-color: #337ab7;
-    color: #fff;
-  }
-
-  /* ── Mobile / zoomed (<768 px or any small viewport) ─────── */
-  @media (max-width: 767px) {
-
-    /* Make the expanded collapse panel scrollable                */
-    .navbar-collapse.in,
-    .navbar-collapse.collapsing {
-      max-height: calc(100vh - 50px);
-      overflow-y: auto !important;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 10px;
-    }
-
-    /* Un-float right-side nav so it stacks naturally           */
-    .navbar-right {
-      float: none !important;
-      margin: 0 !important;
-      border-top: 1px solid #e7e7e7;
-    }
-
-    /* Inline dropdown: show submenu items directly in the list */
-    .navbar-right .dropdown-menu {
-      position: static !important;
-      float: none;
-      width: 100%;
-      background-color: transparent;
-      border: 0;
-      box-shadow: none;
-      padding: 0;
-    }
-
-    .navbar-right .dropdown-menu > li > a {
-      padding: 8px 15px 8px 30px;
-      color: #555;
-    }
-
-    .navbar-right .dropdown-menu > li > a:hover,
-    .navbar-right .dropdown-menu > li > a:focus {
-      background-color: #f5f5f5;
-      color: #333;
-    }
-
-    /* Keep the user toggle arrow pointing down, not right      */
-    .navbar-right .dropdown-toggle .caret {
-      border-top-color: #777;
-    }
-  }
-</style>
 <nav class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="Main navigation">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -103,7 +28,7 @@
         <span class="icon-bar" aria-hidden="true"></span>
         <span class="icon-bar" aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;">
+      <a class="navbar-brand" href="{{route('home')}}">
         <i class="fa fa-medkit fa-fw" aria-hidden="true"></i> SUNY Share
       </a>
     </div>
@@ -144,12 +69,11 @@
         <li class="dropdown">
           <button type="button"
                   id="user-menu-toggle"
-                  class="dropdown-toggle navbar-btn btn btn-link"
+                  class="dropdown-toggle identity-info navbar-btn btn btn-link"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
-                  aria-controls="user-dropdown-menu"
-                  style="color:#ffffff;background-color:transparent;box-shadow:none;padding:15px;text-decoration:none;">
+                  aria-controls="user-dropdown-menu">
             {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
             <span class="caret" aria-hidden="true"></span>
           </button>
@@ -191,7 +115,7 @@
             </main>
         </div>
       </div>
-      <footer role="contentinfo" style="background-color:#004c93;color:#CCD6DF;text-align:center;padding:12px 15px;margin-top:30px;">
+      <footer role="contentinfo" class="site-footer">
         {!! $site_config['footer'] ?? '' !!}
       </footer>
     </div>

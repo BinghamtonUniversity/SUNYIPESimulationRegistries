@@ -1,9 +1,9 @@
-@extends('pages.default')
+﻿@extends('pages.default')
 
 @section('title',"Manage")
 
 @section('content')
-<div class="panel panel-default" style="margin-top:20px;">
+<div class="panel panel-default">
     <div class="panel-body">
         <h1 style="text-align:center;margin:0px;">Manage My Activities</h1>
     </div>

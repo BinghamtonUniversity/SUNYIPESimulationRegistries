@@ -18,11 +18,6 @@
     <link data-name="vs/editor/editor.main" rel="stylesheet" href="/assets/js/vendor/vs/editor/editor.main.css">
   </head>
   <body>
-  <style>
-    .navbar-default a:hover, .navbar-default a:active {
-      color:#ddd !important;
-    }
-  </style>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -32,11 +27,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/admin" style="background: #004c93;width:200px;">
-            <h4 style="color:#fff;margin:0px;"><i class="fa fa-medkit fa-fw"></i> Admin</h4>
+          <a class="navbar-brand" href="/admin">
+            <i class="fa fa-medkit fa-fw" aria-hidden="true"></i> Admin
           </a>
             <ul class="nav navbar-nav hidden-xs">
-              <li aria-current="page"><span class="navbar-text"><h4 style="margin:0">{{$title}}</h4></span></li>
+              <li aria-current="page"><span class="navbar-text"><h4 style="margin:0px;">{{$title}}</h4></span></li>
           </ul>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -46,8 +41,7 @@
                       class="dropdown-toggle identity-info navbar-btn btn btn-link"
                       data-toggle="dropdown"
                       aria-haspopup="true"
-                      aria-expanded="false"
-                      style="color:#ffffff;background-color:transparent;box-shadow:none;padding:15px;text-decoration:none;">
+                      aria-expanded="false">
                 {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                 <span class="caret" aria-hidden="true"></span>
               </button>

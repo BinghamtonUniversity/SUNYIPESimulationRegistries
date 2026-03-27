@@ -1,9 +1,9 @@
-@extends('pages.default')
+﻿@extends('pages.default')
 
 @section('title','Browse Activities')
 
 @section('description')
-<div class="panel panel-default" style="margin-top:20px;">
+<div class="panel panel-default">
     <div class="panel-body">
         <h1 style="text-align:center;margin:0px;">Browse Activities</h1>
     </div>
