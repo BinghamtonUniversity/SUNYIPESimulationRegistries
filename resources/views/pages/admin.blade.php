@@ -47,7 +47,7 @@
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
-                      style="color:inherit;box-shadow:none;padding:15px;">
+                      style="color:#ffffff;background-color:transparent;box-shadow:none;padding:15px;text-decoration:none;">
                 {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                 <span class="caret" aria-hidden="true"></span>
               </button>
