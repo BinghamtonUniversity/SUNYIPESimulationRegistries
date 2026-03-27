@@ -186,7 +186,9 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          @yield('content')
+            <main>
+            @yield('content')
+            </main>
         </div>
       </div>
       <footer role="contentinfo" style="background-color:#004c93;color:#CCD6DF;text-align:center;padding:12px 15px;margin-top:30px;">
