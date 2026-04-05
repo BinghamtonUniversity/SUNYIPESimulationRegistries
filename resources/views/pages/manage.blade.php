@@ -24,8 +24,8 @@
     </span>
         <br><strong>*Please note that emails from the SUNY Share Library will come from OpenSim Registry(noreply@binghamton.edu) </strong></span><br>
     <br>
-    Download the <a href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;">SUNY Nursing Simulation Fellowship Simulation Template</a><br>
-    Download the <a href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;">SIPTEC Simulation Scenario Template</a>
+    <a href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;" aria-label="Download SUNY Nursing Simulation Fellowship Simulation Template as a DOCX file (opens in a new tab)">Download SUNY Nursing Simulation Fellowship Simulation Template (DOCX)</a><br>
+    <a href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;" aria-label="Download SIPTEC Simulation Scenario Template as a DOCX file (opens in a new tab)">Download SIPTEC Simulation Scenario Template (DOCX)</a>
 </div>
 <div class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;">
     <h2 style="margin-top:0px;color:#fff;font-size:24px;">Review Criteria</h2>
