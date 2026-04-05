@@ -956,14 +956,14 @@ a.btn,
 
 .glossary-help-text {
   /* background-color:#00539B; */
-  background-color:#781E7F;
-  color:#fff;
+  background-color:#00DDFF;
+  color:black;
   display:block;
   padding:4px 8px;
   border-radius:4px;
   white-space:normal;
   word-wrap:break-word;
   max-width:100%;
-  font-size:0.9em;
+  font-size:1em;
   margin-bottom:8px;
 }
