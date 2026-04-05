@@ -4,14 +4,14 @@
 
 @section('content')
 <a id="skip-to-add-activity" href="#admin-update-activities" class="sr-only sr-only-focusable">Skip to Main Content</a>
-<div id="manage-main-content" tabindex="-1">
+<main id="manage-main-content" tabindex="-1" role="main" aria-labelledby="manage-page-title">
 <div class="panel panel-default">
     <div class="panel-body">
-        <h1 style="text-align:center;margin:0px;">Manage My Activities</h1>
+        <h1 id="manage-page-title" style="text-align:center;margin:0px;">Manage My Activities</h1>
     </div>
 </div>
-<div class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;">
-    <h2 style="margin-top:0px;color:#fff;font-size:24px;">Instructions</h2>
+<section class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;" aria-labelledby="manage-instructions-heading">
+    <h2 id="manage-instructions-heading" style="margin-top:0px;color:#fff;font-size:24px;">Instructions</h2>
     Use the <span class="badge" style="background-color:#5cb85c;">Add Activity</span> button below to create a new activity.<br>
     Select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity you want to modify and click
     <span class="badge" style="background-color:#337ab7;">Update Activity</span> or
@@ -26,19 +26,19 @@
     <br>
     <a href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;" aria-label="Download SUNY Nursing Simulation Fellowship Simulation Template as a DOCX file (opens in a new tab)">Download SUNY Nursing Simulation Fellowship Simulation Template (DOCX)</a><br>
     <a href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;" aria-label="Download SIPTEC Simulation Scenario Template as a DOCX file (opens in a new tab)">Download SIPTEC Simulation Scenario Template (DOCX)</a>
-</div>
-<div class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;">
-    <h2 style="margin-top:0px;color:#fff;font-size:24px;">Review Criteria</h2>
+</section>
+<section class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;" aria-labelledby="manage-review-criteria-heading">
+    <h2 id="manage-review-criteria-heading" style="margin-top:0px;color:#fff;font-size:24px;">Review Criteria</h2>
     <ul style="margin-bottom:0;">
         <li>Interprofessional Education activity submissions will be reviewed using the Interprofessional Education Checklist.</li>
         <li>Simulation submissions will be reviewed according to the CSA Scenario Validation Checklist.</li>
     </ul>
-</div>
+</section>
 
 <div id="admin-update-activities" tabindex="-1"></div>
 
 <div id="#main_target"></div>
-</div>
+</main>
 @endsection
 
 @section('scripts')
