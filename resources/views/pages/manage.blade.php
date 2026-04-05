@@ -1,8 +1,10 @@
-﻿@extends('pages.default')
+@extends('pages.default')
 
 @section('title',"Manage")
 
 @section('content')
+<a id="skip-to-add-activity" href="#admin-update-activities" class="sr-only sr-only-focusable">Skip to Main Content</a>
+<div id="manage-main-content" tabindex="-1">
 <div class="panel panel-default">
     <div class="panel-body">
         <h1 style="text-align:center;margin:0px;">Manage My Activities</h1>
@@ -32,9 +34,10 @@
     </ul>
 </div>
 
-<div id="admin-update-activities"></div>
+<div id="admin-update-activities" tabindex="-1"></div>
 
 <div id="#main_target"></div>
+</div>
 @endsection
 
 @section('scripts')
@@ -126,6 +129,43 @@ var actions = [
     '|','|',
     {"name":"delete","label":"Delete Activity","min":1,"max":1},
 ];
+
+var focusAddActivityButton = function(attempt) {
+    var max_attempts = 20;
+    var current_attempt = attempt || 0;
+    var grid_container = document.getElementById('admin-update-activities');
+    if (!grid_container) {
+        return;
+    }
+
+    var controls = grid_container.querySelectorAll('button, a, [role="button"], input[type="button"], input[type="submit"]');
+    var add_activity_control = _.find(controls, function(control) {
+        var text = (control.textContent || '').trim().toLowerCase();
+        var value = (control.value || '').trim().toLowerCase();
+        var aria_label = (control.getAttribute('aria-label') || '').trim().toLowerCase();
+        return text === 'add activity' || value === 'add activity' || aria_label === 'add activity';
+    });
+
+    if (add_activity_control) {
+        add_activity_control.focus();
+        return;
+    }
+
+    if (current_attempt < max_attempts) {
+        setTimeout(function() {
+            focusAddActivityButton(current_attempt + 1);
+        }, 100);
+    } else {
+        grid_container.focus();
+    }
+};
+
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.id === 'skip-to-add-activity') {
+        event.preventDefault();
+        focusAddActivityButton();
+    }
+});
 
 app.create_update_activity = function(e,validate=false) {
     if (validate) {
