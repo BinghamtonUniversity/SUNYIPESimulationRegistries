@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;">
-    <h3 style="margin-top:0px;color:#fff;">Instructions:</h3>
+    <h2 style="margin-top:0px;color:#fff;font-size:24px;">Instructions</h2>
     Use the <span class="badge" style="background-color:#5cb85c;">Add Activity</span> button below to create a new activity.<br>
     Select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity you want to modify and click
     <span class="badge" style="background-color:#337ab7;">Update Activity</span> or
@@ -28,6 +28,7 @@
     Download the <a href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;">SIPTEC Simulation Scenario Template</a>
 </div>
 <div class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;">
+    <h2 style="margin-top:0px;color:#fff;font-size:24px;">Review Criteria</h2>
     <ul style="margin-bottom:0;">
         <li>Interprofessional Education activity submissions will be reviewed using the Interprofessional Education Checklist.</li>
         <li>Simulation submissions will be reviewed according to the CSA Scenario Validation Checklist.</li>
@@ -62,7 +63,7 @@ window.templates.files_modal = `
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">@{{current_activity.title}}</h4>
+        <h2 class="modal-title">@{{current_activity.title}}</h2>
       </div>
       <div class="modal-body">
           <div class="alert alert-info">Required file: Simulation scenario document.<br>Consider including other documents to support the scenario implementation: Lab results, provider orders, standardized participant/role scripts, quizzes, etc.
@@ -83,7 +84,7 @@ window.templates.files_modal = `
             @{{/files}}
         </div>
         <hr>
-        <h4>Upload Files:</h4>
+        <h3>Upload Files</h3>
         <input type="file" class="filepond" />
       </div>
       <div class="modal-footer">
@@ -99,7 +100,7 @@ window.templates.logs_modal = `
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">@{{current_activity.title}} File Download Logs</h4>
+        <h2 class="modal-title">@{{current_activity.title}} File Download Logs</h2>
       </div>
       <div class="modal-body">
         <table class="table table-striped">
