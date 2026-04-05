@@ -15,7 +15,13 @@
     <span class="badge" style="background-color:#337ab7;">Update Activity</span> or
     <span class="badge" style="background-color:#d9534f;">Delete Activity</span>.<br>
     To upload or modify files, select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity and click
-    <span class="badge" style="background-color:#777;">Manage Files</span>.<br><br>
+    <span class="badge" style="background-color:#777;">Manage Files</span><br>
+    <span>To replace a file, delete the original first. Be sure to update the Date Developed/Revised field in the description.<br>
+    <span>
+        <br>Be sure to <strong>Submit for Review</strong> once the documents have been uploaded.  You will receive a confirmation email.
+    </span>
+        <br><strong>*Please note that emails from the SUNY Share Library will come from OpenSim Registry(noreply@binghamton.edu) </strong></span><br>
+    <br>
     Download the <a href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;">SUNY Nursing Simulation Fellowship Simulation Template</a><br>
     Download the <a href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#9ecfff;">SIPTEC Simulation Scenario Template</a>
 </div>
@@ -56,9 +62,12 @@ window.templates.files_modal = `
         <h4 class="modal-title">@{{current_activity.title}}</h4>
       </div>
       <div class="modal-body">
-
+          <div class="alert alert-info">Required file: Simulation scenario document.<br>Consider including other documents to support the scenario implementation: Lab results, provider orders, standardized participant/role scripts, quizzes, etc.
+              <br>Be sure to go back into your activity, and use <strong>Submit for Review</strong> once the documents have been uploaded. You will receive a confirmation email.
+          </div>
         @{{^files.length}}
             <div class="alert alert-warning">No files have been uploaded yet!</div>
+
         @{{/files.length}}
         <div class="row">
             @{{#files}}
