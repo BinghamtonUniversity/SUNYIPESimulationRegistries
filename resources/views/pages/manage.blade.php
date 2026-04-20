@@ -4,7 +4,7 @@
 
 @section('content')
 <a id="skip-to-add-activity" href="#admin-update-activities" class="sr-only sr-only-focusable">Skip to Main Content</a>
-<main id="manage-main-content" tabindex="-1" role="main" aria-labelledby="manage-page-title">
+<section id="manage-main-content" tabindex="-1" aria-labelledby="manage-page-title">
 <div class="panel panel-default">
     <div class="panel-body">
         <h1 id="manage-page-title" style="text-align:center;margin:0px;">Manage My Activities</h1>
@@ -38,7 +38,7 @@
 <div id="admin-update-activities" tabindex="-1"></div>
 
 <div id="#main_target"></div>
-</main>
+</section>
 @endsection
 
 @section('scripts')
@@ -434,7 +434,11 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
         window.location = '/activities/'+grid_event.model.attributes.id+'?preview=true';
     }).on("click",function(grid_event) {
         window.location = '/activities/'+grid_event.model.attributes.id+'?preview=true';
-    })
+    });
+
+    app.gdatagrid.bindDataGrid('#admin-update-activities', {
+        tableLabel: 'Manage activities data grid'
+    });
 });
 
 app.click('.rename-file',function(event) {
