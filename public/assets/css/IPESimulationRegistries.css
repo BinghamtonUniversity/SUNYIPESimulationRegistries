@@ -967,3 +967,71 @@ a.btn,
   font-size:1em;
   margin-bottom:8px;
 }
+
+/* ADA/WCAG: ensure Graphene action buttons meet contrast minimum */
+.gdatagrid-enhanced .grid-action.btn {
+  color: #ffffff !important;
+  text-decoration: none;
+  border-width: 1px;
+}
+
+.gdatagrid-enhanced .grid-action.btn-success {
+  background-color: #005336 !important;
+  border-color: #00472e !important;
+}
+.gdatagrid-enhanced .grid-action.btn-success:hover,
+.gdatagrid-enhanced .grid-action.btn-success:focus {
+  background-color: #00472e !important;
+  border-color: #003a25 !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn-primary {
+  background-color: #00407a !important;
+  border-color: #003563 !important;
+}
+.gdatagrid-enhanced .grid-action.btn-primary:hover,
+.gdatagrid-enhanced .grid-action.btn-primary:focus {
+  background-color: #003563 !important;
+  border-color: #00284c !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn-default {
+  background-color: #3b4a5a !important;
+  border-color: #2f3b48 !important;
+}
+.gdatagrid-enhanced .grid-action.btn-default:hover,
+.gdatagrid-enhanced .grid-action.btn-default:focus {
+  background-color: #2f3b48 !important;
+  border-color: #25303a !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn-danger {
+  background-color: #a10f2b !important;
+  border-color: #850c23 !important;
+}
+.gdatagrid-enhanced .grid-action.btn-danger:hover,
+.gdatagrid-enhanced .grid-action.btn-danger:focus {
+  background-color: #850c23 !important;
+  border-color: #69091b !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn.disabled,
+.gdatagrid-enhanced .grid-action.btn[aria-disabled="true"] {
+  opacity: 1 !important;
+  background-color: #5f6b77 !important;
+  border-color: #4e5963 !important;
+  color: #ffffff !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn:focus,
+.gdatagrid-enhanced .grid-action.btn:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px;
+}
+
+.gdatagrid-enhanced .label.label-info,
+.gdatagrid-enhanced .range.label.label-info.checked_count {
+  background-color: #1f3c88 !important;
+  color: #ffffff !important;
+  border: 1px solid #1a3270;
+}
