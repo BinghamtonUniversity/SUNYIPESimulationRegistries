@@ -1035,3 +1035,184 @@ a.btn,
   color: #ffffff !important;
   border: 1px solid #1a3270;
 }
+
+/* WCAG 2 AA: gform character counts use Bootstrap .text-muted, which is too light on form backgrounds */
+.gform small.count.text-muted,
+.modal.gform small.count.text-muted,
+.gform.modal small.count.text-muted {
+  color: #4a4a4a !important;
+}
+
+/* WCAG 2 AA: gform modal footer buttons (Cancel / Save Draft / Submit) — darker fills + white text */
+.gform .gform-footer .btn.btn-danger,
+.gform .gform-footer button.btn.btn-default.btn-danger,
+.modal.gform .gform-footer .btn.btn-danger,
+.modal.gform .gform-footer button.btn.btn-default.btn-danger,
+.modal.gform .modal-footer .btn.btn-danger,
+.modal.gform .modal-footer button.btn.btn-default.btn-danger,
+#myModal .gform-footer .btn.btn-danger,
+#myModal .gform-footer button.btn.btn-default.btn-danger {
+  background-color: #a10f2b !important;
+  border-color: #850c23 !important;
+  color: #ffffff !important;
+}
+.gform .gform-footer .btn.btn-danger:hover,
+.gform .gform-footer .btn.btn-danger:focus,
+.gform .gform-footer button.btn.btn-default.btn-danger:hover,
+.gform .gform-footer button.btn.btn-default.btn-danger:focus,
+.modal.gform .gform-footer .btn.btn-danger:hover,
+.modal.gform .gform-footer .btn.btn-danger:focus,
+.modal.gform .gform-footer button.btn.btn-default.btn-danger:hover,
+.modal.gform .gform-footer button.btn.btn-default.btn-danger:focus,
+.modal.gform .modal-footer .btn.btn-danger:hover,
+.modal.gform .modal-footer .btn.btn-danger:focus,
+.modal.gform .modal-footer button.btn.btn-default.btn-danger:hover,
+.modal.gform .modal-footer button.btn.btn-default.btn-danger:focus,
+#myModal .gform-footer .btn.btn-danger:hover,
+#myModal .gform-footer .btn.btn-danger:focus,
+#myModal .gform-footer button.btn.btn-default.btn-danger:hover,
+#myModal .gform-footer button.btn.btn-default.btn-danger:focus {
+  background-color: #850c23 !important;
+  border-color: #69091b !important;
+  color: #ffffff !important;
+}
+
+/* Warning: btn-default + btn-warning together keeps gray from .btn-default unless we override hard */
+.gform .gform-footer .btn.btn-warning,
+.gform .gform-footer button.btn.btn-default.btn-warning,
+.modal.gform .gform-footer .btn.btn-warning,
+.modal.gform .gform-footer button.btn.btn-default.btn-warning,
+.modal.gform .modal-footer .btn.btn-warning,
+.modal.gform .modal-footer button.btn.btn-default.btn-warning,
+#myModal .gform-footer .btn.btn-warning,
+#myModal .gform-footer button.btn.btn-default.btn-warning {
+  background-color: #4a2e00 !important;
+  border-color: #3d2500 !important;
+  color: #ffffff !important;
+}
+.gform .gform-footer .btn.btn-warning:hover,
+.gform .gform-footer .btn.btn-warning:focus,
+.gform .gform-footer button.btn.btn-default.btn-warning:hover,
+.gform .gform-footer button.btn.btn-default.btn-warning:focus,
+.modal.gform .gform-footer .btn.btn-warning:hover,
+.modal.gform .gform-footer .btn.btn-warning:focus,
+.modal.gform .gform-footer button.btn.btn-default.btn-warning:hover,
+.modal.gform .gform-footer button.btn.btn-default.btn-warning:focus,
+.modal.gform .modal-footer .btn.btn-warning:hover,
+.modal.gform .modal-footer .btn.btn-warning:focus,
+.modal.gform .modal-footer button.btn.btn-default.btn-warning:hover,
+.modal.gform .modal-footer button.btn.btn-default.btn-warning:focus,
+#myModal .gform-footer .btn.btn-warning:hover,
+#myModal .gform-footer .btn.btn-warning:focus,
+#myModal .gform-footer button.btn.btn-default.btn-warning:hover,
+#myModal .gform-footer button.btn.btn-default.btn-warning:focus {
+  background-color: #3d2500 !important;
+  border-color: #301e00 !important;
+  color: #ffffff !important;
+}
+
+.gform .gform-footer .btn.btn-success,
+.gform .gform-footer button.btn.btn-default.btn-success,
+.modal.gform .gform-footer .btn.btn-success,
+.modal.gform .gform-footer button.btn.btn-default.btn-success,
+.modal.gform .modal-footer .btn.btn-success,
+.modal.gform .modal-footer button.btn.btn-default.btn-success,
+#myModal .gform-footer .btn.btn-success,
+#myModal .gform-footer button.btn.btn-default.btn-success {
+  background-color: #005336 !important;
+  border-color: #00472e !important;
+  color: #ffffff !important;
+}
+.gform .gform-footer .btn.btn-success:hover,
+.gform .gform-footer .btn.btn-success:focus,
+.gform .gform-footer button.btn.btn-default.btn-success:hover,
+.gform .gform-footer button.btn.btn-default.btn-success:focus,
+.modal.gform .gform-footer .btn.btn-success:hover,
+.modal.gform .gform-footer .btn.btn-success:focus,
+.modal.gform .gform-footer button.btn.btn-default.btn-success:hover,
+.modal.gform .gform-footer button.btn.btn-default.btn-success:focus,
+.modal.gform .modal-footer .btn.btn-success:hover,
+.modal.gform .modal-footer .btn.btn-success:focus,
+.modal.gform .modal-footer button.btn.btn-default.btn-success:hover,
+.modal.gform .modal-footer button.btn.btn-default.btn-success:focus,
+#myModal .gform-footer .btn.btn-success:hover,
+#myModal .gform-footer .btn.btn-success:focus,
+#myModal .gform-footer button.btn.btn-default.btn-success:hover,
+#myModal .gform-footer button.btn.btn-default.btn-success:focus {
+  background-color: #00472e !important;
+  border-color: #003a25 !important;
+  color: #ffffff !important;
+}
+
+.gform .gform-footer .btn.btn-danger:focus-visible,
+.gform .gform-footer .btn.btn-warning:focus-visible,
+.gform .gform-footer .btn.btn-success:focus-visible,
+.modal.gform .gform-footer .btn.btn-danger:focus-visible,
+.modal.gform .gform-footer .btn.btn-warning:focus-visible,
+.modal.gform .gform-footer .btn.btn-success:focus-visible,
+.modal.gform .modal-footer .btn.btn-danger:focus-visible,
+.modal.gform .modal-footer .btn.btn-warning:focus-visible,
+.modal.gform .modal-footer .btn.btn-success:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px;
+}
+
+/* Manage Files modal (#files-modal): alert contrast + FilePond credits link */
+#files-modal .files-modal-alert-info {
+  background-color: #e8f4fc;
+  border-color: #8ecae6;
+  color: #0a2239;
+}
+#files-modal .files-modal-alert-info .files-modal-emphasis {
+  color: #051a2e;
+  font-weight: 700;
+}
+#files-modal .files-modal-alert-warning {
+  background-color: #fff8e6;
+  border-color: #e0a800;
+  color: #4d3b00;
+}
+#files-modal .filepond--credits {
+  color: #1a1a1a !important;
+  opacity: 1 !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+#files-modal .filepond--credits:focus,
+#files-modal .filepond--credits:hover {
+  color: #000000 !important;
+  text-decoration: underline;
+}
+
+/* Close button: Bootstrap .btn-default in modal footer often fails WCAG AA on gray footer strip */
+#files-modal .modal-footer .btn-default[data-dismiss="modal"] {
+  background-color: #3b4a5a !important;
+  border-color: #2f3b48 !important;
+  color: #ffffff !important;
+}
+#files-modal .modal-footer .btn-default[data-dismiss="modal"]:hover,
+#files-modal .modal-footer .btn-default[data-dismiss="modal"]:focus {
+  background-color: #2f3b48 !important;
+  border-color: #25303a !important;
+  color: #ffffff !important;
+}
+#files-modal .modal-footer .btn-default[data-dismiss="modal"]:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px;
+}
+
+#logs-modal .modal-footer .btn-default[data-dismiss="modal"] {
+  background-color: #3b4a5a !important;
+  border-color: #2f3b48 !important;
+  color: #ffffff !important;
+}
+#logs-modal .modal-footer .btn-default[data-dismiss="modal"]:hover,
+#logs-modal .modal-footer .btn-default[data-dismiss="modal"]:focus {
+  background-color: #2f3b48 !important;
+  border-color: #25303a !important;
+  color: #ffffff !important;
+}
+#logs-modal .modal-footer .btn-default[data-dismiss="modal"]:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px;
+}

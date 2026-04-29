@@ -58,34 +58,35 @@ window.forms.activity_form = {
 
 window.templates.main = `@{{>files_modal}}@{{>logs_modal}}`;
 window.templates.files_modal = `
-<div class="modal fade" id="files-modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="files-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="files-modal-title">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title">@{{current_activity.title}}</h2>
+        <h2 class="modal-title" id="files-modal-title">@{{current_activity.title}}</h2>
       </div>
       <div class="modal-body">
-          <div class="alert alert-info">Required file: Simulation scenario document.<br>Consider including other documents to support the scenario implementation: Lab results, provider orders, standardized participant/role scripts, quizzes, etc.
-              <br>Be sure to go back into your activity, and use <strong>Submit for Review</strong> once the documents have been uploaded. You will receive a confirmation email.
+          <div class="alert alert-info files-modal-alert-info">Required file: Simulation scenario document.<br>Consider including other documents to support the scenario implementation: Lab results, provider orders, standardized participant/role scripts, quizzes, etc.
+              <br>Be sure to go back into your activity, and use <strong class="files-modal-emphasis">Submit for Review</strong> once the documents have been uploaded. You will receive a confirmation email.
           </div>
         @{{^files.length}}
-            <div class="alert alert-warning">No files have been uploaded yet!</div>
+            <div class="alert alert-warning files-modal-alert-warning" role="status">No files have been uploaded yet!</div>
 
         @{{/files.length}}
         <div class="row">
             @{{#files}}
                 <div class="col-sm-6" style="text-align:center;margin-bottom:15px;">
-                    <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
-                    <div><input id="file-@{{id}}" type="text" value="@{{name}}" style="margin-top:10px;width:80%;display:inline" class="form-control">.@{{ext}}</div>
+                    <i class="fa fa-file-pdf-o" style="font-size:80px;" aria-hidden="true"></i>
+                    <div><label class="sr-only" for="file-@{{id}}">File name</label><input id="file-@{{id}}" type="text" value="@{{name}}" style="margin-top:10px;width:80%;display:inline" class="form-control">.@{{ext}}</div>
                     <div class="btn btn-xs btn-info rename-file" data-id="@{{id}}" style="margin-top:10px;">Rename</div>
                     <div class="btn btn-xs btn-danger delete-file" data-id="@{{id}}" style="margin-top:10px;">Delete</div>
                 </div>
             @{{/files}}
         </div>
         <hr>
-        <h3>Upload Files</h3>
-        <input type="file" class="filepond" />
+        <h3 id="files-modal-upload-heading">Upload Files</h3>
+        <p id="files-modal-upload-hint" class="sr-only">Upload PDF files for this activity. You may add multiple files.</p>
+        <input type="file" class="filepond" aria-labelledby="files-modal-upload-heading files-modal-upload-hint" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -95,12 +96,12 @@ window.templates.files_modal = `
 </div><!-- /.modal -->
 `;
 window.templates.logs_modal = `
-<div class="modal fade" id="logs-modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="logs-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="logs-modal-title">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title">@{{current_activity.title}} File Download Logs</h2>
+        <h2 class="modal-title" id="logs-modal-title">@{{current_activity.title}} File Download Logs</h2>
       </div>
       <div class="modal-body">
         <table class="table table-striped">
@@ -437,7 +438,9 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
     });
 
     app.gdatagrid.bindDataGrid('#admin-update-activities', {
-        tableLabel: 'Manage activities data grid'
+        tableLabel: 'Manage activities data grid',
+        tableCaption: 'Manage activities table with sortable columns and filters',
+        scrollRegionLabel: 'Manage activities table scroll area. Use arrow keys to move horizontally and vertically.'
     });
 });
 
@@ -492,6 +495,26 @@ app.pond.on('processfile', (error, file) => {
             app.pond.removeFiles();
         });
     }
+});
+
+var enhanceFilesModalA11y = function() {
+    var modal = document.getElementById('files-modal');
+    if (!modal) {
+        return;
+    }
+    var credits = modal.querySelector('.filepond--credits');
+    if (credits) {
+        credits.setAttribute('aria-label', 'PQINA FilePond — opens in a new tab');
+    }
+    var fileInput = modal.querySelector('input[type="file"]');
+    if (fileInput) {
+        fileInput.setAttribute('aria-labelledby', 'files-modal-upload-heading files-modal-upload-hint');
+    }
+};
+
+$(document).on('shown.bs.modal', '#files-modal', function() {
+    enhanceFilesModalA11y();
+    setTimeout(enhanceFilesModalA11y, 400);
 });
 
 
