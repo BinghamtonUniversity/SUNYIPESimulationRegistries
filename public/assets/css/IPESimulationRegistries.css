@@ -7,6 +7,26 @@ body {
   padding-top: 50px;
 }
 
+:root {
+  --suny-white: #FFFFFF;
+  --suny-dark-blue: #02235C;
+  --suny-blue: #00539B;
+  --suny-light-blue: #009EE0;
+  --suny-cyan: #00DDFF;
+  --suny-gray: #828687;
+  --suny-red: #B10000;
+  --suny-pink: #ED058E;
+  --suny-purple: #781E7F;
+  --suny-mint: #84D4B6;
+  --suny-orange: #F56600;
+  --suny-yellow: #FFE415;
+  --suny-muted-purple: #9571A8;
+  --suny-muted-mint: #99F8D4;
+  --suny-muted-orange: #FAAD5C;
+  --suny-muted-pink: #D44572;
+  --suny-medium-blue: #2777B6;
+}
+
 
 /*
  * Global add-ons
@@ -970,63 +990,98 @@ a.btn,
 
 /* ADA/WCAG: ensure Graphene action buttons meet contrast minimum */
 .gdatagrid-enhanced .grid-action.btn {
-  color: #ffffff !important;
+  color: var(--suny-white) !important;
   text-decoration: none;
   border-width: 1px;
+  border-radius: 4px !important;
+}
+
+#admin-update-activities .btn-group.pull-left {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  white-space: nowrap !important;
+}
+
+#admin-update-activities .btn-group.pull-left .grid-action.btn {
+  margin: 0 10px 0 0 !important;
+}
+
+#admin-update-activities .btn-group.pull-left .grid-action.btn:last-child {
+  margin-right: 0 !important;
 }
 
 .gdatagrid-enhanced .grid-action.btn-success {
-  background-color: #005336 !important;
-  border-color: #00472e !important;
+  background-color: var(--suny-cyan) !important;
+  border-color: var(--suny-cyan) !important;
+  color: #000000 !important;
 }
 .gdatagrid-enhanced .grid-action.btn-success:hover,
 .gdatagrid-enhanced .grid-action.btn-success:focus {
-  background-color: #00472e !important;
-  border-color: #003a25 !important;
+  background-color: var(--suny-light-blue) !important;
+  border-color: var(--suny-light-blue) !important;
+  color: #000000 !important;
 }
 
 .gdatagrid-enhanced .grid-action.btn-primary {
-  background-color: #00407a !important;
-  border-color: #003563 !important;
+  background-color: var(--suny-purple) !important;
+  border-color: var(--suny-dark-blue) !important;
 }
 .gdatagrid-enhanced .grid-action.btn-primary:hover,
 .gdatagrid-enhanced .grid-action.btn-primary:focus {
-  background-color: #003563 !important;
-  border-color: #00284c !important;
+  background-color: var(--suny-dark-blue) !important;
+  border-color: var(--suny-dark-blue) !important;
 }
 
 .gdatagrid-enhanced .grid-action.btn-default {
-  background-color: #3b4a5a !important;
-  border-color: #2f3b48 !important;
+  background-color: var(--suny-gray) !important;
+  border-color: var(--suny-gray) !important;
 }
 .gdatagrid-enhanced .grid-action.btn-default:hover,
 .gdatagrid-enhanced .grid-action.btn-default:focus {
-  background-color: #2f3b48 !important;
-  border-color: #25303a !important;
+  background-color: #6f7475 !important;
+  border-color: #6f7475 !important;
 }
 
 .gdatagrid-enhanced .grid-action.btn-danger {
-  background-color: #a10f2b !important;
-  border-color: #850c23 !important;
+  background-color: var(--suny-red) !important;
+  border-color: var(--suny-red) !important;
 }
 .gdatagrid-enhanced .grid-action.btn-danger:hover,
 .gdatagrid-enhanced .grid-action.btn-danger:focus {
-  background-color: #850c23 !important;
-  border-color: #69091b !important;
+  background-color: #8f0000 !important;
+  border-color: #8f0000 !important;
 }
 
 .gdatagrid-enhanced .grid-action.btn.disabled,
 .gdatagrid-enhanced .grid-action.btn[aria-disabled="true"] {
   opacity: 1 !important;
-  background-color: #5f6b77 !important;
-  border-color: #4e5963 !important;
-  color: #ffffff !important;
+  background-color: var(--suny-gray) !important;
+  border-color: var(--suny-gray) !important;
+  color: var(--suny-white) !important;
 }
 
 .gdatagrid-enhanced .grid-action.btn:focus,
 .gdatagrid-enhanced .grid-action.btn:focus-visible {
-  outline: 3px solid #ffbf47 !important;
+  outline: 3px solid var(--suny-cyan) !important;
   outline-offset: 2px;
+}
+
+.badge.manage-action-add {
+  background-color: var(--suny-cyan);
+  color: #000000;
+}
+.badge.manage-action-primary {
+  background-color: var(--suny-purple);
+  color: var(--suny-white);
+}
+.badge.manage-action-delete {
+  background-color: var(--suny-red);
+  color: var(--suny-white);
+}
+.badge.manage-action-secondary {
+  background-color: var(--suny-gray);
+  color: var(--suny-white);
 }
 
 .gdatagrid-enhanced .label.label-info,

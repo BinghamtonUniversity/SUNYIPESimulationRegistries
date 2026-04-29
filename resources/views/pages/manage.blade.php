@@ -12,12 +12,12 @@
 </div>
 <section class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;" aria-labelledby="manage-instructions-heading">
     <h2 id="manage-instructions-heading" style="margin-top:0px;color:#fff;font-size:24px;">Instructions</h2>
-    Use the <span class="badge" style="background-color:#006200;">Add Activity</span> button below to create a new activity.<br>
+    Use the <span class="badge manage-action-add">Add Activity</span> button below to create a new activity.<br>
     Select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity you want to modify and click
-    <span class="badge" style="background-color:#333333;">Update Activity</span> or
-    <span class="badge" style="background-color:#B10000;">Delete Activity</span>.<br>
+    <span class="badge manage-action-primary">Update Activity</span> or
+    <span class="badge manage-action-delete">Delete Activity</span>.<br>
     To upload or modify files, select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity and click
-    <span class="badge" style="background-color:#333333;">Manage Files</span><br>
+    <span class="badge manage-action-secondary">Manage Files</span><br>
     <span>To replace a file, delete the original first. Be sure to update the Date Developed/Revised field in the description.<br>
     <span>
         <br>Be sure to <strong>Submit for Review</strong> once the documents have been uploaded.  You will receive a confirmation email.
