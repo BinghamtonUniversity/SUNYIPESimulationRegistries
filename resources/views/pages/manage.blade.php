@@ -3,32 +3,42 @@
 @section('title',"Manage")
 
 @section('content')
-<div class="panel panel-default" style="margin-top:20px;">
+<a id="skip-to-add-activity" href="#admin-update-activities" class="sr-only sr-only-focusable">Skip to Main Content</a>
+<section id="manage-main-content" tabindex="-1" aria-labelledby="manage-page-title">
+<div class="panel panel-default">
     <div class="panel-body">
-        <h1 style="text-align:center;margin:0px;">Manage My Activities</h1>
+        <h1 id="manage-page-title" style="text-align:center;margin:0px;">Manage My Activities</h1>
     </div>
 </div>
-<div class="alert alert-info" style="margin-top:15px;background-color:#004c93;">
-    <h3 style="margin-top:0px;">Instructions:</h3>
-    Use the <div class="btn btn-success btn-xs">Add Activity</div> button below to create a new activity. <br>
-    Select the <i class="fa fa-check-square-o"></i> next to the activity you want to modify and click <div class="btn btn-primary btn-xs">Update Activity</div> or <div class="btn btn-danger btn-xs">Delete Activity</div> <br>
-    To upload or modify files associated with a particular activity, select the <i class="fa fa-check-square-o"></i> next to the appropriate activity and click <div class="btn btn-default btn-xs">Manage Files</div><br>
-    Download the <a class="btn btn-default btn-xs" href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank">SUNY Nursing Simulation Fellowship Simulation Template</a><br><br>
-    Download the <a class="btn btn-default btn-xs" href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank">SIPTEC Simulation Scenario Template</a><br>
-</div>
-<div class="alert alert-info" style="margin-top:15px;background-color:#004c93;">
-    <ul>
-
+<section class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;" aria-labelledby="manage-instructions-heading">
+    <h2 id="manage-instructions-heading" style="margin-top:0px;color:#fff;font-size:24px;">Instructions</h2>
+    Use the <span class="badge manage-action-add">Add Activity</span> button below to create a new activity.<br>
+    Select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity you want to modify and click
+    <span class="badge manage-action-primary">Update Activity</span> or
+    <span class="badge manage-action-delete">Delete Activity</span>.<br>
+    To upload or modify files, select the <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the activity and click
+    <span class="badge manage-action-secondary">Manage Files</span><br>
+    <span>To replace a file, delete the original first. Be sure to update the Date Developed/Revised field in the description.<br>
+    <span>
+        <br>Be sure to <strong>Submit for Review</strong> once the documents have been uploaded.  You will receive a confirmation email.
+    </span>
+        <br><strong>*Please note that emails from the SUNY Share Library will come from OpenSim Registry(noreply@binghamton.edu) </strong></span><br>
+    <br>
+    <a href="/assets/files/SUNY_Nursing_Simulation_Fellowship_Simulation_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#ffffff;" aria-label="Download SUNY Nursing Simulation Fellowship Simulation Template as a DOCX file (opens in a new tab)">Download SUNY Nursing Simulation Fellowship Simulation Template (DOCX)</a><br>
+    <a href="/assets/files/SIPTEC_Simulation_Scenario_Template.docx" target="_blank" rel="noopener noreferrer" style="color:#ffffff;" aria-label="Download SIPTEC Simulation Scenario Template as a DOCX file (opens in a new tab)">Download SIPTEC Simulation Scenario Template (DOCX)</a>
+</section>
+<section class="alert" style="margin-top:15px;background-color:#004c93;color:#fff;border-color:#003a70;" aria-labelledby="manage-review-criteria-heading">
+    <h2 id="manage-review-criteria-heading" style="margin-top:0px;color:#fff;font-size:24px;">Review Criteria</h2>
+    <ul style="margin-bottom:0;">
         <li>Interprofessional Education activity submissions will be reviewed using the Interprofessional Education Checklist.</li>
         <li>Simulation submissions will be reviewed according to the CSA Scenario Validation Checklist.</li>
     </ul>
+</section>
 
-
-</div>
-
-<div id="admin-update-activities"></div>
+<div id="admin-update-activities" tabindex="-1"></div>
 
 <div id="#main_target"></div>
+</section>
 @endsection
 
 @section('scripts')
@@ -48,31 +58,35 @@ window.forms.activity_form = {
 
 window.templates.main = `@{{>files_modal}}@{{>logs_modal}}`;
 window.templates.files_modal = `
-<div class="modal fade" id="files-modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="files-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="files-modal-title">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">@{{current_activity.title}}</h4>
+        <h2 class="modal-title" id="files-modal-title">@{{current_activity.title}}</h2>
       </div>
       <div class="modal-body">
-
+          <div class="alert alert-info files-modal-alert-info">Required file: Simulation scenario document.<br>Consider including other documents to support the scenario implementation: Lab results, provider orders, standardized participant/role scripts, quizzes, etc.
+              <br>Be sure to go back into your activity, and use <strong class="files-modal-emphasis">Submit for Review</strong> once the documents have been uploaded. You will receive a confirmation email.
+          </div>
         @{{^files.length}}
-            <div class="alert alert-warning">No files have been uploaded yet!</div>
+            <div class="alert alert-warning files-modal-alert-warning" role="status">No files have been uploaded yet!</div>
+
         @{{/files.length}}
         <div class="row">
             @{{#files}}
                 <div class="col-sm-6" style="text-align:center;margin-bottom:15px;">
-                    <i class="fa fa-file-pdf-o" style="font-size:80px;"></i>
-                    <div><input id="file-@{{id}}" type="text" value="@{{name}}" style="margin-top:10px;width:80%;display:inline" class="form-control">.@{{ext}}</div>
+                    <i class="fa fa-file-pdf-o" style="font-size:80px;" aria-hidden="true"></i>
+                    <div><label class="sr-only" for="file-@{{id}}">File name</label><input id="file-@{{id}}" type="text" value="@{{name}}" style="margin-top:10px;width:80%;display:inline" class="form-control">.@{{ext}}</div>
                     <div class="btn btn-xs btn-info rename-file" data-id="@{{id}}" style="margin-top:10px;">Rename</div>
                     <div class="btn btn-xs btn-danger delete-file" data-id="@{{id}}" style="margin-top:10px;">Delete</div>
                 </div>
             @{{/files}}
         </div>
         <hr>
-        <h4>Upload Files:</h4>
-        <input type="file" class="filepond" />
+        <h3 id="files-modal-upload-heading">Upload Files</h3>
+        <p id="files-modal-upload-hint" class="sr-only">Upload PDF files for this activity. You may add multiple files.</p>
+        <input type="file" class="filepond" aria-labelledby="files-modal-upload-heading files-modal-upload-hint" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -82,12 +96,12 @@ window.templates.files_modal = `
 </div><!-- /.modal -->
 `;
 window.templates.logs_modal = `
-<div class="modal fade" id="logs-modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="logs-modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="logs-modal-title">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">@{{current_activity.title}} File Download Logs</h4>
+        <h2 class="modal-title" id="logs-modal-title">@{{current_activity.title}} File Download Logs</h2>
       </div>
       <div class="modal-body">
         <table class="table table-striped">
@@ -117,6 +131,222 @@ var actions = [
     '|','|',
     {"name":"delete","label":"Delete Activity","min":1,"max":1},
 ];
+
+var focusAddActivityButton = function(attempt) {
+    var max_attempts = 20;
+    var current_attempt = attempt || 0;
+    var grid_container = document.getElementById('admin-update-activities');
+    if (!grid_container) {
+        return;
+    }
+
+    var controls = grid_container.querySelectorAll('button, a, [role="button"], input[type="button"], input[type="submit"]');
+    var add_activity_control = _.find(controls, function(control) {
+        var text = (control.textContent || '').trim().toLowerCase();
+        var value = (control.value || '').trim().toLowerCase();
+        var aria_label = (control.getAttribute('aria-label') || '').trim().toLowerCase();
+        return text === 'add activity' || value === 'add activity' || aria_label === 'add activity';
+    });
+
+    if (add_activity_control) {
+        add_activity_control.focus();
+        return;
+    }
+
+    if (current_attempt < max_attempts) {
+        setTimeout(function() {
+            focusAddActivityButton(current_attempt + 1);
+        }, 100);
+    } else {
+        grid_container.focus();
+    }
+};
+
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.id === 'skip-to-add-activity') {
+        event.preventDefault();
+        focusAddActivityButton();
+    }
+});
+
+var modal_focus_trap_state = {
+    active_modal: null,
+    trigger_element: null
+};
+
+var getModalFocusableElements = function(modal) {
+    if (!modal) {
+        return [];
+    }
+
+    var selector = 'a[href], area[href], input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"]), [contenteditable="true"]';
+    return _.filter(modal.querySelectorAll(selector), function(element) {
+        return element.offsetParent !== null;
+    });
+};
+
+var getPreferredModalFocusElement = function(modal) {
+    if (!modal) {
+        return null;
+    }
+
+    var preferred_selectors = {
+        myModal: '#activity_form input[name="title"]:not([disabled])'
+    };
+
+    var modal_id = modal.getAttribute('id');
+    var preferred_selector = modal_id ? preferred_selectors[modal_id] : null;
+    if (preferred_selector) {
+        var preferred_element = modal.querySelector(preferred_selector);
+        if (preferred_element) {
+            return preferred_element;
+        }
+    }
+
+    return modal.querySelector('[autofocus]');
+};
+
+var focusWithinModal = function(modal) {
+    if (!modal || !$(modal).is(':visible')) {
+        return;
+    }
+
+    var preferred_element = getPreferredModalFocusElement(modal);
+    if (preferred_element) {
+        preferred_element.focus();
+        return;
+    }
+
+    var focusable = getModalFocusableElements(modal);
+    if (focusable.length) {
+        focusable[0].focus();
+        return;
+    }
+
+    modal.setAttribute('tabindex', '-1');
+    modal.focus();
+};
+
+var activateModalFocusTrap = function(modal, trigger_element) {
+    modal_focus_trap_state.active_modal = modal;
+    modal_focus_trap_state.trigger_element = trigger_element || document.activeElement;
+};
+
+var getTopVisibleModal = function() {
+    var visible_modals = $('.modal:visible').toArray();
+    return visible_modals.length ? visible_modals[visible_modals.length - 1] : null;
+};
+
+var ensureActiveModalFocusTrap = function() {
+    var active_modal = modal_focus_trap_state.active_modal;
+    if (active_modal && $(active_modal).is(':visible')) {
+        return active_modal;
+    }
+
+    var top_modal = getTopVisibleModal();
+    if (top_modal) {
+        activateModalFocusTrap(top_modal, modal_focus_trap_state.trigger_element || document.activeElement);
+    } else {
+        modal_focus_trap_state.active_modal = null;
+    }
+
+    return modal_focus_trap_state.active_modal;
+};
+
+var scheduleModalTrapActivation = function(trigger_element, attempt) {
+    var max_attempts = 20;
+    var current_attempt = attempt || 0;
+    var top_modal = getTopVisibleModal();
+
+    if (top_modal) {
+        activateModalFocusTrap(top_modal, trigger_element);
+        focusWithinModal(top_modal);
+        return;
+    }
+
+    if (current_attempt < max_attempts) {
+        setTimeout(function() {
+            scheduleModalTrapActivation(trigger_element, current_attempt + 1);
+        }, 100);
+    }
+};
+
+var releaseModalFocusTrap = function(trigger_override) {
+    var trigger_element = trigger_override || modal_focus_trap_state.trigger_element;
+    modal_focus_trap_state.active_modal = null;
+    modal_focus_trap_state.trigger_element = null;
+
+    if (trigger_element && typeof trigger_element.focus === 'function' && document.contains(trigger_element)) {
+        trigger_element.focus();
+    }
+};
+
+$(document).on('show.bs.modal', '.modal', function() {
+    this._focusTriggerElement = document.activeElement;
+});
+
+$(document).on('shown.bs.modal', '.modal', function() {
+    activateModalFocusTrap(this, this._focusTriggerElement);
+    focusWithinModal(this);
+});
+
+$(document).on('hidden.bs.modal', '.modal', function() {
+    var top_modal = getTopVisibleModal();
+    if (top_modal) {
+        activateModalFocusTrap(top_modal, modal_focus_trap_state.trigger_element);
+        focusWithinModal(top_modal);
+    } else if (modal_focus_trap_state.active_modal === this) {
+        releaseModalFocusTrap(this._focusTriggerElement);
+    } else {
+        releaseModalFocusTrap(this._focusTriggerElement);
+    }
+
+    this._focusTriggerElement = null;
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key !== 'Tab') {
+        return;
+    }
+
+    var modal = ensureActiveModalFocusTrap();
+    if (!modal) {
+        return;
+    }
+
+    var focusable = getModalFocusableElements(modal);
+    if (!focusable.length) {
+        event.preventDefault();
+        modal.setAttribute('tabindex', '-1');
+        modal.focus();
+        return;
+    }
+
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    var active_element = document.activeElement;
+
+    if (event.shiftKey) {
+        if (active_element === first || !modal.contains(active_element)) {
+            event.preventDefault();
+            last.focus();
+        }
+    } else if (active_element === last || !modal.contains(active_element)) {
+        event.preventDefault();
+        first.focus();
+    }
+});
+
+document.addEventListener('focusin', function(event) {
+    var modal = ensureActiveModalFocusTrap();
+    if (!modal) {
+        return;
+    }
+
+    if (!modal.contains(event.target)) {
+        focusWithinModal(modal);
+    }
+});
 
 app.create_update_activity = function(e,validate=false) {
     if (validate) {
@@ -160,14 +390,19 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
         data: activities
     }).on("add_activity",function(grid_event) {
         app.current_grid_event = grid_event;
+        
         app.form('activity_form').set(null);
         app.form('activity_form').set({status:'draft'});
+        var modal_trigger = document.activeElement;
         app.form('activity_form').modal();
+        scheduleModalTrapActivation(modal_trigger);
     }).on('model:update_activity',function (grid_event) {
         app.current_grid_event = grid_event;
         app.form('activity_form').set(null);
         app.form('activity_form').set(grid_event.model.attributes);
+        var modal_trigger = document.activeElement;
         app.form('activity_form').modal();
+        scheduleModalTrapActivation(modal_trigger);
     }).on("model:deleted",function(grid_event) {
         app.delete('/api/activities/'+grid_event.model.attributes.id,{},function(data) {},function(data) {
             grid_event.model.delete();
@@ -200,7 +435,13 @@ app.get('/api/users/{{Auth::user()->id}}/activities',function(activities) {
         window.location = '/activities/'+grid_event.model.attributes.id+'?preview=true';
     }).on("click",function(grid_event) {
         window.location = '/activities/'+grid_event.model.attributes.id+'?preview=true';
-    })
+    });
+
+    app.gdatagrid.bindDataGrid('#admin-update-activities', {
+        tableLabel: 'Manage activities data grid',
+        tableCaption: 'Manage activities table with sortable columns and filters',
+        scrollRegionLabel: 'Manage activities table scroll area. Use arrow keys to move horizontally and vertically.'
+    });
 });
 
 app.click('.rename-file',function(event) {
@@ -254,6 +495,26 @@ app.pond.on('processfile', (error, file) => {
             app.pond.removeFiles();
         });
     }
+});
+
+var enhanceFilesModalA11y = function() {
+    var modal = document.getElementById('files-modal');
+    if (!modal) {
+        return;
+    }
+    var credits = modal.querySelector('.filepond--credits');
+    if (credits) {
+        credits.setAttribute('aria-label', 'PQINA FilePond — opens in a new tab');
+    }
+    var fileInput = modal.querySelector('input[type="file"]');
+    if (fileInput) {
+        fileInput.setAttribute('aria-labelledby', 'files-modal-upload-heading files-modal-upload-hint');
+    }
+};
+
+$(document).on('shown.bs.modal', '#files-modal', function() {
+    enhanceFilesModalA11y();
+    setTimeout(enhanceFilesModalA11y, 400);
 });
 
 

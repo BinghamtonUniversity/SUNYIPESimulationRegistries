@@ -1,9 +1,9 @@
-@extends('pages.default')
+﻿@extends('pages.default')
 
 @section('title','Browse Activities')
 
 @section('description')
-<div class="panel panel-default" style="margin-top:20px;">
+<div class="panel panel-default">
     <div class="panel-body">
         <h1 style="text-align:center;margin:0px;">Browse Activities</h1>
     </div>
@@ -13,14 +13,16 @@
 @section('content')
     <div class="panel panel-default" style="font-size:18px;">
         <div class="panel-body">
-            <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="pull-right">
-                <img src="/assets/images/licenses/by-nc.png" style="width:150px;">
+            <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="pull-right">
+                <img src="/assets/images/licenses/by-nc.png" style="width:150px;" alt="Creative Commons Attribution-NonCommercial 4.0 License">
             </a>
             {!! $site_config['pages.browse_activities.help_text'] !!}
         </div>
     </div>
 
-    <div class="btn btn-primary" id="filter-activities-btn" style="width:100%;margin-bottom:20px;font-size:20px;"><i class="fa fa-filter"></i> Search / Filter Activities</div>
+    <button type="button" class="btn btn-primary" id="filter-activities-btn" style="width:100%;margin-bottom:20px;font-size:20px;">
+        <i class="fa fa-filter" aria-hidden="true"></i> Search / Filter Activities
+    </button>
     @if (isset($error))
         <div class="alert alert-danger">{{$error}}</div>
     @endif
@@ -30,12 +32,14 @@
     <div class="row">
     @foreach($activities as $activity)
         <div class="col-sm-4">
-        <div class="panel panel-default" style="height:300px;overflow:scroll;">
+        <div class="panel panel-default" style="height:300px;overflow:scroll;" tabindex="0" aria-label="{{$activity->title}} details">
             <div class="panel-body" style="font-size: 20px;">
                 <h2 style="font-size: 26px;">
                     @if(!is_null($activity->video_url))
                     <div class="badge pull-right" style="margin-left:5px;">
-                        <a href="{{$activity->video_url}}" target="_blank" <i style="color:white;" class="fa fa-video-camera fa-fw"></i></a>
+                        <a href="{{$activity->video_url}}" target="_blank" rel="noopener noreferrer" aria-label="Watch video for {{$activity->title}}">
+                            <i style="color:white;" class="fa fa-video-camera fa-fw" aria-hidden="true"></i>
+                        </a>
                     </div>
                     @endif
                     <div class="badge pull-right" style="margin-left:5px;">

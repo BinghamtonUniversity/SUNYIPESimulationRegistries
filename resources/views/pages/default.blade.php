@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>SUNY Share | @yield('title')</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
@@ -13,51 +13,86 @@
     <link rel="icon"  type="image/png" href="/assets/icons/fontawesome/gray/32/medkit.png">
 </head>
 
-<body style="background-color:#eee;padding-bottom:20px;">
-<style>
-  .navbar-default a:hover {
-    color:#ddd !important;
-  }
-</style>
-<nav class="navbar navbar-fixed-top navbar-default">
+<body style="background-color:#eee;padding-top:50px;">
+<nav class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="Main navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#main-nav-collapse"
+              aria-expanded="false"
+              aria-controls="main-nav-collapse">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar" aria-hidden="true"></span>
+        <span class="icon-bar" aria-hidden="true"></span>
+        <span class="icon-bar" aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="{{route('home')}}" style="background: #004c93;"><i class="fa fa-medkit fa-fw"></i> SUNY Share</a>
+      <a class="navbar-brand" href="{{route('home')}}">
+        <i class="fa fa-medkit fa-fw" aria-hidden="true"></i> SUNY Share
+      </a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="main-nav-collapse">
       <ul class="nav navbar-nav">
-        <li @if(request()->routeIs('home')) class="active" @endif><a href="{{route('home')}}"><i class="fa fa-home fa-fw"></i> Home <span class="sr-only">(current)</span></a></li>
-        <li @if(request()->routeIs('browse')) class="active" @endif><a href="{{route('browse')}}"><i class="fa fa-search fa-fw"></i> Browse Activities</a></li>
-        <li @if(request()->routeIs('glossary')) class="active" @endif><a href="{{route('glossary')}}"><i class="fa fa-file fa-fw"></i> Glossary</a></li>
-        <li @if(request()->routeIs('manage')) class="active" @endif><a href="{{route('manage')}}"><i class="fa fa-cog fa-fw"></i> Manage My Activities</a></li>
+        <li @if(request()->routeIs('home')) class="active" @endif>
+          <a href="{{route('home')}}" @if(request()->routeIs('home')) aria-current="page" @endif>
+            <i class="fa fa-home fa-fw" aria-hidden="true"></i> Home
+          </a>
+        </li>
+        <li @if(request()->routeIs('browse')) class="active" @endif>
+          <a href="{{route('browse')}}" @if(request()->routeIs('browse')) aria-current="page" @endif>
+            <i class="fa fa-search fa-fw" aria-hidden="true"></i> Browse Activities
+          </a>
+        </li>
+        <li @if(request()->routeIs('glossary')) class="active" @endif>
+          <a href="{{route('glossary')}}" @if(request()->routeIs('glossary')) aria-current="page" @endif>
+            <i class="fa fa-file fa-fw" aria-hidden="true"></i> Glossary
+          </a>
+        </li>
+        <li @if(request()->routeIs('manage')) class="active" @endif>
+          <a href="{{route('manage')}}" @if(request()->routeIs('manage')) aria-current="page" @endif>
+            <i class="fa fa-cog fa-fw" aria-hidden="true"></i> Manage My Activities
+          </a>
+        </li>
       </ul>
-      <!--
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      -->
+
       <ul class="nav navbar-nav navbar-right">
-        @guest<li><a href="{{route('login')}}"><i class="fa fa-sign-in fa-fw"></i> Login</a></li>@endguest
+        @guest
+          <li>
+            <a href="{{route('login')}}">
+              <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> Login
+            </a>
+          </li>
+        @endguest
         @auth
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <button type="button"
+                  id="user-menu-toggle"
+                  class="dropdown-toggle identity-info navbar-btn btn btn-link"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  aria-controls="user-dropdown-menu">
+            {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu"
+              id="user-dropdown-menu"
+              role="menu"
+              aria-labelledby="user-menu-toggle">
             @can('admin', App\Models\User::class)
-              <li><a href="/admin"><i class="fa fa-cog fa-fw"></i> Admin</a></li>
+              <li role="none">
+                <a href="/admin" role="menuitem">
+                  <i class="fa fa-cog fa-fw" aria-hidden="true"></i> Admin
+                </a>
+              </li>
             @endcan
-            <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            <li role="none">
+              <a href="{{route('logout')}}" role="menuitem">
+                <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout
+              </a>
+            </li>
           </ul>
         </li>
         @endauth
@@ -75,12 +110,14 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          @yield('content')
+            <main>
+            @yield('content')
+            </main>
         </div>
       </div>
-      <nav class="footer navbar-fixed-bottom" style="background-color:#004c93;color:#CCD6DF;text-align:center;">
-        {!! $site_config['footer'] !!}
-      </nav>
+      <footer role="contentinfo" class="site-footer">
+        {!! $site_config['footer'] ?? '' !!}
+      </footer>
     </div>
 
     <script src="{{url('/assets/js/vendor/jquery.min.js')}}"></script>
@@ -104,6 +141,75 @@
       window.data = <?php echo json_encode($data); ?>;
       @endif
       @yield('scripts')
+    </script>
+
+    <script>
+    $(document).ready(function () {
+
+        // Sync aria-expanded on the user dropdown toggle
+        $('#user-menu-toggle').closest('.dropdown')
+            .on('show.bs.dropdown', function () {
+                $('#user-menu-toggle').attr('aria-expanded', 'true');
+            })
+            .on('shown.bs.dropdown', function () {
+                // Move focus to first menu item when dropdown opens
+                $('#user-dropdown-menu [role="menuitem"]').first().focus();
+            })
+            .on('hide.bs.dropdown', function () {
+                $('#user-menu-toggle').attr('aria-expanded', 'false');
+            })
+            .on('hidden.bs.dropdown', function () {
+                // Return focus to toggle when dropdown closes
+                $('#user-menu-toggle').focus();
+            });
+
+        // Sync aria-expanded on the mobile navbar toggle
+        $('[data-toggle="collapse"][data-target="#main-nav-collapse"]').on('click', function () {
+            var isExpanded = $(this).attr('aria-expanded') === 'true';
+            $(this).attr('aria-expanded', isExpanded ? 'false' : 'true');
+        });
+
+        // Keyboard navigation inside dropdown menus
+        $(document).on('keydown', '#user-dropdown-menu [role="menuitem"]', function (e) {
+            var $items = $('#user-dropdown-menu [role="menuitem"]');
+            var index  = $items.index(this);
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                $items.eq((index + 1) % $items.length).focus();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                $items.eq((index - 1 + $items.length) % $items.length).focus();
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                $('#user-menu-toggle').dropdown('toggle');
+            } else if (e.key === 'Tab') {
+                // Close dropdown when tabbing out of the last item
+                if (!e.shiftKey && index === $items.length - 1) {
+                    $('#user-menu-toggle').dropdown('toggle');
+                } else if (e.shiftKey && index === 0) {
+                    e.preventDefault();
+                    $('#user-menu-toggle').dropdown('toggle');
+                }
+            }
+        });
+
+        // Open dropdown and focus first item on Enter/Space/ArrowDown from toggle
+        $(document).on('keydown', '#user-menu-toggle', function (e) {
+            if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if ($(this).closest('.dropdown').hasClass('open')) {
+                    $('#user-dropdown-menu [role="menuitem"]').first().focus();
+                } else {
+                    $(this).dropdown('toggle');
+                }
+            } else if (e.key === 'Escape') {
+                if ($(this).closest('.dropdown').hasClass('open')) {
+                    $(this).dropdown('toggle');
+                }
+            }
+        });
+    });
     </script>
 
     <!-- Begin Google Analytics -->

@@ -7,6 +7,26 @@ body {
   padding-top: 50px;
 }
 
+:root {
+  --suny-white: #FFFFFF;
+  --suny-dark-blue: #02235C;
+  --suny-blue: #00539B;
+  --suny-light-blue: #009EE0;
+  --suny-cyan: #00DDFF;
+  --suny-gray: #828687;
+  --suny-red: #B10000;
+  --suny-pink: #ED058E;
+  --suny-purple: #781E7F;
+  --suny-mint: #84D4B6;
+  --suny-orange: #F56600;
+  --suny-yellow: #FFE415;
+  --suny-muted-purple: #9571A8;
+  --suny-muted-mint: #99F8D4;
+  --suny-muted-orange: #FAAD5C;
+  --suny-muted-pink: #D44572;
+  --suny-medium-blue: #2777B6;
+}
+
 
 /*
  * Global add-ons
@@ -21,9 +41,9 @@ body {
  * Top navigation
  * Hide admin border to remove 1px line.
  */
-/*.navbar-fixed-top {*/
+/* .navbar-fixed-top {*/
 /*  border: 0;*/
-/*}*/
+/*} */
 
 /*
  * Sidebar
@@ -147,7 +167,7 @@ body{
 .nav-sidebar .active > a,
 .nav-sidebar .active > a:hover,
 .nav-sidebar .active > a:focus {
-  border-left:solid #004c93;
+  border-left:solid #00539B;
   color: #fff;
   background-color:rgba(0,0,0,0.4);
 }
@@ -412,7 +432,7 @@ li.widget_active{cursor:default}
 	background-color:#f9f9f9;
 	border:1px solid #d4d4d4;
 	border-radius:4px;
-	*zoom:1;
+	zoom:1;
 	-webkit-box-shadow:0 1px 4px rgba(0,0,0,.065);
 	box-shadow:0 1px 4px rgba(0,0,0,.065)
 }
@@ -616,7 +636,7 @@ thead .form-group{margin-bottom:0;}
 
 .filterable.nodisplay{display: none !important;}
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 
@@ -783,11 +803,35 @@ textarea[name=template] {
   margin:0px !important;
 }
 
+/* #00539B on white = 8.5:1 (WCAG AAA). Underline ensures links are
+   distinguishable from plain text by more than color alone (WCAG 1.4.1). */
 a {
-  color:#004c93;
+  color: #00539B;
+  text-decoration: underline;
 }
 a:hover {
-  color:#2c3e50;
+  color: #002d57;
+  text-decoration: underline;
+}
+/* Suppress underline only on nav/button links where context makes
+   them obviously interactive (not inline body text)              */
+.navbar a,
+.nav a,
+.btn,
+a.btn,
+.dropdown-menu a,
+.panel-title a,
+.breadcrumb a,
+.pagination a {
+  text-decoration: none;
+}
+.navbar a:hover,
+.nav a:hover,
+.dropdown-menu a:hover,
+.panel-title a:hover,
+.breadcrumb a:hover,
+.pagination a:hover {
+  text-decoration: none;
 }
 
 /* Custom CSS to increase modal width */
@@ -811,7 +855,419 @@ a:hover {
   }
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a {
-  background-color:#00ddff;
-  color:#333 !important;
+/* Active nav: brand blue background with white text — 8.5:1 contrast (WCAG AAA) */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: #00539B;
+  color: #fff !important;
+  text-decoration: none;
+  border-color: #ffffff !important;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Navbar height: Bootswatch sets 60px, reset to Bootstrap 50px ── */
+.navbar { max-height: 50px !important; }
+
+
+/* ── Navbar hover colour (Bootswatch teal) ────────────────────────── */
+.navbar-default a:hover, .navbar-default a:focus {
+  color: #ffff !important;
+  background-color: #02235C !important;
+  border-color: #ffffff !important;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Hamburger toggle: SUNY Share brand blue (WCAG 1.4.3) ─────────── */
+.navbar-default .navbar-toggle {
+  background-color: #00539B;
+  border-color: #00539B;
+  border-radius: 4px;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #003a72;
+  border-color: #003a72;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Keyboard focus ring inside dropdowns ─────────────────────────── */
+.dropdown-menu > li > a:focus {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+  background-color: #00539B;
+  color: #fff;
+}
+
+/* ── Mobile nav (< 768 px) ────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .navbar-collapse.in,
+  .navbar-collapse.collapsing {
+    max-height: calc(100vh - 50px);
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+  }
+  .navbar-right {
+    float: none !important;
+    margin: 0 !important;
+    border-top: 1px solid #e7e7e7;
+  }
+  .navbar-right .dropdown-menu {
+    position: static !important;
+    float: none;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  .navbar-right .dropdown-menu > li > a {
+    padding: 8px 15px 8px 30px;
+    color: #555;
+  }
+  .navbar-right .dropdown-menu > li > a:hover,
+  .navbar-right .dropdown-menu > li > a:focus {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  .navbar-right .dropdown-toggle .caret {
+    border-top-color: #777;
+  }
+}
+.navbar-brand {
+  background:#00539B !important;
+  width:200px !important;
+  font-size:18px !important;
+}
+
+.panel-default {
+  margin-top:20px;
+}
+/* End Navbar */
+/* Identity Info */
+.identity-info {
+  color:#ffffff;
+  background-color:transparent;
+  box-shadow:none;
+  text-decoration:none;
+}
+.identity-info:hover, .identity-info:focus {
+  color:#00DDFF !important;
+
+}
+/* End Identity Info */
+
+/* Footer */
+.site-footer {
+  background-color:#00539B;
+  color:#ffffff;
+  text-align:center;
+  padding:12px 15px;
+  margin-top:30px;
+}
+.site-footer a {
+  color:#ffffff !important;
+}
+/* End Footer */
+
+.glossary-help-text {
+  /* background-color:#00539B; */
+  background-color:#00DDFF;
+  color:black;
+  display:block;
+  padding:4px 8px;
+  border-radius:4px;
+  white-space:normal;
+  word-wrap:break-word;
+  max-width:100%;
+  font-size:1em;
+  margin-bottom:8px;
+}
+
+/* ADA/WCAG: ensure Graphene action buttons meet contrast minimum */
+.gdatagrid-enhanced .grid-action.btn {
+  color: var(--suny-white) !important;
+  text-decoration: none;
+  border-width: 1px;
+  border-radius: 4px !important;
+}
+
+#admin-update-activities .btn-group.pull-left {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  white-space: nowrap !important;
+}
+
+#admin-update-activities .btn-group.pull-left .grid-action.btn {
+  margin: 0 10px 0 0 !important;
+}
+
+#admin-update-activities .btn-group.pull-left .grid-action.btn:last-child {
+  margin-right: 0 !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn-success {
+  background-color: var(--suny-cyan) !important;
+  border-color: var(--suny-cyan) !important;
+  color: #000000 !important;
+}
+.gdatagrid-enhanced .grid-action.btn-success:hover,
+.gdatagrid-enhanced .grid-action.btn-success:focus {
+  background-color: var(--suny-light-blue) !important;
+  border-color: var(--suny-light-blue) !important;
+  color: #000000 !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn-primary {
+  background-color: var(--suny-purple) !important;
+  border-color: var(--suny-dark-blue) !important;
+}
+.gdatagrid-enhanced .grid-action.btn-primary:hover,
+.gdatagrid-enhanced .grid-action.btn-primary:focus {
+  background-color: var(--suny-dark-blue) !important;
+  border-color: var(--suny-dark-blue) !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn-default {
+  background-color: var(--suny-gray) !important;
+  border-color: var(--suny-gray) !important;
+}
+.gdatagrid-enhanced .grid-action.btn-default:hover,
+.gdatagrid-enhanced .grid-action.btn-default:focus {
+  background-color: #6f7475 !important;
+  border-color: #6f7475 !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn-danger {
+  background-color: var(--suny-red) !important;
+  border-color: var(--suny-red) !important;
+}
+.gdatagrid-enhanced .grid-action.btn-danger:hover,
+.gdatagrid-enhanced .grid-action.btn-danger:focus {
+  background-color: #8f0000 !important;
+  border-color: #8f0000 !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn.disabled,
+.gdatagrid-enhanced .grid-action.btn[aria-disabled="true"] {
+  opacity: 1 !important;
+  background-color: var(--suny-gray) !important;
+  border-color: var(--suny-gray) !important;
+  color: var(--suny-white) !important;
+}
+
+.gdatagrid-enhanced .grid-action.btn:focus,
+.gdatagrid-enhanced .grid-action.btn:focus-visible {
+  outline: 3px solid var(--suny-cyan) !important;
+  outline-offset: 2px;
+}
+
+.badge.manage-action-add {
+  background-color: var(--suny-cyan);
+  color: #000000;
+}
+.badge.manage-action-primary {
+  background-color: var(--suny-purple);
+  color: var(--suny-white);
+}
+.badge.manage-action-delete {
+  background-color: var(--suny-red);
+  color: var(--suny-white);
+}
+.badge.manage-action-secondary {
+  background-color: var(--suny-gray);
+  color: var(--suny-white);
+}
+
+.gdatagrid-enhanced .label.label-info,
+.gdatagrid-enhanced .range.label.label-info.checked_count {
+  background-color: #1f3c88 !important;
+  color: #ffffff !important;
+  border: 1px solid #1a3270;
+}
+
+/* WCAG 2 AA: gform character counts use Bootstrap .text-muted, which is too light on form backgrounds */
+.gform small.count.text-muted,
+.modal.gform small.count.text-muted,
+.gform.modal small.count.text-muted {
+  color: #4a4a4a !important;
+}
+
+/* WCAG 2 AA: gform modal footer buttons (Cancel / Save Draft / Submit) — darker fills + white text */
+.gform .gform-footer .btn.btn-danger,
+.gform .gform-footer button.btn.btn-default.btn-danger,
+.modal.gform .gform-footer .btn.btn-danger,
+.modal.gform .gform-footer button.btn.btn-default.btn-danger,
+.modal.gform .modal-footer .btn.btn-danger,
+.modal.gform .modal-footer button.btn.btn-default.btn-danger,
+#myModal .gform-footer .btn.btn-danger,
+#myModal .gform-footer button.btn.btn-default.btn-danger {
+  background-color: #a10f2b !important;
+  border-color: #850c23 !important;
+  color: #ffffff !important;
+}
+.gform .gform-footer .btn.btn-danger:hover,
+.gform .gform-footer .btn.btn-danger:focus,
+.gform .gform-footer button.btn.btn-default.btn-danger:hover,
+.gform .gform-footer button.btn.btn-default.btn-danger:focus,
+.modal.gform .gform-footer .btn.btn-danger:hover,
+.modal.gform .gform-footer .btn.btn-danger:focus,
+.modal.gform .gform-footer button.btn.btn-default.btn-danger:hover,
+.modal.gform .gform-footer button.btn.btn-default.btn-danger:focus,
+.modal.gform .modal-footer .btn.btn-danger:hover,
+.modal.gform .modal-footer .btn.btn-danger:focus,
+.modal.gform .modal-footer button.btn.btn-default.btn-danger:hover,
+.modal.gform .modal-footer button.btn.btn-default.btn-danger:focus,
+#myModal .gform-footer .btn.btn-danger:hover,
+#myModal .gform-footer .btn.btn-danger:focus,
+#myModal .gform-footer button.btn.btn-default.btn-danger:hover,
+#myModal .gform-footer button.btn.btn-default.btn-danger:focus {
+  background-color: #850c23 !important;
+  border-color: #69091b !important;
+  color: #ffffff !important;
+}
+
+/* Warning: btn-default + btn-warning together keeps gray from .btn-default unless we override hard */
+.gform .gform-footer .btn.btn-warning,
+.gform .gform-footer button.btn.btn-default.btn-warning,
+.modal.gform .gform-footer .btn.btn-warning,
+.modal.gform .gform-footer button.btn.btn-default.btn-warning,
+.modal.gform .modal-footer .btn.btn-warning,
+.modal.gform .modal-footer button.btn.btn-default.btn-warning,
+#myModal .gform-footer .btn.btn-warning,
+#myModal .gform-footer button.btn.btn-default.btn-warning {
+  background-color: #4a2e00 !important;
+  border-color: #3d2500 !important;
+  color: #ffffff !important;
+}
+.gform .gform-footer .btn.btn-warning:hover,
+.gform .gform-footer .btn.btn-warning:focus,
+.gform .gform-footer button.btn.btn-default.btn-warning:hover,
+.gform .gform-footer button.btn.btn-default.btn-warning:focus,
+.modal.gform .gform-footer .btn.btn-warning:hover,
+.modal.gform .gform-footer .btn.btn-warning:focus,
+.modal.gform .gform-footer button.btn.btn-default.btn-warning:hover,
+.modal.gform .gform-footer button.btn.btn-default.btn-warning:focus,
+.modal.gform .modal-footer .btn.btn-warning:hover,
+.modal.gform .modal-footer .btn.btn-warning:focus,
+.modal.gform .modal-footer button.btn.btn-default.btn-warning:hover,
+.modal.gform .modal-footer button.btn.btn-default.btn-warning:focus,
+#myModal .gform-footer .btn.btn-warning:hover,
+#myModal .gform-footer .btn.btn-warning:focus,
+#myModal .gform-footer button.btn.btn-default.btn-warning:hover,
+#myModal .gform-footer button.btn.btn-default.btn-warning:focus {
+  background-color: #3d2500 !important;
+  border-color: #301e00 !important;
+  color: #ffffff !important;
+}
+
+.gform .gform-footer .btn.btn-success,
+.gform .gform-footer button.btn.btn-default.btn-success,
+.modal.gform .gform-footer .btn.btn-success,
+.modal.gform .gform-footer button.btn.btn-default.btn-success,
+.modal.gform .modal-footer .btn.btn-success,
+.modal.gform .modal-footer button.btn.btn-default.btn-success,
+#myModal .gform-footer .btn.btn-success,
+#myModal .gform-footer button.btn.btn-default.btn-success {
+  background-color: #005336 !important;
+  border-color: #00472e !important;
+  color: #ffffff !important;
+}
+.gform .gform-footer .btn.btn-success:hover,
+.gform .gform-footer .btn.btn-success:focus,
+.gform .gform-footer button.btn.btn-default.btn-success:hover,
+.gform .gform-footer button.btn.btn-default.btn-success:focus,
+.modal.gform .gform-footer .btn.btn-success:hover,
+.modal.gform .gform-footer .btn.btn-success:focus,
+.modal.gform .gform-footer button.btn.btn-default.btn-success:hover,
+.modal.gform .gform-footer button.btn.btn-default.btn-success:focus,
+.modal.gform .modal-footer .btn.btn-success:hover,
+.modal.gform .modal-footer .btn.btn-success:focus,
+.modal.gform .modal-footer button.btn.btn-default.btn-success:hover,
+.modal.gform .modal-footer button.btn.btn-default.btn-success:focus,
+#myModal .gform-footer .btn.btn-success:hover,
+#myModal .gform-footer .btn.btn-success:focus,
+#myModal .gform-footer button.btn.btn-default.btn-success:hover,
+#myModal .gform-footer button.btn.btn-default.btn-success:focus {
+  background-color: #00472e !important;
+  border-color: #003a25 !important;
+  color: #ffffff !important;
+}
+
+.gform .gform-footer .btn.btn-danger:focus-visible,
+.gform .gform-footer .btn.btn-warning:focus-visible,
+.gform .gform-footer .btn.btn-success:focus-visible,
+.modal.gform .gform-footer .btn.btn-danger:focus-visible,
+.modal.gform .gform-footer .btn.btn-warning:focus-visible,
+.modal.gform .gform-footer .btn.btn-success:focus-visible,
+.modal.gform .modal-footer .btn.btn-danger:focus-visible,
+.modal.gform .modal-footer .btn.btn-warning:focus-visible,
+.modal.gform .modal-footer .btn.btn-success:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px;
+}
+
+/* Manage Files modal (#files-modal): alert contrast + FilePond credits link */
+#files-modal .files-modal-alert-info {
+  background-color: #e8f4fc;
+  border-color: #8ecae6;
+  color: #0a2239;
+}
+#files-modal .files-modal-alert-info .files-modal-emphasis {
+  color: #051a2e;
+  font-weight: 700;
+}
+#files-modal .files-modal-alert-warning {
+  background-color: #fff8e6;
+  border-color: #e0a800;
+  color: #4d3b00;
+}
+#files-modal .filepond--credits {
+  color: #1a1a1a !important;
+  opacity: 1 !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+#files-modal .filepond--credits:focus,
+#files-modal .filepond--credits:hover {
+  color: #000000 !important;
+  text-decoration: underline;
+}
+
+/* Close button: Bootstrap .btn-default in modal footer often fails WCAG AA on gray footer strip */
+#files-modal .modal-footer .btn-default[data-dismiss="modal"] {
+  background-color: #3b4a5a !important;
+  border-color: #2f3b48 !important;
+  color: #ffffff !important;
+}
+#files-modal .modal-footer .btn-default[data-dismiss="modal"]:hover,
+#files-modal .modal-footer .btn-default[data-dismiss="modal"]:focus {
+  background-color: #2f3b48 !important;
+  border-color: #25303a !important;
+  color: #ffffff !important;
+}
+#files-modal .modal-footer .btn-default[data-dismiss="modal"]:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px;
+}
+
+#logs-modal .modal-footer .btn-default[data-dismiss="modal"] {
+  background-color: #3b4a5a !important;
+  border-color: #2f3b48 !important;
+  color: #ffffff !important;
+}
+#logs-modal .modal-footer .btn-default[data-dismiss="modal"]:hover,
+#logs-modal .modal-footer .btn-default[data-dismiss="modal"]:focus {
+  background-color: #2f3b48 !important;
+  border-color: #25303a !important;
+  color: #ffffff !important;
+}
+#logs-modal .modal-footer .btn-default[data-dismiss="modal"]:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px;
 }
