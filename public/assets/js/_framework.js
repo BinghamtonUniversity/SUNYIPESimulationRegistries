@@ -317,12 +317,12 @@ document.addEventListener('keydown', function(event) {
         return;
     }
     event.preventDefault();
-    target.checked = !target.checked;
-    if (typeof $ !== 'undefined') {
-        $(target).trigger('change');
-    } else {
-        target.dispatchEvent(new Event('change', { bubbles: true }));
-    }
+    // target.checked = !target.checked;
+    // if (typeof $ !== 'undefined') {
+    //     $(target).trigger('change');
+    // } else {
+    //     target.dispatchEvent(new Event('change', { bubbles: true }));
+    // }
 }, true);
 
 $(document).on('shown.bs.modal', '.modal', function() {
