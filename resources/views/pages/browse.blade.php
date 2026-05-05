@@ -1,7 +1,7 @@
 ﻿@extends('pages.default')
 
 @section('title','Browse Activities')
-
+<a id="skip-to-main-content" href="#main_content" class="sr-only sr-only-focusable">Skip to Main Content</a>
 @section('description')
 <div class="panel panel-default">
     <div class="panel-body">
@@ -29,7 +29,7 @@
     @if (count($activities) === 0)
         <div class="alert alert-warning">No exact matches were found. Please try to refine your search criteria</div>
     @endif
-    <div class="row">
+    <div id="main_content" class="row">
     @foreach($activities as $activity)
         <div class="col-sm-4">
         <div class="panel panel-default" style="height:300px;overflow:scroll;" tabindex="0" aria-label="{{$activity->title}} details">
@@ -76,7 +76,12 @@
 @endsection
 
 @section('scripts')
-
+    document.addEventListener('click', function(event) {
+        if (event.target && event.target.id === 'skip-to-main-content') {
+            event.preventDefault();
+            focusAddActivityButton();
+        }
+    });
     window.forms.search_form = {
         'legend': 'Search / Filter Activities',
         'name':'Search',
@@ -108,7 +113,9 @@
 
     app.click('#filter-activities-btn',function(e) {
         app.form('search_form').set(null);
+        var modal_trigger = document.activeElement;
         app.form('search_form').modal();
+        scheduleModalTrapActivation(modal_trigger);
     })
 
 @endsection
