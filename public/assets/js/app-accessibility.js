@@ -356,9 +356,12 @@
             status.setAttribute('aria-atomic', 'true');
             root.appendChild(status);
         }
-        status.textContent = selected_count === 0
+        var status_message = selected_count === 0
             ? 'No rows selected.'
             : (selected_count + ' row' + (selected_count === 1 ? '' : 's') + ' selected. Actions available.');
+        if (status.textContent !== status_message) {
+            status.textContent = status_message;
+        }
 
         if (root.getAttribute('data-gdatagrid-selection-events-bound') !== 'true') {
             var refresh = function() {
@@ -392,6 +395,9 @@
             return;
         }
         table.setAttribute('role', 'grid');
+        _.each(table.querySelectorAll('thead, tbody, tfoot'), function(group) {
+            group.setAttribute('role', 'rowgroup');
+        });
 
         _.each(table.querySelectorAll('thead tr, tbody tr'), function(row) {
             row.setAttribute('role', 'row');
@@ -445,7 +451,28 @@
                     select_icon.setAttribute('aria-label', select_column_label);
                 }
             } else {
-                app.gdatagrid._ensureHeaderHasName(th, null);
+                var has_header_text = !!app.gdatagrid._getHeaderText(th);
+                app.gdatagrid._ensureHeaderHasName(th, has_header_text ? null : 'Actions');
+            }
+        });
+
+        // Final safety net: every table header cell needs discernible text.
+        _.each(table.querySelectorAll('thead th'), function(th) {
+            if (app.gdatagrid._getHeaderText(th)) {
+                return;
+            }
+            var has_actions = !!th.querySelector('.btn-group, [role="group"], .grid-action');
+            app.gdatagrid._ensureHeaderHasName(th, has_actions ? 'Actions' : 'Column');
+        });
+
+        // Graphene renders a separate actions toolbar table: div[name="actions"] > table.
+        // Ensure those header cells are also named (scanner was flagging the 3rd th).
+        _.each(root.querySelectorAll('div[name="actions"] table thead th'), function(th) {
+            if (!app.gdatagrid._getHeaderText(th)) {
+                app.gdatagrid._ensureHeaderHasName(th, 'Actions');
+            }
+            if (!th.getAttribute('scope')) {
+                th.setAttribute('scope', 'col');
             }
         });
 
@@ -460,11 +487,6 @@
                 }
                 th.setAttribute('scope', 'col');
             }
-            th.setAttribute('role', 'button');
-            th.setAttribute('tabindex', '0');
-            if (!th.getAttribute('aria-label') && label) {
-                th.setAttribute('aria-label', 'Sort by ' + label);
-            }
             if (th.classList.contains('sorting_asc')) {
                 th.setAttribute('aria-sort', 'ascending');
             } else if (th.classList.contains('sorting_desc')) {
@@ -472,7 +494,6 @@
             } else {
                 th.setAttribute('aria-sort', 'none');
             }
-            app.gdatagrid._wireKeyboardClick(th);
         });
 
         var filter_cells = table.querySelectorAll('thead tr.filter td[data-inline]');

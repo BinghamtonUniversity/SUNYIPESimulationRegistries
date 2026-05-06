@@ -103,18 +103,18 @@
 
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          @yield('description')
+      <main id="main-content">
+        <div class="row">
+          <div class="col-sm-12">
+            @yield('description')
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-            <main>
-            @yield('content')
-            </main>
+        <div class="row">
+          <div class="col-sm-12">
+              @yield('content')
+          </div>
         </div>
-      </div>
+      </main>
       <footer role="contentinfo" class="site-footer">
         {!! $site_config['footer'] ?? '' !!}
       </footer>
