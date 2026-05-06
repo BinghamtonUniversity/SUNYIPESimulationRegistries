@@ -179,6 +179,7 @@
     <script src='/assets/js/vendor/sortable.js'></script>
     <script src='/assets/js/vendor/ractive.min.js'></script>
     <script src="/assets/js/_framework.js"></script>
+    <script src="/assets/js/app-accessibility.js"></script>
     <script src="/assets/js/modal-focus-trap.js"></script>
     <script src="/assets/js/admin/admin.js"></script>
     <script>

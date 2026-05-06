@@ -133,6 +133,7 @@
     <script src='/assets/js/vendor/ractive.min.js'></script>
     <script src="/assets/js/vendor/filepond.js"></script>
     <script src="/assets/js/_framework.js"></script>
+    <script src="/assets/js/app-accessibility.js"></script>
     <script src="/assets/js/modal-focus-trap.js"></script>
     <script type="text/javascript">
     var root_url = "{{url('/')}}";
