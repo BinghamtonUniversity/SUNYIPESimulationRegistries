@@ -21,6 +21,7 @@
                 <dl>
                 @foreach($type['values'] as $value)
                     @if (isset($value->help_text))
+                        <hr>
                         <dt>{{$value->value}}</dt>
                         <dd>{{$value->help_text}}</dd>
                     @endif

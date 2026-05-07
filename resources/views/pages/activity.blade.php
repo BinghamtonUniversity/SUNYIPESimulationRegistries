@@ -3,29 +3,29 @@
 @section('title',$activity->title)
 
 @section('description')
-<div class="panel panel-default">
-    <div class="panel-body">
+<section class="panel panel-default">
+    <section class="panel-body">
         <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="pull-right">
             <img src="/assets/images/licenses/by-nc.png" style="width:150px;" alt="Creative Commons Attribution-NonCommercial 4.0 License">
         </a>
         <h1 style="text-align:center;margin:0px;">{{$activity->title}}</h1>
-    </div>
-</div>
+    </section>
+</section>
 @endsection
 
 @section('content')
 
 @if($activity->status === 'approved' || (request()->get('preview') === 'true' && auth()->user()))
     @if($activity->status !== 'approved')
-        <div class="alert alert-warning">
+        <section class="alert alert-warning">
             This submission has not been approved (current status is: {{$activity->status}}) and cannot be viewed publicly.
-        </div>
+        </section>
     @endif
-    <div class="panel panel-default">   
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-12" style="font-size:20px;">
-                    <div class="badge pull-right">
+    <section class="panel panel-default">
+        <section class="panel-body">
+            <section class="row">
+                <section class="col-sm-12" style="font-size:20px;">
+                    <section class="badge pull-right">
                         @if($activity->is_ipe === true && $activity->is_simulation === false)
                             IPE
                         @elseif($activity->is_ipe === false && $activity->is_simulation === true)
@@ -33,72 +33,79 @@
                         @elseif($activity->is_ipe === true && $activity->is_simulation === true)
                             IPE/Simulation
                         @endif
-                    </div>
-                    <div>
-                        <strong>Description: </strong><br> 
+                    </section>
+                    <section>
+                        <strong>Description: </strong><br>
                         {!! str_replace("\n",'<br>',$activity->description) !!}
-                    </div>
+                    </section>
                     <hr>
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <section class="row">
+                        <section class="col-sm-6">
                             <strong>Contact Name: </strong> {{$activity->contact_name}}
-                        </div>
-                        <div class="col-sm-6">
+                        </section>
+                        <section class="col-sm-6">
                             <strong>Contact Email: </strong> <a href="mailto:{{$activity->contact_email}}">{{$activity->contact_email}}</a>
-                        </div>
-                    </div>
+                        </section>
+                        <section class="col-sm-6">
+                            <strong>Scenario Author and Credentials: </strong> {{$activity->scenario_author}}
+                        </section>
+                        <section class="col-sm-6">
+                            <strong>Date Developed / Revised: </strong> {{$activity->date_developed}}
+                        </section>
+
+                    </section>
                     <hr>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            @if (is_null($video_html)) 
-                                <!-- <div class="alert alert-info" style="font-size:12px;">No Video to Display</div> -->
+                    <section class="row">
+                        <section class="col-sm-6">
+                            @if (is_null($video_html))
+                                <!-- <section class="alert alert-info" style="font-size:12px;">No Video to Display</section> -->
                             @else
                                 {!! $video_html !!}
                             @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-body" style="font-size:20px;">
-            <div class="row">
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section class="panel panel-default">
+        <section class="panel-body" style="font-size:20px;">
+            <section class="row">
             @foreach($activity->plain_text_values as $type)
-                <div class="col-sm-6">
+                <section class="col-sm-6">
                     @if (is_array($type['value']))
                         <strong>{{$type['type']}}: </strong> {{implode(', ',$type['value'])}}
                     @else
                         <strong>{{$type['type']}}: </strong> {{$type['value']}}
                     @endif
-                </div>
+                </section>
             @endforeach
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title">Files (Click to Download)</h3></div>
-        <div class="panel-body">
+            </section>
+        </section>
+    </section>
+    <section class="panel panel-default">
+        <section class="panel-heading"><h3 class="panel-title">Files (Click to Download)</h3></section>
+        <section class="panel-body">
             @if(count($files) === 0)
-                <div class="alert alert-warning">No files available</div>
+                <section class="alert alert-warning">No files available</section>
             @endif
-            <div class="row">
+            <section class="row">
                 @foreach($files as $file)
-                    <div class="col-sm-3" style="text-align:center;">
+                    <section class="col-sm-3" style="text-align:center;">
                         <button type="button" class="btn btn-primary download_files" style="width:100%;" data-file_id="{{$file->id}}" data-activity_id="{{$activity->id}}" aria-label="Download {{$file->name}}.{{$file->ext}}">
                             <i class="fa fa-file-pdf-o" style="font-size:80px;" aria-hidden="true"></i>
-                            <div style="text-wrap:wrap;">{{$file->name}}.{{$file->ext}}</div>
+                            <section style="text-wrap:wrap;">{{$file->name}}.{{$file->ext}}</section>
                         </button>
-                    </div>
+                    </section>
                 @endforeach
-            </div>
-        </div>
-    </div>
+            </section>
+        </section>
+    </section>
 @else
-    <div class="alert alert-warning">
+    <section class="alert alert-warning">
         This submission has not been approved (current status is: {{$activity->status}}) and cannot be viewed.
         Please try back at a later date.
-    </div>
+    </section>
 @endif
 @endsection
 

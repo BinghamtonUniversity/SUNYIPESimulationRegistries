@@ -11,7 +11,7 @@ class Activity extends Model
 {
     use HasFactory;
     protected $fillable = ["is_ipe","is_simulation","title","submitter_id","description", "contact_name", "contact_email", "contact_phone",
-        "video_url","status"];
+        "video_url","status","date_developed",'scenario_author'];
 
     protected $casts = [
         'is_simulation' => 'boolean','is_ipe' => 'boolean'
@@ -147,18 +147,35 @@ class Activity extends Model
                 "showColumn"=>false,
             ],
             [
-                "name" => "contact_name",
-                "type" => "text",
-                "label" => "Contact Name",
+                "name" => "date_developed",
+                "type" => "date",
+                "label" => "Date Developed / Revised",
                 "required" => true,
-                "limit" => 255,
+                "columns"=>6,
             ],
             [
                 "name" => "contact_email",
                 "type" => "email",
                 "label" => "Contact Email",
+                "columns"=>6,
                 "required" => true,
-                "limit" => 255,
+                "limit" => 100,
+            ],
+            [
+                "name" => "contact_name",
+                "type" => "text",
+                "label" => "Contact Name",
+                "required" => true,
+                "columns"=>6,
+                "limit" => 100,
+            ],
+            [
+                "name" => "scenario_author",
+                "type" => "text",
+                "label" => "Scenario Author and Credentials",
+                "required" => true,
+                "columns"=>6,
+                "limit" => 100,
             ],
             [
                 "name" => "video_url",

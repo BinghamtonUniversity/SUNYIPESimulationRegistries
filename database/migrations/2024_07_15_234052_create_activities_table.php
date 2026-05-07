@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('license')->default('by');
             $table->text('description')->nullable();
             $table->string('contact_name')->nullable();
+            $table->string('scenario_author')->nullable();
+            $table->date('date_developed')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('video_url')->nullable()->default(null);
             $table->enum('status',['draft','submitted','approved','rejected','update_requested'])->default('draft')->index();

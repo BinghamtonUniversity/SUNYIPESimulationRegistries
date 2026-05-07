@@ -65,6 +65,8 @@
                     {{substr($activity->description,0,250)}}
                 </div>
                 <div>
+                    <strong>Scenario Author and Credentials:</strong> {{$activity->scenario_author}}<br>
+                    <strong>Date Developed / Revised: </strong> {{$activity->date_developed}}<br>
                     <strong>Contact:</strong>
                     <a href="mailto:{{$activity->contact_email}}">{{$activity->contact_name}}</a>
                 </div>
