@@ -72,10 +72,10 @@ class SocialiteBingWAYFProvider extends AbstractProvider
     protected function mapUserToObject(array $user)
     {
         return (new User())->setRaw($user)->map([
-            'email' => $user['email'],
-            'unique_id' => $user['preferred_username'],
-            'last_name' => $user['family_name'],
-            'first_name' => $user['given_name'],
+            'email' => $user['email'] ?? null,
+            'unique_id' => $user['preferred_username'] ?? null,
+            'last_name' => $user['family_name'] ?? null,
+            'first_name' => $user['given_name'] ?? null,
         ]);
     }
 }
